@@ -22,3 +22,7 @@
 
 # Sublime Text
 *.sublime-project
+
+# Mac finder files
+*.DS_Store
+DerivedData

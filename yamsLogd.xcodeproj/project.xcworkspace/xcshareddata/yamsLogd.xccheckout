@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>E23002F9-AF80-4D14-BC96-8519A681C50D</string>
+	<key>IDESourceControlProjectName</key>
+	<string>yamsLogd</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>975BB76E2415ED1110F9B347CEA1728BE37D5F4D</key>
+		<string>https://github.com/droberg/yamsLog.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>yamsLogd.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>975BB76E2415ED1110F9B347CEA1728BE37D5F4D</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/droberg/yamsLog.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>975BB76E2415ED1110F9B347CEA1728BE37D5F4D</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>975BB76E2415ED1110F9B347CEA1728BE37D5F4D</string>
+			<key>IDESourceControlWCCName</key>
+			<string>yamsLog</string>
+		</dict>
+	</array>
+</dict>
+</plist>

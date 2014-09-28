@@ -272,39 +272,47 @@ void DataLogger::create_services(
 void DataLogger::create_sensors(std::unordered_map<int, sensor_config_struct> sensor_config_map, CommunicationServer& comm_server) {
   // All sensors used. They will initialize in the order inserted, and terminate in the reverse order
   //TODO: make more general with ID
+
+#ifdef __APPLE__
   if(sensor_config_map.find(0) != sensor_config_map.end()){
     sensors_.push_back(
-          boost::make_shared<ImuSensor>(0,
-                                        ImuSensor::Mode::ABSTIME, comm_server));
+                       boost::make_shared<ImuSensor>(0,
+                                                     ImuSensor::Mode::ABSTIME, comm_server));
   }
   if(sensor_config_map.find(1) != sensor_config_map.end()){
     sensors_.push_back(
-        boost::make_shared<ImuSensor>(1, ImuSensor::Mode::NO_ABSTIME, comm_server));
+                       boost::make_shared<ImuSensor>(1, ImuSensor::Mode::NO_ABSTIME, comm_server));
   }
   if(sensor_config_map.find(2) != sensor_config_map.end()){
     sensors_.push_back(
-        boost::make_shared<CanSensor>(2, comm_server));
+                       boost::make_shared<CanSensor>(2, comm_server));
   }
   if(sensor_config_map.find(3) != sensor_config_map.end()){
     sensors_.push_back(
-        boost::make_shared<CanSensor>(3, comm_server));
+                       boost::make_shared<CanSensor>(3, comm_server));
   }
   if(sensor_config_map.find(4) != sensor_config_map.end()){
     sensors_.push_back(
-        boost::make_shared<GpsSensor>(4, comm_server));
+                       boost::make_shared<GpsSensor>(4, comm_server));
   }
   if(sensor_config_map.find(6) != sensor_config_map.end()){
     sensors_.push_back(
-        boost::make_shared<CanSensor>(6, comm_server));
+                       boost::make_shared<CanSensor>(6, comm_server));
   }
   if(sensor_config_map.find(9) != sensor_config_map.end()){
     sensors_.push_back(
-		       boost::make_shared<VirtualSensor>(9,  VirtualSensor::Mode::ABSTIME, comm_server));
+                       boost::make_shared<VirtualSensor>(9,  VirtualSensor::Mode::ABSTIME, comm_server));
   }
   if(sensor_config_map.find(30) != sensor_config_map.end()){
     sensors_.push_back(
-        boost::make_shared<CorrsysSensor>(30, comm_server));
+                       boost::make_shared<CorrsysSensor>(30, comm_server));
   }
+#else
+  if(sensor_config_map.find(9) != sensor_config_map.end()){
+    sensors_.push_back(
+                       boost::make_shared<VirtualSensor>(9,  VirtualSensor::Mode::ABSTIME, comm_server));
+  }
+#endif
 }
 
 bool DataLogger::initialize(boost::thread_group& service_threads, boost::thread_group& sensor_threads) {

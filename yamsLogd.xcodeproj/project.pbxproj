@@ -1,0 +1,459 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		AEB4F6EB19D8C0670099EC55 /* ClientCallbackImpl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AEB4F6AF19D8C0670099EC55 /* ClientCallbackImpl.cpp */; };
+		AEB4F6EC19D8C0670099EC55 /* ClientConnection.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AEB4F6B119D8C0670099EC55 /* ClientConnection.cpp */; };
+		AEB4F6ED19D8C0670099EC55 /* CommunicationServer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AEB4F6B319D8C0670099EC55 /* CommunicationServer.cpp */; };
+		AEB4F6EE19D8C0670099EC55 /* DataLogger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AEB4F6B519D8C0670099EC55 /* DataLogger.cpp */; };
+		AEB4F6EF19D8C0670099EC55 /* Experiment.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AEB4F6B719D8C0670099EC55 /* Experiment.cpp */; };
+		AEB4F6F019D8C0670099EC55 /* FileSysTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AEB4F6B919D8C0670099EC55 /* FileSysTest.cpp */; };
+		AEB4F6F119D8C0670099EC55 /* Main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AEB4F6BA19D8C0670099EC55 /* Main.cpp */; };
+		AEB4F6F219D8C0670099EC55 /* ModificationCallbackImpl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AEB4F6BB19D8C0670099EC55 /* ModificationCallbackImpl.cpp */; };
+		AEB4F6F319D8C0670099EC55 /* Project.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AEB4F6BD19D8C0670099EC55 /* Project.cpp */; };
+		AEB4F6F419D8C0670099EC55 /* ProjectHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AEB4F6BF19D8C0670099EC55 /* ProjectHandler.cpp */; };
+		AEB4F6F519D8C0670099EC55 /* SensorMinMax.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AEB4F6C319D8C0670099EC55 /* SensorMinMax.cpp */; };
+		AEB4F6F619D8C0670099EC55 /* AbstractSensor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AEB4F6C619D8C0670099EC55 /* AbstractSensor.cpp */; };
+		AEB4F6F719D8C0670099EC55 /* CAN.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AEB4F6C819D8C0670099EC55 /* CAN.cpp */; };
+		AEB4F6F919D8C0670099EC55 /* CorrsysSensor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AEB4F6CC19D8C0670099EC55 /* CorrsysSensor.cpp */; };
+		AEB4F6FA19D8C0670099EC55 /* GpsSensor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AEB4F6CE19D8C0670099EC55 /* GpsSensor.cpp */; };
+		AEB4F6FB19D8C0670099EC55 /* ImuSensor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AEB4F6D019D8C0670099EC55 /* ImuSensor.cpp */; };
+		AEB4F6FC19D8C0670099EC55 /* MTComm.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AEB4F6D219D8C0670099EC55 /* MTComm.cpp */; };
+		AEB4F6FD19D8C0670099EC55 /* SerialPortLib.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AEB4F6D419D8C0670099EC55 /* SerialPortLib.cpp */; };
+		AEB4F6FE19D8C0670099EC55 /* VirtualSensor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AEB4F6D619D8C0670099EC55 /* VirtualSensor.cpp */; };
+		AEB4F6FF19D8C0670099EC55 /* XSensIMU.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AEB4F6D819D8C0670099EC55 /* XSensIMU.cpp */; };
+		AEB4F70019D8C0670099EC55 /* AbstractService.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AEB4F6DB19D8C0670099EC55 /* AbstractService.cpp */; };
+		AEB4F70119D8C0670099EC55 /* CommunicationServerService.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AEB4F6DD19D8C0670099EC55 /* CommunicationServerService.cpp */; };
+		AEB4F70219D8C0670099EC55 /* KeyboardInputService.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AEB4F6DF19D8C0670099EC55 /* KeyboardInputService.cpp */; };
+		AEB4F70319D8C0670099EC55 /* ProtobufFileOutputService.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AEB4F6E219D8C0670099EC55 /* ProtobufFileOutputService.cpp */; };
+		AEB4F70419D8C0670099EC55 /* ProtobufTcpOutputService.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AEB4F6E419D8C0670099EC55 /* ProtobufTcpOutputService.cpp */; };
+		AEB4F70519D8C0670099EC55 /* TextFileOutputService.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AEB4F6E619D8C0670099EC55 /* TextFileOutputService.cpp */; };
+		AEB4F70619D8C0670099EC55 /* StatusObserver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AEB4F6E819D8C0670099EC55 /* StatusObserver.cpp */; };
+		AEB4F70A19D8C2C80099EC55 /* protocol.pb.cc in Sources */ = {isa = PBXBuildFile; fileRef = AEB4F70719D8C2C80099EC55 /* protocol.pb.cc */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		AE9270B119D8C00A00169D81 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		AE9270B319D8C00A00169D81 /* yamsLogd */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = yamsLogd; sourceTree = BUILT_PRODUCTS_DIR; };
+		AEB4F6AF19D8C0670099EC55 /* ClientCallbackImpl.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ClientCallbackImpl.cpp; sourceTree = "<group>"; };
+		AEB4F6B019D8C0670099EC55 /* ClientCallbackImpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClientCallbackImpl.h; sourceTree = "<group>"; };
+		AEB4F6B119D8C0670099EC55 /* ClientConnection.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ClientConnection.cpp; sourceTree = "<group>"; };
+		AEB4F6B219D8C0670099EC55 /* ClientConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClientConnection.h; sourceTree = "<group>"; };
+		AEB4F6B319D8C0670099EC55 /* CommunicationServer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CommunicationServer.cpp; sourceTree = "<group>"; };
+		AEB4F6B419D8C0670099EC55 /* CommunicationServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommunicationServer.h; sourceTree = "<group>"; };
+		AEB4F6B519D8C0670099EC55 /* DataLogger.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DataLogger.cpp; sourceTree = "<group>"; };
+		AEB4F6B619D8C0670099EC55 /* DataLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataLogger.h; sourceTree = "<group>"; };
+		AEB4F6B719D8C0670099EC55 /* Experiment.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Experiment.cpp; sourceTree = "<group>"; };
+		AEB4F6B819D8C0670099EC55 /* Experiment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Experiment.h; sourceTree = "<group>"; };
+		AEB4F6B919D8C0670099EC55 /* FileSysTest.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FileSysTest.cpp; sourceTree = "<group>"; };
+		AEB4F6BA19D8C0670099EC55 /* Main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Main.cpp; sourceTree = "<group>"; };
+		AEB4F6BB19D8C0670099EC55 /* ModificationCallbackImpl.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ModificationCallbackImpl.cpp; sourceTree = "<group>"; };
+		AEB4F6BC19D8C0670099EC55 /* ModificationCallbackImpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModificationCallbackImpl.h; sourceTree = "<group>"; };
+		AEB4F6BD19D8C0670099EC55 /* Project.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Project.cpp; sourceTree = "<group>"; };
+		AEB4F6BE19D8C0670099EC55 /* Project.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Project.h; sourceTree = "<group>"; };
+		AEB4F6BF19D8C0670099EC55 /* ProjectHandler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ProjectHandler.cpp; sourceTree = "<group>"; };
+		AEB4F6C019D8C0670099EC55 /* ProjectHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectHandler.h; sourceTree = "<group>"; };
+		AEB4F6C119D8C0670099EC55 /* ProjectHandlerConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectHandlerConstants.h; sourceTree = "<group>"; };
+		AEB4F6C219D8C0670099EC55 /* ProjectHandlerErrorCodes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectHandlerErrorCodes.h; sourceTree = "<group>"; };
+		AEB4F6C319D8C0670099EC55 /* SensorMinMax.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SensorMinMax.cpp; sourceTree = "<group>"; };
+		AEB4F6C419D8C0670099EC55 /* SensorMinMax.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SensorMinMax.h; sourceTree = "<group>"; };
+		AEB4F6C619D8C0670099EC55 /* AbstractSensor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AbstractSensor.cpp; sourceTree = "<group>"; };
+		AEB4F6C719D8C0670099EC55 /* AbstractSensor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AbstractSensor.h; sourceTree = "<group>"; };
+		AEB4F6C819D8C0670099EC55 /* CAN.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CAN.cpp; sourceTree = "<group>"; };
+		AEB4F6C919D8C0670099EC55 /* CAN.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CAN.h; sourceTree = "<group>"; };
+		AEB4F6CA19D8C0670099EC55 /* CanSensor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CanSensor.cpp; sourceTree = "<group>"; };
+		AEB4F6CB19D8C0670099EC55 /* CanSensor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CanSensor.h; sourceTree = "<group>"; };
+		AEB4F6CC19D8C0670099EC55 /* CorrsysSensor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CorrsysSensor.cpp; sourceTree = "<group>"; };
+		AEB4F6CD19D8C0670099EC55 /* CorrsysSensor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CorrsysSensor.h; sourceTree = "<group>"; };
+		AEB4F6CE19D8C0670099EC55 /* GpsSensor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GpsSensor.cpp; sourceTree = "<group>"; };
+		AEB4F6CF19D8C0670099EC55 /* GpsSensor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GpsSensor.h; sourceTree = "<group>"; };
+		AEB4F6D019D8C0670099EC55 /* ImuSensor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ImuSensor.cpp; sourceTree = "<group>"; };
+		AEB4F6D119D8C0670099EC55 /* ImuSensor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImuSensor.h; sourceTree = "<group>"; };
+		AEB4F6D219D8C0670099EC55 /* MTComm.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MTComm.cpp; sourceTree = "<group>"; };
+		AEB4F6D319D8C0670099EC55 /* MTComm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTComm.h; sourceTree = "<group>"; };
+		AEB4F6D419D8C0670099EC55 /* SerialPortLib.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SerialPortLib.cpp; sourceTree = "<group>"; };
+		AEB4F6D519D8C0670099EC55 /* SerialPortLib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SerialPortLib.h; sourceTree = "<group>"; };
+		AEB4F6D619D8C0670099EC55 /* VirtualSensor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = VirtualSensor.cpp; sourceTree = "<group>"; };
+		AEB4F6D719D8C0670099EC55 /* VirtualSensor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VirtualSensor.h; sourceTree = "<group>"; };
+		AEB4F6D819D8C0670099EC55 /* XSensIMU.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = XSensIMU.cpp; sourceTree = "<group>"; };
+		AEB4F6D919D8C0670099EC55 /* XSensIMU.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XSensIMU.h; sourceTree = "<group>"; };
+		AEB4F6DB19D8C0670099EC55 /* AbstractService.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AbstractService.cpp; sourceTree = "<group>"; };
+		AEB4F6DC19D8C0670099EC55 /* AbstractService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AbstractService.h; sourceTree = "<group>"; };
+		AEB4F6DD19D8C0670099EC55 /* CommunicationServerService.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CommunicationServerService.cpp; sourceTree = "<group>"; };
+		AEB4F6DE19D8C0670099EC55 /* CommunicationServerService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommunicationServerService.h; sourceTree = "<group>"; };
+		AEB4F6DF19D8C0670099EC55 /* KeyboardInputService.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = KeyboardInputService.cpp; sourceTree = "<group>"; };
+		AEB4F6E019D8C0670099EC55 /* KeyboardInputService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyboardInputService.h; sourceTree = "<group>"; };
+		AEB4F6E119D8C0670099EC55 /* OutputServiceConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OutputServiceConstants.h; sourceTree = "<group>"; };
+		AEB4F6E219D8C0670099EC55 /* ProtobufFileOutputService.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ProtobufFileOutputService.cpp; sourceTree = "<group>"; };
+		AEB4F6E319D8C0670099EC55 /* ProtobufFileOutputService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProtobufFileOutputService.h; sourceTree = "<group>"; };
+		AEB4F6E419D8C0670099EC55 /* ProtobufTcpOutputService.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ProtobufTcpOutputService.cpp; sourceTree = "<group>"; };
+		AEB4F6E519D8C0670099EC55 /* ProtobufTcpOutputService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProtobufTcpOutputService.h; sourceTree = "<group>"; };
+		AEB4F6E619D8C0670099EC55 /* TextFileOutputService.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TextFileOutputService.cpp; sourceTree = "<group>"; };
+		AEB4F6E719D8C0670099EC55 /* TextFileOutputService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextFileOutputService.h; sourceTree = "<group>"; };
+		AEB4F6E819D8C0670099EC55 /* StatusObserver.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StatusObserver.cpp; sourceTree = "<group>"; };
+		AEB4F6E919D8C0670099EC55 /* StatusObserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatusObserver.h; sourceTree = "<group>"; };
+		AEB4F6EA19D8C0670099EC55 /* ThreadSafeFifo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThreadSafeFifo.h; sourceTree = "<group>"; };
+		AEB4F70719D8C2C80099EC55 /* protocol.pb.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = protocol.pb.cc; path = protobuf/gen/cpp/protocol.pb.cc; sourceTree = "<group>"; };
+		AEB4F70819D8C2C80099EC55 /* protocol.pb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = protocol.pb.h; path = protobuf/gen/cpp/protocol.pb.h; sourceTree = "<group>"; };
+		AEB4F70919D8C2C80099EC55 /* protocol.proto */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = protocol.proto; path = protobuf/protocol.proto; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		AE9270B019D8C00A00169D81 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		AE9270AA19D8C00A00169D81 = {
+			isa = PBXGroup;
+			children = (
+				AEB4F70B19D8C2CF0099EC55 /* protobuf */,
+				AEB4F6AE19D8C0670099EC55 /* src */,
+				AE9270B419D8C00A00169D81 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		AE9270B419D8C00A00169D81 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AE9270B319D8C00A00169D81 /* yamsLogd */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		AEB4F6AE19D8C0670099EC55 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				AEB4F6AF19D8C0670099EC55 /* ClientCallbackImpl.cpp */,
+				AEB4F6B019D8C0670099EC55 /* ClientCallbackImpl.h */,
+				AEB4F6B119D8C0670099EC55 /* ClientConnection.cpp */,
+				AEB4F6B219D8C0670099EC55 /* ClientConnection.h */,
+				AEB4F6B319D8C0670099EC55 /* CommunicationServer.cpp */,
+				AEB4F6B419D8C0670099EC55 /* CommunicationServer.h */,
+				AEB4F6B519D8C0670099EC55 /* DataLogger.cpp */,
+				AEB4F6B619D8C0670099EC55 /* DataLogger.h */,
+				AEB4F6B719D8C0670099EC55 /* Experiment.cpp */,
+				AEB4F6B819D8C0670099EC55 /* Experiment.h */,
+				AEB4F6B919D8C0670099EC55 /* FileSysTest.cpp */,
+				AEB4F6BA19D8C0670099EC55 /* Main.cpp */,
+				AEB4F6BB19D8C0670099EC55 /* ModificationCallbackImpl.cpp */,
+				AEB4F6BC19D8C0670099EC55 /* ModificationCallbackImpl.h */,
+				AEB4F6BD19D8C0670099EC55 /* Project.cpp */,
+				AEB4F6BE19D8C0670099EC55 /* Project.h */,
+				AEB4F6BF19D8C0670099EC55 /* ProjectHandler.cpp */,
+				AEB4F6C019D8C0670099EC55 /* ProjectHandler.h */,
+				AEB4F6C119D8C0670099EC55 /* ProjectHandlerConstants.h */,
+				AEB4F6C219D8C0670099EC55 /* ProjectHandlerErrorCodes.h */,
+				AEB4F6C319D8C0670099EC55 /* SensorMinMax.cpp */,
+				AEB4F6C419D8C0670099EC55 /* SensorMinMax.h */,
+				AEB4F6C519D8C0670099EC55 /* sensors */,
+				AEB4F6DA19D8C0670099EC55 /* services */,
+				AEB4F6E819D8C0670099EC55 /* StatusObserver.cpp */,
+				AEB4F6E919D8C0670099EC55 /* StatusObserver.h */,
+				AEB4F6EA19D8C0670099EC55 /* ThreadSafeFifo.h */,
+			);
+			name = src;
+			path = server/yamsLogd/src;
+			sourceTree = "<group>";
+		};
+		AEB4F6C519D8C0670099EC55 /* sensors */ = {
+			isa = PBXGroup;
+			children = (
+				AEB4F6C619D8C0670099EC55 /* AbstractSensor.cpp */,
+				AEB4F6C719D8C0670099EC55 /* AbstractSensor.h */,
+				AEB4F6C819D8C0670099EC55 /* CAN.cpp */,
+				AEB4F6C919D8C0670099EC55 /* CAN.h */,
+				AEB4F6CA19D8C0670099EC55 /* CanSensor.cpp */,
+				AEB4F6CB19D8C0670099EC55 /* CanSensor.h */,
+				AEB4F6CC19D8C0670099EC55 /* CorrsysSensor.cpp */,
+				AEB4F6CD19D8C0670099EC55 /* CorrsysSensor.h */,
+				AEB4F6CE19D8C0670099EC55 /* GpsSensor.cpp */,
+				AEB4F6CF19D8C0670099EC55 /* GpsSensor.h */,
+				AEB4F6D019D8C0670099EC55 /* ImuSensor.cpp */,
+				AEB4F6D119D8C0670099EC55 /* ImuSensor.h */,
+				AEB4F6D219D8C0670099EC55 /* MTComm.cpp */,
+				AEB4F6D319D8C0670099EC55 /* MTComm.h */,
+				AEB4F6D419D8C0670099EC55 /* SerialPortLib.cpp */,
+				AEB4F6D519D8C0670099EC55 /* SerialPortLib.h */,
+				AEB4F6D619D8C0670099EC55 /* VirtualSensor.cpp */,
+				AEB4F6D719D8C0670099EC55 /* VirtualSensor.h */,
+				AEB4F6D819D8C0670099EC55 /* XSensIMU.cpp */,
+				AEB4F6D919D8C0670099EC55 /* XSensIMU.h */,
+			);
+			path = sensors;
+			sourceTree = "<group>";
+		};
+		AEB4F6DA19D8C0670099EC55 /* services */ = {
+			isa = PBXGroup;
+			children = (
+				AEB4F6DB19D8C0670099EC55 /* AbstractService.cpp */,
+				AEB4F6DC19D8C0670099EC55 /* AbstractService.h */,
+				AEB4F6DD19D8C0670099EC55 /* CommunicationServerService.cpp */,
+				AEB4F6DE19D8C0670099EC55 /* CommunicationServerService.h */,
+				AEB4F6DF19D8C0670099EC55 /* KeyboardInputService.cpp */,
+				AEB4F6E019D8C0670099EC55 /* KeyboardInputService.h */,
+				AEB4F6E119D8C0670099EC55 /* OutputServiceConstants.h */,
+				AEB4F6E219D8C0670099EC55 /* ProtobufFileOutputService.cpp */,
+				AEB4F6E319D8C0670099EC55 /* ProtobufFileOutputService.h */,
+				AEB4F6E419D8C0670099EC55 /* ProtobufTcpOutputService.cpp */,
+				AEB4F6E519D8C0670099EC55 /* ProtobufTcpOutputService.h */,
+				AEB4F6E619D8C0670099EC55 /* TextFileOutputService.cpp */,
+				AEB4F6E719D8C0670099EC55 /* TextFileOutputService.h */,
+			);
+			path = services;
+			sourceTree = "<group>";
+		};
+		AEB4F70B19D8C2CF0099EC55 /* protobuf */ = {
+			isa = PBXGroup;
+			children = (
+				AEB4F70719D8C2C80099EC55 /* protocol.pb.cc */,
+				AEB4F70819D8C2C80099EC55 /* protocol.pb.h */,
+				AEB4F70919D8C2C80099EC55 /* protocol.proto */,
+			);
+			name = protobuf;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		AE9270B219D8C00A00169D81 /* yamsLogd */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AE9270BA19D8C00A00169D81 /* Build configuration list for PBXNativeTarget "yamsLogd" */;
+			buildPhases = (
+				AE9270AF19D8C00A00169D81 /* Sources */,
+				AE9270B019D8C00A00169D81 /* Frameworks */,
+				AE9270B119D8C00A00169D81 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = yamsLogd;
+			productName = yamsLogd;
+			productReference = AE9270B319D8C00A00169D81 /* yamsLogd */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		AE9270AB19D8C00A00169D81 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0600;
+				ORGANIZATIONNAME = "Linköping University";
+				TargetAttributes = {
+					AE9270B219D8C00A00169D81 = {
+						CreatedOnToolsVersion = 6.0.1;
+					};
+				};
+			};
+			buildConfigurationList = AE9270AE19D8C00A00169D81 /* Build configuration list for PBXProject "yamsLogd" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = AE9270AA19D8C00A00169D81;
+			productRefGroup = AE9270B419D8C00A00169D81 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				AE9270B219D8C00A00169D81 /* yamsLogd */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		AE9270AF19D8C00A00169D81 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AEB4F6F419D8C0670099EC55 /* ProjectHandler.cpp in Sources */,
+				AEB4F70519D8C0670099EC55 /* TextFileOutputService.cpp in Sources */,
+				AEB4F6FA19D8C0670099EC55 /* GpsSensor.cpp in Sources */,
+				AEB4F70419D8C0670099EC55 /* ProtobufTcpOutputService.cpp in Sources */,
+				AEB4F70319D8C0670099EC55 /* ProtobufFileOutputService.cpp in Sources */,
+				AEB4F70219D8C0670099EC55 /* KeyboardInputService.cpp in Sources */,
+				AEB4F6F319D8C0670099EC55 /* Project.cpp in Sources */,
+				AEB4F6EC19D8C0670099EC55 /* ClientConnection.cpp in Sources */,
+				AEB4F70019D8C0670099EC55 /* AbstractService.cpp in Sources */,
+				AEB4F6F119D8C0670099EC55 /* Main.cpp in Sources */,
+				AEB4F6F219D8C0670099EC55 /* ModificationCallbackImpl.cpp in Sources */,
+				AEB4F6FE19D8C0670099EC55 /* VirtualSensor.cpp in Sources */,
+				AEB4F6F619D8C0670099EC55 /* AbstractSensor.cpp in Sources */,
+				AEB4F6EF19D8C0670099EC55 /* Experiment.cpp in Sources */,
+				AEB4F6FD19D8C0670099EC55 /* SerialPortLib.cpp in Sources */,
+				AEB4F6F919D8C0670099EC55 /* CorrsysSensor.cpp in Sources */,
+				AEB4F6FF19D8C0670099EC55 /* XSensIMU.cpp in Sources */,
+				AEB4F6EE19D8C0670099EC55 /* DataLogger.cpp in Sources */,
+				AEB4F6F519D8C0670099EC55 /* SensorMinMax.cpp in Sources */,
+				AEB4F6FC19D8C0670099EC55 /* MTComm.cpp in Sources */,
+				AEB4F70A19D8C2C80099EC55 /* protocol.pb.cc in Sources */,
+				AEB4F6FB19D8C0670099EC55 /* ImuSensor.cpp in Sources */,
+				AEB4F6ED19D8C0670099EC55 /* CommunicationServer.cpp in Sources */,
+				AEB4F70619D8C0670099EC55 /* StatusObserver.cpp in Sources */,
+				AEB4F6EB19D8C0670099EC55 /* ClientCallbackImpl.cpp in Sources */,
+				AEB4F70119D8C0670099EC55 /* CommunicationServerService.cpp in Sources */,
+				AEB4F6F719D8C0670099EC55 /* CAN.cpp in Sources */,
+				AEB4F6F019D8C0670099EC55 /* FileSysTest.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		AE9270B819D8C00A00169D81 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		AE9270B919D8C00A00169D81 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		AE9270BB19D8C00A00169D81 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					/Users/frisk/sw/boost/include/,
+					/Users/frisk/sw/protobuf/include/,
+				);
+				LIBRARY_SEARCH_PATHS = (
+					/Users/frisk/sw/boost/lib,
+					/Users/frisk/sw/protobuf/lib,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		AE9270BC19D8C00A00169D81 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					/Users/frisk/sw/boost/include/,
+					/Users/frisk/sw/protobuf/include/,
+				);
+				LIBRARY_SEARCH_PATHS = (
+					/Users/frisk/sw/boost/lib,
+					/Users/frisk/sw/protobuf/lib,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		AE9270AE19D8C00A00169D81 /* Build configuration list for PBXProject "yamsLogd" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AE9270B819D8C00A00169D81 /* Debug */,
+				AE9270B919D8C00A00169D81 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AE9270BA19D8C00A00169D81 /* Build configuration list for PBXNativeTarget "yamsLogd" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AE9270BB19D8C00A00169D81 /* Debug */,
+				AE9270BC19D8C00A00169D81 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = AE9270AB19D8C00A00169D81 /* Project object */;
+}
