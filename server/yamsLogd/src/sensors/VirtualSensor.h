@@ -1,6 +1,6 @@
 /**
- * CombinedDataCollectorV2 is a program for collecting and 
- * distributing sensor data.
+ * yamsLog is a program for real time multi sensor logging and 
+ * supervision
  * Copyright (C) 2014  Per Öberg, Erik Frisk
  * 
  * This program is free software; you can redistribute it and/or
