@@ -27,6 +27,7 @@
 
 #include <iostream>
 #include <algorithm>
+#include <vector> 
 
 const std::vector<std::string> quit_commands = {
   "q",

@@ -273,7 +273,7 @@ void DataLogger::create_sensors(std::unordered_map<int, sensor_config_struct> se
   // All sensors used. They will initialize in the order inserted, and terminate in the reverse order
   //TODO: make more general with ID
 
-#ifdef __APPLE__
+#ifndef __APPLE__
   if(sensor_config_map.find(0) != sensor_config_map.end()){
     sensors_.push_back(
                        boost::make_shared<ImuSensor>(0,
