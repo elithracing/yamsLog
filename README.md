@@ -92,6 +92,8 @@ Features
 Todo
 -----
 
+**Currently the Android client code and common java-backend is missing in the repo**
+
 Since the last restructure of the project the timestamping code has
 degradated a bit which mens that each sample is not necessarily
 timesamped asap. 
