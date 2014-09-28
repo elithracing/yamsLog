@@ -1,0 +1,91 @@
+
+cmake_minimum_required(VERSION 2.8)
+
+# Turn on to see cmake output
+set(CMAKE_VERBOSE_MAKEFILE off)
+
+# Uncomment for JOHAN S TURBO 2000 MODE.
+# The number after '=' is how many normal sensor values for one sensor
+# that will be followed by an illegal sensor value, that will change
+# the sensor status. The illegal one will be the sensor max value +
+# 1. If the next sensor value is OK, it will, of course, change back
+# the sensor status.  Note that this doesn't take the index in the
+# repeated float structure sent into consideration, so every nth data
+# point is modified for a sensor, not all sensor values in every nth
+# data message.  Also, a max limit must of course be set for that
+# sensor, otherwise, JOHAN S TURBO 2000 MODE will have no effect.
+# add_definitions(-DJOHAN_S=1000)
+
+project(yamsLogd)
+
+# Eclipse hack
+find_path(STDIO_INCLUDE_PATH stdio.h)
+include_directories("${STDIO_INCLUDE_PATH}/")
+
+# include_directories (SYSTEM "${CMAKE_SOURCE_DIR}/../../protobuf/src")
+include_directories (SYSTEM "${CMAKE_SOURCE_DIR}/../../protobuf/gen/cpp")
+
+include_directories("${CMAKE_SOURCE_DIR}/src")
+
+add_library(DataLogger src/DataLogger.cpp src/DataLogger.h)
+add_library(CAN src/sensors/CAN.cpp src/sensors/CAN.h)
+add_library(MTComm src/sensors/MTComm.cpp src/sensors/MTComm.h)
+add_library(SerialLib src/sensors/SerialPortLib.cpp src/sensors/SerialPortLib.h)
+add_library(XSensIMU src/sensors/XSensIMU.cpp src/sensors/XSensIMU.h)
+
+add_library(Protobuf ../../protobuf/gen/cpp/protocol.pb.cc ../../protobuf/gen/cpp/protocol.pb.h)
+add_library(CommunicationServer src/CommunicationServer.cpp src/CommunicationServer.h)
+add_library(ClientConnection src/ClientConnection.cpp src/ClientConnection.h)
+add_library(StatusObserver src/StatusObserver.cpp src/StatusObserver.h)
+add_library(ClientCallbackImpl src/ClientCallbackImpl.cpp src/ClientCallbackImpl.h)
+add_library(SensorMinMax src/SensorMinMax.cpp src/SensorMinMax.h)
+add_library(ModificationCallbackImpl src/ModificationCallbackImpl.cpp src/ModificationCallbackImpl.h)
+
+add_library(AbstractService src/services/AbstractService.cpp src/services/AbstractService.h)
+add_library(CommunicationServerService src/services/CommunicationServerService.cpp src/services/CommunicationServerService.h)
+add_library(KeyboardInputService src/services/KeyboardInputService.cpp src/services/KeyboardInputService.h)
+add_library(ProtobufFileOutputService src/services/ProtobufFileOutputService.cpp src/services/ProtobufFileOutputService.h)
+add_library(ProtobufTcpOutputService src/services/ProtobufTcpOutputService.cpp src/services/ProtobufTcpOutputService.h)
+add_library(TextFileOutputService src/services/TextFileOutputService.cpp src/services/TextFileOutputService.h)
+
+add_library(AbstractSensor src/sensors/AbstractSensor.cpp src/sensors/AbstractSensor.h)
+add_library(CanSensor src/sensors/CanSensor.cpp src/sensors/CanSensor.h)
+add_library(CorrsysSensor src/sensors/CorrsysSensor.cpp src/sensors/CorrsysSensor.h)
+add_library(GpsSensor src/sensors/GpsSensor.cpp src/sensors/GpsSensor.h)
+add_library(ImuSensor src/sensors/ImuSensor.cpp src/sensors/ImuSensor.h)
+add_library(VirtualSensor src/sensors/VirtualSensor.cpp src/sensors/VirtualSensor.h)
+
+add_library(Experiment src/Experiment.cpp src/Experiment.h)
+add_library(Project src/Project.cpp src/Project.h)
+add_library(ProjectHandler src/ProjectHandler.cpp src/ProjectHandler.h)
+
+# Use c++11
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++0x")
+# If using GCC
+if("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
+  # Add compiler flags for all files
+  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -pedantic -Wshadow -Wpointer-arith -Wcast-qual")
+  # But ignore warnings for the following
+  set_source_files_properties(
+      src/sensors/MTComm.cpp src/sensors/MTComm.h
+      src/sensors/SerialPortLib.cpp src/sensors/SerialPortLib.h
+      src/sensors/XSensIMU.cpp src/sensors/XSensIMU.h
+      ../../protobuf/gen/cpp/protocol.pb.cc ../../protobuf/gen/cpp/protocol.pb.h
+      PROPERTIES COMPILE_FLAGS "-Wno-unused-parameter -Wno-maybe-uninitialized -Wno-type-limits -Wno-shadow -Wno-cast-qual -Wno-switch")
+# If using Clang
+elseif("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang")
+  # Add compiler flags for all files
+  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -pedantic -Wshadow -Wpointer-arith -Wcast-qual -Wimplicit-fallthrough")
+  # But ignore warnings for the following
+  set_source_files_properties(
+      src/sensors/MTComm.cpp src/sensors/MTComm.h
+      src/sensors/SerialPortLib.cpp src/sensors/SerialPortLib.h
+      src/sensors/XSensIMU.cpp src/sensors/XSensIMU.h
+      ../../protobuf/gen/cpp/protocol.pb.cc ../../protobuf/gen/cpp/protocol.pb.h
+      PROPERTIES COMPILE_FLAGS "-Wno-unused-parameter -Wno-maybe-uninitialized -Wno-type-limits -Wno-shadow -Wno-cast-qual -Wno-switch")
+endif()
+
+add_executable(yamsLogd src/Main.cpp)
+target_link_libraries(yamsLogd DataLogger ProjectHandler Project Experiment Protobuf CommunicationServer ClientConnection StatusObserver ClientCallbackImpl AbstractService 
+CommunicationServerService KeyboardInputService ProtobufFileOutputService ProtobufTcpOutputService TextFileOutputService AbstractSensor CanSensor CorrsysSensor GpsSensor 
+VirtualSensor ImuSensor CAN MTComm SerialLib XSensIMU SensorMinMax ModificationCallbackImpl boost_system boost_filesystem boost_thread pthread rt protobuf)

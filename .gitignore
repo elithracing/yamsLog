@@ -1,0 +1,24 @@
+*.class
+*.o
+
+# Library files
+*.lo
+*.la
+*.so
+*.a
+
+# Executable files
+*.out
+*.exe
+
+# Gedit files
+*~
+
+# eclipse
+.metadata
+
+# code::blocks
+*.cbp
+
+# Sublime Text
+*.sublime-project

@@ -1,0 +1,114 @@
+%% This file defines the reasonable values for the sensors.
+%%
+%% HowTo: SensorName, SensorAttribute, min, max, index
+%% Example: imucam, accX, -100, 100, 1
+%%
+%% If blank value => all values acceptable
+%%
+
+%% ----------------------------------------------------------------------
+%% IMU cam - Info (port name imucam)
+%% ----------------------------------------------------------------------
+%% ID = 0
+%% Accelerometer and position data from Xsens device: 
+%% accX,accY,accZ,gyrX,gyrY,gyrZ,magX,magY,magZ,roll,pitch,yaw
+%%
+
+%imucam, accX, -5, 5, 0
+%imucam, accY, -100, 100, 1
+%imucam, accZ, 9.6, 9.8, 2
+%imucam, gyrX, -100, 100, 3
+%imucam, gyrY, -100, 100, 4
+%imucam, gyrZ, -100, 100, 5
+%imucam, magX, -100, 100, 6
+%imucam, magY, -100, 100, 7
+%imucam, magZ, -100, 100, 8
+%imucam, roll, -100, 100, 9
+%imucam, pitch, -100, 100, 10
+%imucam, yaw, -100, 100, 11
+
+%% ----------------------------------------------------------------------
+%% IMU Car - Info (port name imucar)
+%% ----------------------------------------------------------------------
+%% ID = 1
+%% Accelerometer and position data from Xsens device: 
+%% accX,accY,accZ,gyrX,gyrY,gyrZ,magX,magY,magZ,roll,pitch,yaw
+%%
+
+imucar, accX, , , 0
+imucar, accY, , , 1
+imucar, accZ, , , 2
+imucar, gyrX, , , 3
+imucar, gyrY, , , 4
+imucar, gyrZ, , , 5
+imucar, magX, , , 6
+imucar, magY, , , 7
+imucar, magZ, , , 8
+imucar, roll, , , 9
+imucar, pitch, , , 10
+imucar, yaw, , , 11
+
+%% ----------------------------------------------------------------------
+%% car-CAN - Info (port name carcan1)
+%% ----------------------------------------------------------------------
+%% ID = 2
+%% Interpretation of CAN messages is as follows: 
+%% t,ID,CAN_ID,CAN_message_length,CAN_message with CAN_message_length bytes
+%% 
+
+carcan1, CAN_ID, , ,0
+carcan1, CAN_message-lenght, , ,1
+
+%% ----------------------------------------------------------------------
+%% CAN - Info (port name can)
+%% ----------------------------------------------------------------------
+%% ID = 3
+%% Interpretation of CAN messages is as follows: 
+%% CAN_ID,CAN_message_length,CAN_message with CAN_message_length bytes
+%% 
+
+can,CAN_ID, , ,0
+can,CAN_message_length,,,1
+
+%% ----------------------------------------------------------------------
+%% GPS1-reciever - Info (port name gps)
+%% ----------------------------------------------------------------------
+%% ID = 4
+%% Interpretation of GPS1 messages is as follows: 
+%% t,ID,UTC-Time,Lat,Lon,Speed(m/s),Course/Heading
+%% 
+
+gps, UT-Time,  , , 0
+gps, Lat, , ,1
+gps, Lon, , ,2
+gps, Speed(m/s), , ,3
+gps, Course/Heading, , ,4
+
+%% ----------------------------------------------------------------------
+%% corrsys detected on CAN with ID = 3, interpreting with output ID = 30
+%% corrsys - Info
+%% ----------------------------------------------------------------------
+%% Interpretation of corrsys messages is as follows:
+%% time,ID,abstime,starttime,h1,h2,h3,hc1,hc2,hc3,pitch,roll,roll2,pitchrate,rollrate,roll2rate,vabs,vlat,vtrans,slipangle 
+%%
+
+corrsys, abstime, , ,0
+corrsys, starttime, , ,1
+corrsys, h1, , ,2
+corrsys, h2, , ,3
+corrsys, h3, , ,4
+corrsys, hc1, , ,5
+corrsys, hc2, , ,6
+corrsys, hc3, , ,7
+corrsys, pitch, , ,8
+corrsys, roll, , ,9
+corrsys, roll2, , ,10
+corrsys, pitchrate, , ,11
+corrsys, rollrate, , ,12
+corrsys, roll2rate, , ,13
+corrsys, vabs, , ,14
+corrsys, vlat, , ,15
+corrsys, vtrans, , ,16
+corrsys, slipangle, , ,17
+
+

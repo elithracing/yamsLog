@@ -1,0 +1,586 @@
+package protobuf;
+
+// A message sent from the client to the server is a request message, except for DebugMsg and ErrorMsg. The answer to a request message is a response message, and is sent from the server.
+// DebugMsg and ErrorMsg have no response.
+// Every request message shall always be met with a response. All responses shall contain a status of the requested action. 
+// For a specific response message, one response status shall always be SUCCESS. If the returned response status is not SUCCESS, the requested action shall be rollbacked completely, as if no request ever was sent.
+
+// Some commonly used response statuses follow:
+// SUCCESS
+// NO_ACTIVE_PROJECT - The operation needed an active project to succeed.
+// PROJECT_NOT_FOUND
+// EXPERIMENT_NOT_FOUND
+// ILLEGAL* - Some parameter sent was set incorrectly
+// NOT_IN_*_MODE - The status was not the required status for the operation to succeed.
+// NAME_TAKEN
+// OTHER_ERROR - Perhaps an IO-error. This should be investigated.
+
+// Initialization routine:
+// At startup the server first sends the following messages, in this order:
+// * ConfigurationMsg
+// * StatusMsg
+// * SensorStatusMsg
+// * ProjectListMsg
+// * ActiveProjectMsg
+// * ExperimentListMsg (If there is an active project)
+// * ExperimentMetadataMsg (One for each experiment in the active project, if there is an active project)
+//
+// Note that no default project is set active at server startup. It may have been set by another client, though.
+//
+// Normally the client responds with a SettingsRequestMsg to set which sensors it is interested in.
+//
+// All messages in the list above except for ConfigurationMsg are automatically sent by the server when the state of the particular domain changes.
+// This means that the client will always have access to the information it needs, and there is no need to query the server for it.
+
+// Bidirectional
+// All messages sent in both directions are GeneralMsg
+message GeneralMsg {
+  enum SubType {
+    DATA_T                                       = 1;
+
+    SET_DYNAMIC_EVENT_REQUEST_T                  = 2;
+    SET_DYNAMIC_EVENT_RESPONSE_T                 = 3;
+    DYNAMIC_EVENT_T                              = 4;
+    CONFIGURATION_T                              = 5;
+    SETTINGS_REQUEST_T                           = 6;
+    SETTINGS_RESPONSE_T                          = 7;
+    SENSOR_STATUS_T                              = 8;
+    STATUS_T                                     = 9;
+
+    CREATE_NEW_PROJECT_REQUEST_T                 = 10;
+    CREATE_NEW_PROJECT_RESPONSE_T                = 11;
+    RENAME_PROJECT_REQUEST_T                     = 12;
+    RENAME_PROJECT_RESPONSE_T                    = 13;
+    REMOVE_PROJECT_REQUEST_T                     = 14;
+    REMOVE_PROJECT_RESPONSE_T                    = 15;
+    SET_ACTIVE_PROJECT_REQUEST_T                 = 16;
+    SET_ACTIVE_PROJECT_RESPONSE_T                = 17;
+    ACTIVE_PROJECT_T                             = 18;
+    PROJECT_LIST_T                               = 19;
+    SET_PROJECT_METADATA_REQUEST_T               = 20;
+    SET_PROJECT_METADATA_RESPONSE_T              = 21;
+    PROJECT_METADATA_T                           = 22;
+
+    EXPERIMENT_DATA_COLLECTION_START_REQUEST_T   = 23;
+    EXPERIMENT_DATA_COLLECTION_START_RESPONSE_T  = 24;
+    EXPERIMENT_DATA_COLLECTION_STOP_REQUEST_T    = 25;
+    EXPERIMENT_DATA_COLLECTION_STOP_RESPONSE_T   = 26;
+    RENAME_EXPERIMENT_REQUEST_T                  = 27;
+    RENAME_EXPERIMENT_RESPONSE_T                 = 28;
+    REMOVE_EXPERIMENT_REQUEST_T                  = 29;
+    REMOVE_EXPERIMENT_RESPONSE_T                 = 30;
+    EXPERIMENT_PLAYBACK_START_REQUEST_T          = 31;
+    EXPERIMENT_PLAYBACK_START_RESPONSE_T         = 32;
+    EXPERIMENT_PLAYBACK_STOP_REQUEST_T           = 33;
+    EXPERIMENT_PLAYBACK_STOP_RESPONSE_T          = 34;
+    EXPERIMENT_LIST_T                            = 35;
+    SET_EXPERIMENT_METADATA_REQUEST_T            = 36;
+    SET_EXPERIMENT_METADATA_RESPONSE_T           = 37;
+    EXPERIMENT_METADATA_T                        = 38;
+
+    DEBUG_T                                      = 39;
+    ERROR_T                                      = 40;
+    ACTIVE_EXPERIMENT_T                          = 41;
+  }
+
+  // The type of message that was sent, i.e. which union field was set
+  required SubType                                    sub_type                                    = 1;
+
+  optional DataMsg                                    data                                        = 2;
+  
+  optional SetDynamicEventRequestMsg                  set_dynamic_event_request                   = 3;
+  optional SetDynamicEventResponseMsg                 set_dynamic_event_response                  = 4;
+  optional DynamicEventMsg                            dynamic_event                               = 5;
+  optional ConfigurationMsg                           configuration                               = 6;
+  optional SettingsRequestMsg                         settings_request                            = 7;
+  optional SettingsResponseMsg                        settings_response                           = 8;
+  optional SensorStatusMsg                            sensor_status                               = 9;
+  optional StatusMsg                                  status                                      = 10;
+  
+  optional CreateNewProjectRequestMsg                 create_new_project_request                  = 11;
+  optional CreateNewProjectResponseMsg                create_new_project_response                 = 12;
+  optional RenameProjectRequestMsg                    rename_project_request                      = 13;
+  optional RenameProjectResponseMsg                   rename_project_response                     = 14;
+  optional RemoveProjectRequestMsg                    remove_project_request                      = 15;
+  optional RemoveProjectResponseMsg                   remove_project_response                     = 16;
+  optional SetActiveProjectRequestMsg                 set_active_project_request                  = 17;
+  optional SetActiveProjectResponseMsg                set_active_project_response                 = 18;
+  optional ActiveProjectMsg                           active_project                              = 19;
+  optional ProjectListMsg                             project_list                                = 20;
+  optional SetProjectMetadataRequestMsg               set_project_metadata_request                = 21;
+  optional SetProjectMetadataResponseMsg              set_project_metadata_response               = 22;
+  optional ProjectMetadataMsg                         project_metadata                            = 23;
+  
+  optional ExperimentDataCollectionStartRequestMsg    experiment_data_collection_start_request    = 24;
+  optional ExperimentDataCollectionStartResponseMsg   experiment_data_collection_start_response   = 25;
+  optional ExperimentDataCollectionStopRequestMsg     experiment_data_collection_stop_request     = 26;
+  optional ExperimentDataCollectionStopResponseMsg    experiment_data_collection_stop_response    = 27;
+  optional RenameExperimentRequestMsg                 rename_experiment_request                   = 28;
+  optional RenameExperimentResponseMsg                rename_experiment_response                  = 29;
+  optional RemoveExperimentRequestMsg                 remove_experiment_request                   = 30;
+  optional RemoveExperimentResponseMsg                remove_experiment_response                  = 31;
+  optional ExperimentPlaybackStartRequestMsg          experiment_playback_start_request           = 32;
+  optional ExperimentPlaybackStartResponseMsg         experiment_playback_start_response          = 33;
+  optional ExperimentPlaybackStopRequestMsg           experiment_playback_stop_request            = 34;
+  optional ExperimentPlaybackStopResponseMsg          experiment_playback_stop_response           = 35;
+  optional ExperimentListMsg                          experiment_list                             = 36;
+  optional SetExperimentMetadataRequestMsg            set_experiment_metadata_request             = 37;
+  optional SetExperimentMetadataResponseMsg           set_experiment_metadata_response            = 38;
+  optional ExperimentMetadataMsg                      experiment_metadata                         = 39;
+  
+  optional DebugMsg                                   debug_message                               = 40;
+  optional ErrorMsg                                   error_message                               = 41;
+
+  optional ActiveExperimentMsg			      active_experiment                           = 42;
+
+}
+
+//-----------------------------------------------------------------------------
+
+// Server -> Client
+message DataMsg {
+  required double   time      = 1;
+  required int32    type_id   = 2;
+  repeated float    data      = 3;
+}
+
+//-----------------------------------------------------------------------------
+
+// Note: This is no message that is sent. This is the dynamic event data in 
+// SetDynamicEventRequestMsg and DynamicEventMsg. This is so the same struct 
+// can be used for both messages and for internal server storage.
+message DynamicEventStruct {
+  required double time      = 1;
+  required string message   = 2;
+}
+
+// Client -> Server
+message SetDynamicEventRequestMsg {
+  required DynamicEventStruct dynamic_event = 1;
+}
+
+// Server -> Client
+message SetDynamicEventResponseMsg {
+  enum ResponseType {
+    SUCCESS                       = 1;
+    ILLEGAL_TIME                  = 2;
+    NO_ACTIVE_PROJECT             = 3;
+    NOT_IN_DATA_COLLECTION_MODE   = 4;
+    OTHER_ERROR                   = 5;
+  }
+  required ResponseType response_type = 1;
+}
+
+// Server -> Client
+message DynamicEventMsg {
+  required DynamicEventStruct dynamic_event = 1;
+}
+
+//-----------------------------------------------------------------------------
+
+// Configurations for a specific attribute the sensor data
+// Note: This is not a message. It is a struct shared between message.
+message AttributeConfiguration {
+  required uint32   index   = 1;
+  required string   name    = 2;
+}
+
+// Configurations for a specific sensor
+// Note: This is not a message. It is a struct shared between messages.
+message SensorConfiguration {
+  required int32                    sensor_id                 = 1;
+  required string                   name                      = 2;
+  required uint32                   max_attributes            = 3;
+  repeated AttributeConfiguration   attribute_configurations  = 4;
+}
+
+// Server -> Client
+// Sent at connection.
+message ConfigurationMsg {
+  repeated SensorConfiguration sensor_configurations = 1;
+}
+
+//-----------------------------------------------------------------------------
+
+// Client -> Server
+// Is sent in the initialization phase, and sets the sensor information that 
+// should be sent to the client. If no such message has been sent, the server 
+// defaults to no sensor data.
+message SettingsRequestMsg {
+  // The minimum time between messages with the same id in milliseconds
+  required uint32   min_time    = 1;
+  // The sensor IDs that should be sent from server to client
+  repeated int32    sensor_ids  = 2;
+}
+
+// Server -> Client
+message SettingsResponseMsg {
+  enum ResponseType {
+    SUCCESS             = 1;
+    ILLEGAL_SENSOR_ID   = 2;
+    OTHER_ERROR         = 3;
+  }
+  required ResponseType response_type = 1;
+}
+
+//-----------------------------------------------------------------------------
+
+// Server -> Client
+// Sent at connection and when sensor or attribute status changes.
+// If a status for any sensor or attribute isn't sent, it means the status is 
+// unchanged.
+message SensorStatusMsg { 
+  enum SensorStatusType {
+    WORKING         = 1;
+    NOT_WORKING     = 2;
+  }
+
+  enum AttributeStatusType {
+    INSIDE_LIMITS          = 1;
+    OUTSIDE_LIMITS         = 2;
+  }
+
+  message Attribute {
+    required uint32                index    = 1;
+    required AttributeStatusType   status   = 2;
+  }
+  
+  message Sensor {
+    required int32              sensor_id  = 1;
+    required SensorStatusType   status     = 2;
+    repeated Attribute          attributes = 3;
+  }
+
+  repeated Sensor sensors = 1;
+}
+
+//-----------------------------------------------------------------------------
+
+// Server -> Client
+// Sent to the connecting client at connection and to all clients when the 
+// status is changed. This means that it is sent to the client that changed 
+// the status among others.
+message StatusMsg {
+  enum StatusType {
+    IDLE                  = 1;
+    DATA_COLLECTION       = 2;
+    EXPERIMENT_PLAYBACK   = 3;
+  }
+
+  required StatusType   status_type   = 1;
+  optional string       project_name  = 2;
+}
+
+//-----------------------------------------------------------------------------
+
+// Client -> Server
+// This does not set the active project; it must be set explictly.
+message CreateNewProjectRequestMsg {
+  required string name = 1;
+}
+
+// Server -> Client
+message CreateNewProjectResponseMsg {
+  enum ResponseType {
+    SUCCESS         = 1;
+    NAME_TAKEN      = 2;
+    ILLEGAL_NAME    = 3;
+    OTHER_ERROR     = 4;
+  }
+  required ResponseType response_type = 1;
+}
+
+//-----------------------------------------------------------------------------
+
+// Client -> Server
+message RenameProjectRequestMsg {
+  required string old_name = 1;
+  required string new_name = 2;
+}
+
+// Server -> Client
+message RenameProjectResponseMsg {
+  enum ResponseType {
+    SUCCESS             = 1;
+    ILLEGAL_NAME        = 2;
+    NAME_TAKEN          = 3;
+    PROJECT_NOT_FOUND   = 4;
+    OTHER_ERROR         = 5;
+  }
+  required ResponseType response_type = 1;
+}
+
+//-----------------------------------------------------------------------------
+
+// Client -> Server
+// If the current project is removed, the active project is set to none.
+message RemoveProjectRequestMsg {
+  required string name = 1;
+}
+
+// Server -> Client
+message RemoveProjectResponseMsg {
+  enum ResponseType {
+    SUCCESS            = 1;
+    PROJECT_NOT_FOUND  = 2;
+    OTHER_ERROR        = 3;
+  }
+  required ResponseType response_type = 1;
+  
+}
+
+//-----------------------------------------------------------------------------
+
+// Client -> Server
+// This selects the active project
+message SetActiveProjectRequestMsg {
+  required string name = 1;
+}
+
+// Server -> Client
+message SetActiveProjectResponseMsg {
+  enum ResponseType {
+    SUCCESS              = 1;
+    PROJECT_NOT_FOUND    = 2;
+    NOT_IN_IDLE_MODE     = 3;
+    OTHER_ERROR          = 4;
+  }
+  required ResponseType response_type = 1;
+}
+
+//-----------------------------------------------------------------------------
+
+// Server -> Client
+// Sent at connection and when the active project changes.
+// If no project has been set, the optional name is not set.
+message ActiveProjectMsg {
+  optional string name = 1;
+}
+
+// Server -> Client
+message ActiveExperimentMsg {
+  optional string name = 1;
+}
+
+
+//-----------------------------------------------------------------------------
+
+// Server -> Client
+// Sent when any project changes (e.g. renaming, removal, creation) and at 
+// connection.
+message ProjectListMsg {
+  repeated string projects = 1;
+}
+
+//-----------------------------------------------------------------------------
+
+// Note: This is no message that is sent. This is the project metadata data in 
+// SetProjectMetadataRequestMsg and ProjectMetadataMsg. This is so the same 
+// struct can be used for both messages and for internal server storage.
+message ProjectMetadataStruct {
+  optional string test_leader       = 1;
+  optional int64  date              = 2; // POSIX time (seconds since epoch)
+  optional string email             = 3;
+  repeated string member_names      = 4;
+  repeated string tags              = 5;
+  optional string description       = 6;
+}
+
+// Client -> Server
+// Sets metadata for the active project.
+message SetProjectMetadataRequestMsg {
+  required ProjectMetadataStruct  metadata = 1;
+}
+
+// Server -> Client
+message SetProjectMetadataResponseMsg {
+  enum ResponseType {
+    SUCCESS                       = 1;
+    NO_ACTIVE_PROJECT             = 2;
+    OTHER_ERROR                   = 3;
+  }
+  required ResponseType response_type = 1;
+}
+
+// Server -> Client
+message ProjectMetadataMsg {
+  required ProjectMetadataStruct metadata = 1;
+}
+
+//-----------------------------------------------------------------------------
+
+// Client -> Server
+// Starts data collection in the active project.
+message ExperimentDataCollectionStartRequestMsg {
+  required string name = 1;
+}
+
+// Server -> Client
+message ExperimentDataCollectionStartResponseMsg {
+  enum ResponseType {
+    SUCCESS                       = 1;
+    NO_ACTIVE_PROJECT             = 2;
+    NOT_IN_IDLE_MODE              = 3;
+    NAME_TAKEN                    = 4;
+    ILLEGAL_NAME                  = 5;
+    OTHER_ERROR                   = 6;
+  }
+  required ResponseType response_type = 1;
+}
+
+//-----------------------------------------------------------------------------
+
+// Client -> Server
+message ExperimentDataCollectionStopRequestMsg {
+}
+
+// Server -> Client
+message ExperimentDataCollectionStopResponseMsg {
+  enum ResponseType {
+    SUCCESS                       = 1;
+    NOT_IN_DATA_COLLECTION_MODE   = 2;
+    OTHER_ERROR                   = 3;
+  }
+  required ResponseType response_type = 1;
+}
+
+//-----------------------------------------------------------------------------
+
+// Client -> Server
+// Renames an experiment in the active project.
+message RenameExperimentRequestMsg {
+  required string old_name = 1;
+  required string new_name = 2;
+}
+
+// Server -> Client
+message RenameExperimentResponseMsg {
+  enum ResponseType {
+    SUCCESS                 = 1;
+    NO_ACTIVE_PROJECT       = 2;
+    NAME_TAKEN              = 3;
+    EXPERIMENT_NOT_FOUND    = 4;
+    OTHER_ERROR             = 5;
+  }
+  required ResponseType response_type = 1;
+}
+
+//-----------------------------------------------------------------------------
+
+// Client -> Server
+// Removes an experiment in the active project.
+message RemoveExperimentRequestMsg {
+  required string name = 1;
+}
+
+// Server -> Client
+message RemoveExperimentResponseMsg {
+  enum ResponseType {
+    SUCCESS                 = 1;
+    NO_ACTIVE_PROJECT       = 2;
+    EXPERIMENT_NOT_FOUND    = 3;
+    OTHER_ERROR             = 4;
+  }
+  required ResponseType response_type = 1;
+}
+
+//-----------------------------------------------------------------------------
+
+// Client -> Server
+// Starts experiment playback in the active project.
+message ExperimentPlaybackStartRequestMsg {
+  required string   name          = 1;
+  // The sensor ids that the client is interested in.
+  repeated int32    sensor_ids    = 2;
+}
+
+// Server -> Client
+message ExperimentPlaybackStartResponseMsg {
+  enum ResponseType {
+    SUCCESS                       = 1;
+    NO_ACTIVE_PROJECT             = 2;
+    EXPERIMENT_NOT_FOUND          = 3;
+    NOT_IN_IDLE_MODE              = 4;
+    OTHER_ERROR                   = 5;
+  }
+  required ResponseType response_type = 1;
+}
+
+//-----------------------------------------------------------------------------
+
+// Client -> Server
+message ExperimentPlaybackStopRequestMsg {
+}
+
+// Server -> Client
+message ExperimentPlaybackStopResponseMsg {
+  enum ResponseType {
+    SUCCESS                          = 1;
+    NOT_IN_PLAYBACK_MODE             = 2;
+    OTHER_ERROR                      = 3;
+  }
+  required ResponseType response_type = 1;
+}
+
+//-----------------------------------------------------------------------------
+
+// Server -> Client
+// Is sent when any experiment in the active project changes (e.g. creation, 
+// renaming, removal) and when a project is set. Sends information about the
+// experiments in the active project.
+message ExperimentListMsg {
+  repeated string names = 1;
+}
+
+//-----------------------------------------------------------------------------
+
+// Client -> Server
+// Sets Experiment metadata in active project.
+message SetExperimentMetadataRequestMsg {
+  required string experiment_name   = 1;
+  repeated string tags              = 2;
+  optional string notes             = 3;
+}
+
+// Server -> Client
+message SetExperimentMetadataResponseMsg {
+  enum ResponseType {
+    SUCCESS                          = 1;
+    NO_ACTIVE_PROJECT                = 2;
+    EXPERIMENT_NOT_FOUND             = 3;
+    OTHER_ERROR                      = 4;
+  }
+  required ResponseType response_type = 1;
+}
+
+// Server -> Client
+message ExperimentMetadataMsg {
+  // Used for internal server storage
+  message MetadataStruct {
+    repeated string                tags                   = 1;
+    optional string                notes                  = 2;
+    // Tells what the sensor configuration was for this specific experiment
+    repeated SensorConfiguration   sensor_configurations  = 3;
+  }
+
+  required string           experiment_name   = 1;
+  required MetadataStruct   metadata          = 2;
+}
+
+//-----------------------------------------------------------------------------
+
+// Bidirectional
+// This message is for testing and debugging purposes only, and should not be used in production code.
+message DebugMsg {
+  required string debug_message = 1;
+}
+
+// Client -> Server
+message ErrorMsg {
+  enum ErrorType{
+    UNKNOWN_SENSOR_ID            = 1;
+    UNKNOWN_GENERALMSG_SUBTYPE   = 2;
+  }
+  
+  required ErrorType error_type = 1;
+}
