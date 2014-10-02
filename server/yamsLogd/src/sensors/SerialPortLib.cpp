@@ -122,6 +122,9 @@ void TimeoutSerial::read(char *data, size_t size)
                 port.cancel();
                 throw(timeout_exception("Timeout expired"));
             //if resultInProgress remain in the loop
+#warning Added empty default case since not all cases where handeld in switch
+            default:
+            break;
         }
     }
 }
@@ -182,6 +185,9 @@ std::string TimeoutSerial::readStringUntil(const std::string& delim)
                 throw(boost::system::system_error(boost::system::error_code(),
                         "Error while reading"));
             //if resultInProgress remain in the loop
+#warning Added empty default case since not all cases where handeld in switch
+          default:
+            break;
         }
     }
 }

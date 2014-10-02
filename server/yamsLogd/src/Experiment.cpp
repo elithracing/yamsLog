@@ -575,8 +575,10 @@ boost::optional<protobuf::ExperimentMetadataMsg::MetadataStruct> Experiment::rea
     err_out = ProjectHandlerErrorCode::END_OF_FILE;
     return boost::none;
   }
-  err_out = ProjectHandlerErrorCode::SUCCESS;
-  return read_msg;
+
+#warning Commented out code that never will be run
+//  err_out = ProjectHandlerErrorCode::SUCCESS; // This code is never run
+//  return read_msg;
 }
 
 bool Experiment::set_to_read_mode() {
