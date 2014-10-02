@@ -20,6 +20,31 @@
 
 #include "AbstractService.h"
 
+#ifdef __APPLE__
+// clock_gettime is not available in OS X
+#include <mach/mach.h>
+#include <mach/mach_time.h>
+#define CLOCK_REALTIME 0
+
+int
+clock_gettime(int /*clk_id*/, timespec* t)
+{
+  static mach_timebase_info_data_t sTimebaseInfo;
+  uint64_t absTime = mach_absolute_time();
+  
+  if ( sTimebaseInfo.denom == 0 ) {
+    mach_timebase_info(&sTimebaseInfo);
+  }
+  
+  uint64_t nanoseconds = absTime*sTimebaseInfo.numer/sTimebaseInfo.denom;
+  
+  t->tv_sec  = nanoseconds / 1e9;
+  t->tv_nsec = nanoseconds % 1000000000;
+  return 0;
+}
+#endif
+
+
 timespec AbstractService::reference_time_stamp_;
 
 AbstractService::AbstractService() : is_running_(true), initialized_correctly_(false) {

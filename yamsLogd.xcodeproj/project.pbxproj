@@ -12,21 +12,14 @@
 		AEB4F6ED19D8C0670099EC55 /* CommunicationServer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AEB4F6B319D8C0670099EC55 /* CommunicationServer.cpp */; };
 		AEB4F6EE19D8C0670099EC55 /* DataLogger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AEB4F6B519D8C0670099EC55 /* DataLogger.cpp */; };
 		AEB4F6EF19D8C0670099EC55 /* Experiment.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AEB4F6B719D8C0670099EC55 /* Experiment.cpp */; };
-		AEB4F6F019D8C0670099EC55 /* FileSysTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AEB4F6B919D8C0670099EC55 /* FileSysTest.cpp */; };
 		AEB4F6F119D8C0670099EC55 /* Main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AEB4F6BA19D8C0670099EC55 /* Main.cpp */; };
 		AEB4F6F219D8C0670099EC55 /* ModificationCallbackImpl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AEB4F6BB19D8C0670099EC55 /* ModificationCallbackImpl.cpp */; };
 		AEB4F6F319D8C0670099EC55 /* Project.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AEB4F6BD19D8C0670099EC55 /* Project.cpp */; };
 		AEB4F6F419D8C0670099EC55 /* ProjectHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AEB4F6BF19D8C0670099EC55 /* ProjectHandler.cpp */; };
 		AEB4F6F519D8C0670099EC55 /* SensorMinMax.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AEB4F6C319D8C0670099EC55 /* SensorMinMax.cpp */; };
 		AEB4F6F619D8C0670099EC55 /* AbstractSensor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AEB4F6C619D8C0670099EC55 /* AbstractSensor.cpp */; };
-		AEB4F6F719D8C0670099EC55 /* CAN.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AEB4F6C819D8C0670099EC55 /* CAN.cpp */; };
-		AEB4F6F919D8C0670099EC55 /* CorrsysSensor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AEB4F6CC19D8C0670099EC55 /* CorrsysSensor.cpp */; };
-		AEB4F6FA19D8C0670099EC55 /* GpsSensor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AEB4F6CE19D8C0670099EC55 /* GpsSensor.cpp */; };
-		AEB4F6FB19D8C0670099EC55 /* ImuSensor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AEB4F6D019D8C0670099EC55 /* ImuSensor.cpp */; };
-		AEB4F6FC19D8C0670099EC55 /* MTComm.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AEB4F6D219D8C0670099EC55 /* MTComm.cpp */; };
 		AEB4F6FD19D8C0670099EC55 /* SerialPortLib.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AEB4F6D419D8C0670099EC55 /* SerialPortLib.cpp */; };
 		AEB4F6FE19D8C0670099EC55 /* VirtualSensor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AEB4F6D619D8C0670099EC55 /* VirtualSensor.cpp */; };
-		AEB4F6FF19D8C0670099EC55 /* XSensIMU.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AEB4F6D819D8C0670099EC55 /* XSensIMU.cpp */; };
 		AEB4F70019D8C0670099EC55 /* AbstractService.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AEB4F6DB19D8C0670099EC55 /* AbstractService.cpp */; };
 		AEB4F70119D8C0670099EC55 /* CommunicationServerService.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AEB4F6DD19D8C0670099EC55 /* CommunicationServerService.cpp */; };
 		AEB4F70219D8C0670099EC55 /* KeyboardInputService.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AEB4F6DF19D8C0670099EC55 /* KeyboardInputService.cpp */; };
@@ -35,17 +28,25 @@
 		AEB4F70519D8C0670099EC55 /* TextFileOutputService.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AEB4F6E619D8C0670099EC55 /* TextFileOutputService.cpp */; };
 		AEB4F70619D8C0670099EC55 /* StatusObserver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AEB4F6E819D8C0670099EC55 /* StatusObserver.cpp */; };
 		AEB4F70A19D8C2C80099EC55 /* protocol.pb.cc in Sources */ = {isa = PBXBuildFile; fileRef = AEB4F70719D8C2C80099EC55 /* protocol.pb.cc */; };
+		AEE2704F19DDB88800D0950A /* libprotobuf.8.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = AEE2704E19DDB88800D0950A /* libprotobuf.8.dylib */; };
+		AEE2705319DDB90A00D0950A /* libboost_filesystem.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = AEE2705019DDB90A00D0950A /* libboost_filesystem.dylib */; };
+		AEE2705419DDB90A00D0950A /* libboost_system.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = AEE2705119DDB90A00D0950A /* libboost_system.dylib */; };
+		AEE2705519DDB90A00D0950A /* libboost_thread.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = AEE2705219DDB90A00D0950A /* libboost_thread.dylib */; };
+		AEE2705919DDBAA200D0950A /* min_max_sensor_values.txt in CopyFiles */ = {isa = PBXBuildFile; fileRef = AEE2705619DDBA2E00D0950A /* min_max_sensor_values.txt */; };
+		AEE2705A19DDBAA200D0950A /* port_config.txt in CopyFiles */ = {isa = PBXBuildFile; fileRef = AEE2705719DDBA2E00D0950A /* port_config.txt */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		AE9270B119D8C00A00169D81 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = /usr/share/man/man1/;
-			dstSubfolderSpec = 0;
+			buildActionMask = 12;
+			dstPath = "";
+			dstSubfolderSpec = 16;
 			files = (
+				AEE2705919DDBAA200D0950A /* min_max_sensor_values.txt in CopyFiles */,
+				AEE2705A19DDBAA200D0950A /* port_config.txt in CopyFiles */,
 			);
-			runOnlyForDeploymentPostprocessing = 1;
+			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
@@ -112,6 +113,12 @@
 		AEB4F70719D8C2C80099EC55 /* protocol.pb.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = protocol.pb.cc; path = protobuf/gen/cpp/protocol.pb.cc; sourceTree = "<group>"; };
 		AEB4F70819D8C2C80099EC55 /* protocol.pb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = protocol.pb.h; path = protobuf/gen/cpp/protocol.pb.h; sourceTree = "<group>"; };
 		AEB4F70919D8C2C80099EC55 /* protocol.proto */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = protocol.proto; path = protobuf/protocol.proto; sourceTree = "<group>"; };
+		AEE2704E19DDB88800D0950A /* libprotobuf.8.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libprotobuf.8.dylib; path = ../../sw/protobuf/lib/libprotobuf.8.dylib; sourceTree = "<group>"; };
+		AEE2705019DDB90A00D0950A /* libboost_filesystem.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libboost_filesystem.dylib; path = ../../sw/boost/lib/libboost_filesystem.dylib; sourceTree = "<group>"; };
+		AEE2705119DDB90A00D0950A /* libboost_system.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libboost_system.dylib; path = ../../sw/boost/lib/libboost_system.dylib; sourceTree = "<group>"; };
+		AEE2705219DDB90A00D0950A /* libboost_thread.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libboost_thread.dylib; path = ../../sw/boost/lib/libboost_thread.dylib; sourceTree = "<group>"; };
+		AEE2705619DDBA2E00D0950A /* min_max_sensor_values.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = min_max_sensor_values.txt; path = server/yamsLogd/min_max_sensor_values.txt; sourceTree = SOURCE_ROOT; };
+		AEE2705719DDBA2E00D0950A /* port_config.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = port_config.txt; path = server/yamsLogd/port_config.txt; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +126,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AEE2705319DDB90A00D0950A /* libboost_filesystem.dylib in Frameworks */,
+				AEE2705419DDB90A00D0950A /* libboost_system.dylib in Frameworks */,
+				AEE2705519DDB90A00D0950A /* libboost_thread.dylib in Frameworks */,
+				AEE2704F19DDB88800D0950A /* libprotobuf.8.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -128,7 +139,12 @@
 		AE9270AA19D8C00A00169D81 = {
 			isa = PBXGroup;
 			children = (
+				AEE2705019DDB90A00D0950A /* libboost_filesystem.dylib */,
+				AEE2705119DDB90A00D0950A /* libboost_system.dylib */,
+				AEE2705219DDB90A00D0950A /* libboost_thread.dylib */,
+				AEE2704E19DDB88800D0950A /* libprotobuf.8.dylib */,
 				AEB4F70B19D8C2CF0099EC55 /* protobuf */,
+				AEE2705819DDBA3600D0950A /* Resource files */,
 				AEB4F6AE19D8C0670099EC55 /* src */,
 				AE9270B419D8C00A00169D81 /* Products */,
 			);
@@ -234,6 +250,16 @@
 			name = protobuf;
 			sourceTree = "<group>";
 		};
+		AEE2705819DDBA3600D0950A /* Resource files */ = {
+			isa = PBXGroup;
+			children = (
+				AEE2705619DDBA2E00D0950A /* min_max_sensor_values.txt */,
+				AEE2705719DDBA2E00D0950A /* port_config.txt */,
+			);
+			name = "Resource files";
+			path = server/yamsLogd/src;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -292,7 +318,6 @@
 			files = (
 				AEB4F6F419D8C0670099EC55 /* ProjectHandler.cpp in Sources */,
 				AEB4F70519D8C0670099EC55 /* TextFileOutputService.cpp in Sources */,
-				AEB4F6FA19D8C0670099EC55 /* GpsSensor.cpp in Sources */,
 				AEB4F70419D8C0670099EC55 /* ProtobufTcpOutputService.cpp in Sources */,
 				AEB4F70319D8C0670099EC55 /* ProtobufFileOutputService.cpp in Sources */,
 				AEB4F70219D8C0670099EC55 /* KeyboardInputService.cpp in Sources */,
@@ -305,19 +330,13 @@
 				AEB4F6F619D8C0670099EC55 /* AbstractSensor.cpp in Sources */,
 				AEB4F6EF19D8C0670099EC55 /* Experiment.cpp in Sources */,
 				AEB4F6FD19D8C0670099EC55 /* SerialPortLib.cpp in Sources */,
-				AEB4F6F919D8C0670099EC55 /* CorrsysSensor.cpp in Sources */,
-				AEB4F6FF19D8C0670099EC55 /* XSensIMU.cpp in Sources */,
 				AEB4F6EE19D8C0670099EC55 /* DataLogger.cpp in Sources */,
 				AEB4F6F519D8C0670099EC55 /* SensorMinMax.cpp in Sources */,
-				AEB4F6FC19D8C0670099EC55 /* MTComm.cpp in Sources */,
 				AEB4F70A19D8C2C80099EC55 /* protocol.pb.cc in Sources */,
-				AEB4F6FB19D8C0670099EC55 /* ImuSensor.cpp in Sources */,
 				AEB4F6ED19D8C0670099EC55 /* CommunicationServer.cpp in Sources */,
 				AEB4F70619D8C0670099EC55 /* StatusObserver.cpp in Sources */,
 				AEB4F6EB19D8C0670099EC55 /* ClientCallbackImpl.cpp in Sources */,
 				AEB4F70119D8C0670099EC55 /* CommunicationServerService.cpp in Sources */,
-				AEB4F6F719D8C0670099EC55 /* CAN.cpp in Sources */,
-				AEB4F6F019D8C0670099EC55 /* FileSysTest.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

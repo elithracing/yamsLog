@@ -41,10 +41,12 @@
 #include "services/ProtobufTcpOutputService.h"
 #include "services/TextFileOutputService.h"
 
+#ifndef __APPLE__
 #include "sensors/CanSensor.h"
 #include "sensors/CorrsysSensor.h"
 #include "sensors/GpsSensor.h"
 #include "sensors/ImuSensor.h"
+#endif
 #include "sensors/VirtualSensor.h"
 
 /**************************************************************************************
