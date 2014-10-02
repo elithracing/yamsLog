@@ -1,0 +1,17 @@
+Short document describing the steps to add XCode-IDE support to the
+project
+
+Some of the steps are highly local to your
+boost/protobuf-installation, modify as expected
+
+
+1. Added header search paths to boost and protobuf
+2. Added library search paths to boost and protobuf
+3. Turned of warning for implicit conversion to 32 bit type
+4. Added $(SOURCE_ROOT)/server/yamsLogd/src/ to header search path
+5. Removed can-sensor and other linux-specific source files from the
+build
+6. Added libraries: protobuf, boost_filesystem, boost_thread,
+boost_system to the link phase
+7. Added a copy files rule for the min_max_server_values.txt and
+port_config.txt resource files
