@@ -32,7 +32,6 @@ VirtualSensor::VirtualSensor(int id, Mode mode, CommunicationServer& comm_server
 
 bool VirtualSensor::initialize()
 {
-  std::cout << "VirtualSensor: Initializing" << std::endl;
 #ifndef NDEBUG
   std::cout << "VirtualSensor: DEBUG Initializing" << std::endl;
 #endif
@@ -41,9 +40,9 @@ bool VirtualSensor::initialize()
 
 void VirtualSensor::idle() 
 {
-#ifndef NDEBUG
-  std::cout << "VirtualSensor: IDLING " << std::endl;
-#endif
+ #ifndef NDEBUG
+  //   std::cout << "VirtualSensor: IDLING " << std::endl;
+ #endif
   std::vector<float> values;
   if(read_one_data(&values)){
     set_working(true);
@@ -78,6 +77,7 @@ VirtualSensor::read_one_data(std::vector<float>* values)
 {
   usleep( sampleTime*1e6 );
   printf(".");
+  fflush(stdout); // Will now print everything in the stdout buffer
   set_working(true);
   float sensorValue = sin(2*M_PI*1/5.0*currentTime);
   values->push_back( sensorValue );
