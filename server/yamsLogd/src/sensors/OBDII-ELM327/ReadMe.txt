@@ -1,0 +1,30 @@
+The code in this directory is used by the OBDII_ELM327 sensor. For
+troubleshooting and other experiments a stand-alone tool "logOBDII" is
+available, using exactly the same code as the sensor. 
+
+Note on troubleshooting
+------------------------
+
+To get the OBDII code up an running the ELM327 (or similar) needs to
+configured for the right baud-rate, right OBD-interface (usually
+automatic works). A common problem is that the car does not work with
+the auto-configure methods and therefore OBDII-interface needs to be
+hard-coded.
+
+To be able to troubleshoot the interface it can be wise to look at the actual
+serial-port communication using 
+
+> logOBDII --serial-log logname.txt 
+
+Also: There are excellent documentation from ELM about how to communicate
+with the chips using a terminal emulator. See for example: [1]
+
+
+Note on supported PIDS
+------------------------
+It is possible to learn what PIDS your car is supporting using 
+
+> logOBDII --capabilities
+
+
+[1] Upcoming documentation link...
