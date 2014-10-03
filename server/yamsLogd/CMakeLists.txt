@@ -54,6 +54,7 @@ add_library(CorrsysSensor src/sensors/CorrsysSensor.cpp src/sensors/CorrsysSenso
 add_library(GpsSensor src/sensors/GpsSensor.cpp src/sensors/GpsSensor.h)
 add_library(ImuSensor src/sensors/ImuSensor.cpp src/sensors/ImuSensor.h)
 add_library(VirtualSensor src/sensors/VirtualSensor.cpp src/sensors/VirtualSensor.h)
+add_library(OBDIIElmSensor src/sensors/OBDIIElmSensor.cpp src/sensors/OBDIIElmSensor.h)
 
 add_library(Experiment src/Experiment.cpp src/Experiment.h)
 add_library(Project src/Project.cpp src/Project.h)
@@ -88,4 +89,4 @@ endif()
 add_executable(yamsLogd src/Main.cpp)
 target_link_libraries(yamsLogd DataLogger ProjectHandler Project Experiment Protobuf CommunicationServer ClientConnection StatusObserver ClientCallbackImpl AbstractService 
 CommunicationServerService KeyboardInputService ProtobufFileOutputService ProtobufTcpOutputService TextFileOutputService AbstractSensor CanSensor CorrsysSensor GpsSensor 
-VirtualSensor ImuSensor CAN MTComm SerialLib XSensIMU SensorMinMax ModificationCallbackImpl boost_system boost_filesystem boost_thread pthread rt protobuf)
+OBDIIElmSensor VirtualSensor ImuSensor CAN MTComm SerialLib XSensIMU SensorMinMax ModificationCallbackImpl boost_system boost_filesystem boost_thread pthread rt protobuf)

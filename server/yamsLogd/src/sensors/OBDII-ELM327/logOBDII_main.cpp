@@ -18,6 +18,9 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
+
+int logOBDII(int argc, char** argv);
+
 int main(int argc, char** argv) {
   // This is supposed to be divided into Init, log, deinit, etc...
   logOBDII(argc,argv);

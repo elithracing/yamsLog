@@ -166,7 +166,7 @@ static char *see_speed(speed_t speed) {
 /// Write to the log
 static void appendseriallog(const char *line, int out) {
 	if(NULL != seriallog) {
-	        char *fixedline = malloc(2*strlen(line) * sizeof (char));
+	        char *fixedline = (char *) malloc(2*strlen(line) * sizeof (char));
 		asciifystring(fixedline,line,strlen(line));
 		char timestr[200];
 		time_t t;

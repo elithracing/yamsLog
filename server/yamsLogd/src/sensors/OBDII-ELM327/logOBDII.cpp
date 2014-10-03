@@ -47,55 +47,105 @@
 #include <sys/types.h>
 #include <sys/stat.h>
 
+class OBDIIData{
+public:
+  OBDIIData();
+  int receive_exitsignal; 
+  
+  /// Serial port full path to open
+  char *serialport;
+  
+  /// List of columsn to log
+  char *log_columns;
+  
+  /// Number of samples to take
+  int samplecount;
+  
+  /// Number of samples per second
+  int samplespersecond;
+  
+  /// Ask to show the capabilities of the OBD device then exit
+  int showcapabilities;
+  
+  /// Set if the user wishes to upgrade the baudrate
+  long baudrate_upgrade;
+  
+  /// Time between samples, measured in microseconds
+  long frametime;
+  
+  /// Spam all readings to stdout
+  int spam_stdout;
+  
+  /// Enable elm optimisations
+  int enable_optimisations;
+  
+  /// Enable serial logging
+  int enable_seriallog;
+  
+  /// Serial log filename
+  char *seriallogname;
+  
+  /// Requested baudrate
+  long requested_baud;
+  
+  // Config File
+  struct OBDGPSConfig *obd_config;
+};
 
-
-int logOBDII(int argc, char** argv) {
+OBDIIData::OBDIIData()
+{
         int receive_exitsignal = 0; 
 
 	/// Serial port full path to open
-	char *serialport = NULL;
+	serialport = NULL;
 
 	/// List of columsn to log
-	char *log_columns = NULL;
+	log_columns = NULL;
 
 	/// Number of samples to take
-	int samplecount = -1;
+	samplecount = -1;
 
 	/// Number of samples per second
-	int samplespersecond = 1;
+	samplespersecond = 1;
 
 	/// Ask to show the capabilities of the OBD device then exit
-	int showcapabilities = 0;
+	showcapabilities = 0;
 
 	/// Set if the user wishes to upgrade the baudrate
-	long baudrate_upgrade = -1;
+	baudrate_upgrade = -1;
 
 	/// Time between samples, measured in microseconds
-	long frametime = 0;
+	frametime = 0;
 
 	/// Spam all readings to stdout
-	int spam_stdout = 0;
+	spam_stdout = 0;
 
 	/// Enable elm optimisations
-	int enable_optimisations = 0;
+	enable_optimisations = 0;
 
 	/// Enable serial logging
-	int enable_seriallog = 0;
+	enable_seriallog = 0;
 
 	/// Serial log filename
-	char *seriallogname = NULL;
+	seriallogname = NULL;
 
 	/// Requested baudrate
-	long requested_baud = -1;
+	requested_baud = -1;
 
 	// Config File
-	struct OBDGPSConfig *obd_config = obd_loadConfig(0);
+	obd_config = obd_loadConfig(0);
+}
 
-	if(NULL != obd_config) {
-		samplespersecond = obd_config->samplerate;
-		enable_optimisations = obd_config->optimisations;
-		requested_baud = obd_config->baudrate;
-		baudrate_upgrade = obd_config->baudrate_upgrade;
+
+int logOBDII(int argc, char** argv) {
+  
+        OBDIIData obddata;
+
+	if(NULL != obddata.obd_config) {
+		obddata.samplespersecond = obddata.obd_config->samplerate;
+		obddata.enable_optimisations = obddata.obd_config->optimisations;
+		obddata.requested_baud = obddata.obd_config->baudrate;
+		obddata.baudrate_upgrade = obddata.obd_config->baudrate_upgrade;
 	}
 	
 
@@ -111,44 +161,44 @@ int logOBDII(int argc, char** argv) {
                                mustexit = 1;
                                break;
 			case 's':
-				if(NULL != serialport) {
-					free(serialport);
+				if(NULL != obddata.serialport) {
+					free(obddata.serialport);
 				}
-				serialport = strdup(optarg);
+				obddata.serialport = strdup(optarg);
 				break;
 			case 'o':
-				enable_optimisations = 1;
+				obddata.enable_optimisations = 1;
 				break;
 			case 't':
-				spam_stdout = 1;
+				obddata.spam_stdout = 1;
 				break;
 			case 'c':
-				samplecount = atoi(optarg);
+				obddata.samplecount = atoi(optarg);
 				break;
 			case 'b':
-				requested_baud = strtol(optarg, (char **)NULL, 10);
+				obddata.requested_baud = strtol(optarg, (char **)NULL, 10);
 				break;
 			case 'B':
-				baudrate_upgrade = strtol(optarg, (char **)NULL, 10);
+				obddata.baudrate_upgrade = strtol(optarg, (char **)NULL, 10);
 				break;
 			case 'i':
-				if(NULL != log_columns) {
-					free(log_columns);
+				if(NULL != obddata.log_columns) {
+					free(obddata.log_columns);
 				}
-				log_columns = strdup(optarg);
+				obddata.log_columns = strdup(optarg);
 				break;
 			case 'a':
-				samplespersecond = atoi(optarg);
+				obddata.samplespersecond = atoi(optarg);
 				break;
 			case 'l':
-				enable_seriallog = 1;
-				if(NULL != seriallogname) {
-					free(seriallogname);
+				obddata.enable_seriallog = 1;
+				if(NULL != obddata.seriallogname) {
+					free(obddata.seriallogname);
 				}
-				seriallogname = strdup(optarg);
+				obddata.seriallogname = strdup(optarg);
 				break;
 			case 'p':
-				showcapabilities = 1;
+				obddata.showcapabilities = 1;
 				break;
 			default:
 				mustexit = 1;
@@ -158,34 +208,34 @@ int logOBDII(int argc, char** argv) {
 
 	if(mustexit) exit(0);
 
-	if(0 >= samplespersecond) {
-		frametime = 0;
+	if(0 >= obddata.samplespersecond) {
+		obddata.frametime = 0;
 	} else {
-		frametime = 1000000 / samplespersecond;
+		obddata.frametime = 1000000 / obddata.samplespersecond;
 	}
 
-	if(NULL == serialport) {
-		if(NULL != obd_config && NULL != obd_config->obd_device) {
-			serialport = strdup(obd_config->obd_device);
+	if(NULL == obddata.serialport) {
+		if(NULL != obddata.obd_config && NULL != obddata.obd_config->obd_device) {
+			obddata.serialport = strdup(obddata.obd_config->obd_device);
 		} else {
-			serialport = strdup(OBD_DEFAULT_SERIALPORT);
+			obddata.serialport = strdup(OBD_DEFAULT_SERIALPORT);
 		}
 	}
-	if(NULL == log_columns) {
-		if(NULL != obd_config && NULL != obd_config->log_columns) {
-			log_columns = strdup(obd_config->log_columns);
+	if(NULL == obddata.log_columns) {
+		if(NULL != obddata.obd_config && NULL != obddata.obd_config->log_columns) {
+			obddata.log_columns = strdup(obddata.obd_config->log_columns);
 		} else {
-			log_columns = strdup(OBD_DEFAULT_COLUMNS);
+			obddata.log_columns = strdup(OBD_DEFAULT_COLUMNS);
 		}
 	}
 
 
-	if(enable_seriallog && NULL != seriallogname) {
-		startseriallog(seriallogname);
+	if(obddata.enable_seriallog && NULL != obddata.seriallogname) {
+		startseriallog(obddata.seriallogname);
 	}
 
 	// Open the serial port.
-	int obd_serial_port = openserial(serialport, requested_baud, baudrate_upgrade);
+	int obd_serial_port = openserial(obddata.serialport, obddata.requested_baud, obddata.baudrate_upgrade);
 
 	if(-1 == obd_serial_port) {
 		fprintf(stderr, "Couldn't open obd serial port. Attempting to continue.\n");
@@ -194,7 +244,7 @@ int logOBDII(int argc, char** argv) {
 	}
 
 	// Just figure out our car's OBD port capabilities and print them
-	if(showcapabilities) {
+	if(obddata.showcapabilities) {
 		printobdcapabilities(obd_serial_port);
 		printf("\n");
 		closeserial(obd_serial_port);
@@ -215,7 +265,7 @@ int logOBDII(int argc, char** argv) {
 
 	// Wishlist of commands from config file
 	struct obdservicecmd **wishlist_cmds = NULL;
-	obd_configCmds(log_columns, &wishlist_cmds);
+	obd_configCmds(obddata.log_columns, &wishlist_cmds);
 
 	void *obdcaps = getobdcapabilities(obd_serial_port,wishlist_cmds);
 
@@ -249,7 +299,7 @@ int logOBDII(int argc, char** argv) {
 	double time_insert;
 	printf("Num OBDCols = %i\n",obdnumcols);
 	if(obdnumcols > 1)
-	  while(samplecount == -1 || samplecount-- > 0) {
+	  while(obddata.samplecount == -1 || obddata.samplecount-- > 0) {
 	    struct timeval starttime; // start time through loop
 	    struct timeval endtime; // end time through loop
 	    struct timeval selecttime; // =endtime-starttime [for select()]
@@ -270,13 +320,13 @@ int logOBDII(int argc, char** argv) {
 	      for(i=0; i<obdnumcols-1; i++) {
 		float val;
 		unsigned int cmdid = obdcmds_mode1[cmdlist[i]].cmdid;
-		int numbytes = enable_optimisations?obdcmds_mode1[cmdlist[i]].bytes_returned:0;
+		int numbytes = obddata.enable_optimisations?obdcmds_mode1[cmdlist[i]].bytes_returned:0;
 		OBDConvFunc conv = obdcmds_mode1[cmdlist[i]].conv;
 		obdstatus = getobdvalue(obd_serial_port, cmdid, &val, numbytes, conv);
 		// Get time value just after data returned, will be somewhat close to actual time
 		gettimeofday(&logged_time,NULL);
 		if(OBD_SUCCESS == obdstatus) {
-		  if(spam_stdout) {
+		  if(obddata.spam_stdout) {
 		    printf("Spamming STDOUT (not necessary anymore since program changed): %s=%f\n", obdcmds_mode1[cmdlist[i]].db_column, val);
 		  }
 		  printf("t=%f,%s=%f\n", (double)logged_time.tv_sec+(double)logged_time.tv_usec/1000000.0f,obdcmds_mode1[cmdlist[i]].db_column, val);
@@ -287,7 +337,7 @@ int logOBDII(int argc, char** argv) {
 
 	      if(OBD_ERROR == obdstatus) {
 		fprintf(stderr, "Received OBD_ERROR from serial read. Exiting\n");
-		receive_exitsignal = 1;
+		obddata.receive_exitsignal = 1;
 	      } 
 	    }
 
@@ -298,20 +348,20 @@ int logOBDII(int argc, char** argv) {
 
 	    // usleep() not as portable as select()
 
-	    if(0 < frametime) {
+	    if(0 < obddata.frametime) {
 	      selecttime.tv_sec = endtime.tv_sec - starttime.tv_sec;
 	      if (selecttime.tv_sec != 0) {
 		endtime.tv_usec += 1000000*selecttime.tv_sec;
 		selecttime.tv_sec = 0;
 	      }
-	      selecttime.tv_usec = (frametime) - 
+	      selecttime.tv_usec = (obddata.frametime) - 
 		(endtime.tv_usec - starttime.tv_usec);
 	      if(selecttime.tv_usec < 0) {
 		selecttime.tv_usec = 1;
 	      }
 	      select(0,NULL,NULL,NULL,&selecttime);
 	    }
-	    if(receive_exitsignal )
+	    if(obddata.receive_exitsignal )
 	      break;
 	  }
 	else
@@ -321,14 +371,14 @@ int logOBDII(int argc, char** argv) {
 
 	closeserial(obd_serial_port);
 
-	if(enable_seriallog) {
+	if(obddata.enable_seriallog) {
 		closeseriallog();
 	}
 
-	if(NULL != log_columns) free(log_columns);
-	if(NULL != serialport) free(serialport);
+	if(NULL != obddata.log_columns) free(obddata.log_columns);
+	if(NULL != obddata.serialport) free(obddata.serialport);
 
-	obd_freeConfig(obd_config);
+	obd_freeConfig(obddata.obd_config);
 	return 0;
 }
 

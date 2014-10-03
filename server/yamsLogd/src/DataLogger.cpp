@@ -48,6 +48,7 @@
 #include "sensors/ImuSensor.h"
 #endif
 #include "sensors/VirtualSensor.h"
+#include "sensors/OBDIIElmSensor.h"
 
 /**************************************************************************************
  HOWTO add more sensors:
@@ -304,6 +305,10 @@ void DataLogger::create_sensors(std::unordered_map<int, sensor_config_struct> se
   if(sensor_config_map.find(9) != sensor_config_map.end()){
     sensors_.push_back(
                        boost::make_shared<VirtualSensor>(9,  VirtualSensor::Mode::ABSTIME, comm_server));
+  }
+  if(sensor_config_map.find(10) != sensor_config_map.end()){
+    sensors_.push_back(
+                       boost::make_shared<OBDIIElmSensor>(10, comm_server));
   }
   if(sensor_config_map.find(30) != sensor_config_map.end()){
     sensors_.push_back(

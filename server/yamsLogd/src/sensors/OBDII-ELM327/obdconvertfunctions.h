@@ -28,10 +28,6 @@
 #ifndef __OBDCONVERTFUNCTIONS_H
 #define __OBDCONVERTFUNCTIONS_H
 
-#ifdef __cplusplus
-extern "C" {
-#endif //  __cplusplus
-
 // http://en.wikipedia.org/wiki/Table_of_OBD-II_Codes
 
 /// All obd conversion functions adhere to this
@@ -118,10 +114,6 @@ int obdRevConvert_4C    (float val, unsigned int *A, unsigned int *B, unsigned i
 int obdRevConvert_4D    (float val, unsigned int *A, unsigned int *B, unsigned int *C, unsigned int *D);
 int obdRevConvert_4E    (float val, unsigned int *A, unsigned int *B, unsigned int *C, unsigned int *D);
 int obdRevConvert_52    (float val, unsigned int *A, unsigned int *B, unsigned int *C, unsigned int *D);
-
-#ifdef __cplusplus
-}
-#endif //  __cplusplus
 
 
 #endif // __OBDCONVERTFUNCTIONS_H
