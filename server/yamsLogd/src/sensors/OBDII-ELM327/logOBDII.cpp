@@ -50,6 +50,8 @@
 class OBDIIData{
 public:
   OBDIIData();
+  ~OBDIIData();
+
   int receive_exitsignal; 
   
   /// Serial port full path to open
@@ -90,6 +92,15 @@ public:
   
   // Config File
   struct OBDGPSConfig *obd_config;
+
+  // Serial port 
+  int obd_serial_port;
+
+  // To keep track of actual number of colums logged
+  int obdnumcols;
+
+  // Pointer to command list for all logged signals
+  int* cmdlist;
 };
 
 OBDIIData::OBDIIData()
@@ -134,8 +145,31 @@ OBDIIData::OBDIIData()
 
 	// Config File
 	obd_config = obd_loadConfig(0);
+
+	// Zero the serial port.
+	obd_serial_port = 0;
+	
+	// To keep track of the actual number of sensors logged
+	obdnumcols = 0;
+
+	// Pointer to command list for all logged signals
+	cmdlist = NULL;
+
 }
 
+OBDIIData::~OBDIIData()
+{
+  delete cmdlist;
+  if(NULL != log_columns) free(log_columns);
+  if(NULL != serialport) free(serialport);
+  if(NULL != seriallogname) free(seriallogname);
+  obd_freeConfig(obd_config);
+}
+
+
+void obdreadloop(OBDIIData*);
+
+void obdcleanup(OBDIIData*);
 
 int logOBDII(int argc, char** argv) {
   
@@ -235,9 +269,9 @@ int logOBDII(int argc, char** argv) {
 	}
 
 	// Open the serial port.
-	int obd_serial_port = openserial(obddata.serialport, obddata.requested_baud, obddata.baudrate_upgrade);
+	obddata.obd_serial_port = openserial(obddata.serialport, obddata.requested_baud, obddata.baudrate_upgrade);
 
-	if(-1 == obd_serial_port) {
+	if(-1 == obddata.obd_serial_port) {
 		fprintf(stderr, "Couldn't open obd serial port. Attempting to continue.\n");
 	} else {
 		fprintf(stderr, "Successfully connected to serial port. Will *try* to log obd data\n");
@@ -245,29 +279,25 @@ int logOBDII(int argc, char** argv) {
 
 	// Just figure out our car's OBD port capabilities and print them
 	if(obddata.showcapabilities) {
-		printobdcapabilities(obd_serial_port);
+		printobdcapabilities(obddata.obd_serial_port);
 		printf("\n");
-		closeserial(obd_serial_port);
+		closeserial(obddata.obd_serial_port);
 		exit(0);
 	}
 
 
 
-	if(-1 == obd_serial_port
+	if(-1 == obddata.obd_serial_port
 	) {
 		fprintf(stderr, "Couldn't find either gps or obd to log. Exiting.\n");
 		exit(1);
 	}
 
-	// number of columns in the insert
-	int obdnumcols = 0;
-
-
 	// Wishlist of commands from config file
 	struct obdservicecmd **wishlist_cmds = NULL;
 	obd_configCmds(obddata.log_columns, &wishlist_cmds);
 
-	void *obdcaps = getobdcapabilities(obd_serial_port,wishlist_cmds);
+	void *obdcaps = getobdcapabilities(obddata.obd_serial_port,wishlist_cmds);
 
 	obd_freeConfigCmds(wishlist_cmds);
 	wishlist_cmds=NULL;
@@ -275,19 +305,19 @@ int logOBDII(int argc, char** argv) {
 	int ii = 0;
 	for(ii=0; ii<sizeof(obdcmds_mode1)/sizeof(obdcmds_mode1[0]); ii++) {
 		if(NULL != obdcmds_mode1[ii].db_column  && isobdcapabilitysupported(obdcaps,ii)) {
-			obdnumcols++;
+			obddata.obdnumcols++;
 		}
 	}
-	obdnumcols++; // To match earlier code /Oberg
+	obddata.obdnumcols++; // To match earlier code /Oberg
 
-	// All of these have obdnumcols-1 since the last column is time
-	int cmdlist[obdnumcols-1]; // Commands to send [index into obdcmds_mode1]
+	// All of these have obddata.obdnumcols-1 since the last column is time
+	obddata.cmdlist = new int[obddata.obdnumcols-1]; // Commands to send [index into obdcmds_mode1]
 
 	int i,j;
 	for(i=0,j=0; i<sizeof(obdcmds_mode1)/sizeof(obdcmds_mode1[0]); i++) {
 		if(NULL != obdcmds_mode1[i].db_column) {
 			if(isobdcapabilitysupported(obdcaps,i)) {
-				cmdlist[j] = i;
+				obddata.cmdlist[j] = i;
 				j++;
 			}
 		}
@@ -295,90 +325,16 @@ int logOBDII(int argc, char** argv) {
 
 	freeobdcapabilities(obdcaps);
 
-	// The current time we're inserting
-	double time_insert;
-	printf("Num OBDCols = %i\n",obdnumcols);
-	if(obdnumcols > 1)
-	  while(obddata.samplecount == -1 || obddata.samplecount-- > 0) {
-	    struct timeval starttime; // start time through loop
-	    struct timeval endtime; // end time through loop
-	    struct timeval selecttime; // =endtime-starttime [for select()]
-	    struct timeval logged_time; // Time used in log
-
-	    if(0 != gettimeofday(&starttime,NULL)) {
-	      perror("Couldn't gettimeofday");
-	      break;
-	    }
-
-
-	    time_insert = (double)starttime.tv_sec+(double)starttime.tv_usec/1000000.0f;
-
-	    enum obd_serial_status obdstatus;
-	    if(-1 < obd_serial_port) {
-
-	      // Get all the OBD data
-	      for(i=0; i<obdnumcols-1; i++) {
-		float val;
-		unsigned int cmdid = obdcmds_mode1[cmdlist[i]].cmdid;
-		int numbytes = obddata.enable_optimisations?obdcmds_mode1[cmdlist[i]].bytes_returned:0;
-		OBDConvFunc conv = obdcmds_mode1[cmdlist[i]].conv;
-		obdstatus = getobdvalue(obd_serial_port, cmdid, &val, numbytes, conv);
-		// Get time value just after data returned, will be somewhat close to actual time
-		gettimeofday(&logged_time,NULL);
-		if(OBD_SUCCESS == obdstatus) {
-		  if(obddata.spam_stdout) {
-		    printf("Spamming STDOUT (not necessary anymore since program changed): %s=%f\n", obdcmds_mode1[cmdlist[i]].db_column, val);
-		  }
-		  printf("t=%f,%s=%f\n", (double)logged_time.tv_sec+(double)logged_time.tv_usec/1000000.0f,obdcmds_mode1[cmdlist[i]].db_column, val);
-		} else {
-		  break;
-		}
-	      }
-
-	      if(OBD_ERROR == obdstatus) {
-		fprintf(stderr, "Received OBD_ERROR from serial read. Exiting\n");
-		obddata.receive_exitsignal = 1;
-	      } 
-	    }
-
-	    if(0 != gettimeofday(&endtime,NULL)) {
-	      perror("Couldn't gettimeofday");
-	      break;
-	    }
-
-	    // usleep() not as portable as select()
-
-	    if(0 < obddata.frametime) {
-	      selecttime.tv_sec = endtime.tv_sec - starttime.tv_sec;
-	      if (selecttime.tv_sec != 0) {
-		endtime.tv_usec += 1000000*selecttime.tv_sec;
-		selecttime.tv_sec = 0;
-	      }
-	      selecttime.tv_usec = (obddata.frametime) - 
-		(endtime.tv_usec - starttime.tv_usec);
-	      if(selecttime.tv_usec < 0) {
-		selecttime.tv_usec = 1;
-	      }
-	      select(0,NULL,NULL,NULL,&selecttime);
-	    }
-	    if(obddata.receive_exitsignal )
-	      break;
-	  }
+	printf("Num OBDCols = %i\n",obddata.obdnumcols);
+	if(obddata.obdnumcols > 1)
+	  obdreadloop(&obddata);
 	else
 	{
 	  printf("No supported OBD-Commands found, bitrate error?\n");
 	}
 
-	closeserial(obd_serial_port);
+	obdcleanup(&obddata);
 
-	if(obddata.enable_seriallog) {
-		closeseriallog();
-	}
-
-	if(NULL != obddata.log_columns) free(obddata.log_columns);
-	if(NULL != obddata.serialport) free(obddata.serialport);
-
-	obd_freeConfig(obddata.obd_config);
 	return 0;
 }
 
@@ -400,4 +356,85 @@ void printhelp(const char *argv0) {
 }
 
 
+void obdreadloop(OBDIIData* obddata)
+{
+  // The current time we're inserting
+  double time_insert;
+  
+  while(obddata->samplecount == -1 || obddata->samplecount-- > 0) {
+    struct timeval starttime; // start time through loop
+    struct timeval endtime; // end time through loop
+    struct timeval selecttime; // =endtime-starttime [for select()]
+    struct timeval logged_time; // Time used in log
+    
+    if(0 != gettimeofday(&starttime,NULL)) {
+      perror("Couldn't gettimeofday");
+      break;
+    }
+    
+    time_insert = (double)starttime.tv_sec+(double)starttime.tv_usec/1000000.0f;
+    
+    enum obd_serial_status obdstatus;
+    if(-1 < obddata->obd_serial_port) {
+      
+      // Get all the OBD data
+      int i;
+      for(i=0; i<obddata->obdnumcols-1; i++) {
+	float val;
+	unsigned int cmdid = obdcmds_mode1[obddata->cmdlist[i]].cmdid;
+	int numbytes = obddata->enable_optimisations?obdcmds_mode1[obddata->cmdlist[i]].bytes_returned:0;
+	OBDConvFunc conv = obdcmds_mode1[obddata->cmdlist[i]].conv;
+	obdstatus = getobdvalue(obddata->obd_serial_port, cmdid, &val, numbytes, conv);
+	// Get time value just after data returned, will be somewhat close to actual time
+	gettimeofday(&logged_time,NULL);
+	if(OBD_SUCCESS == obdstatus) {
+	  if(obddata->spam_stdout) {
+	    printf("Spamming STDOUT (not necessary anymore since program changed): %s=%f\n", obdcmds_mode1[obddata->cmdlist[i]].db_column, val);
+	  }
+	  printf("t=%f,%s=%f\n", (double)logged_time.tv_sec+(double)logged_time.tv_usec/1000000.0f,obdcmds_mode1[obddata->cmdlist[i]].db_column, val);
+	} else {
+	  break;
+	}
+      }
+      
+      if(OBD_ERROR == obdstatus) {
+	fprintf(stderr, "Received OBD_ERROR from serial read. Exiting\n");
+	obddata->receive_exitsignal = 1;
+      } 
+    }
+    
+    if(0 != gettimeofday(&endtime,NULL)) {
+      perror("Couldn't gettimeofday");
+      break;
+    }
+    
+    // usleep() not as portable as select()
+    
+    if(0 < obddata->frametime) {
+      selecttime.tv_sec = endtime.tv_sec - starttime.tv_sec;
+      if (selecttime.tv_sec != 0) {
+	endtime.tv_usec += 1000000*selecttime.tv_sec;
+	selecttime.tv_sec = 0;
+      }
+      selecttime.tv_usec = (obddata->frametime) - 
+	(endtime.tv_usec - starttime.tv_usec);
+      if(selecttime.tv_usec < 0) {
+	selecttime.tv_usec = 1;
+      }
+      select(0,NULL,NULL,NULL,&selecttime);
+    }
+    if(obddata->receive_exitsignal )
+      break;
+  }
+}
 
+void obdcleanup(OBDIIData* obddata)
+{
+	closeserial(obddata->obd_serial_port);
+
+	if(obddata->enable_seriallog) {
+		closeseriallog();
+	}
+
+
+}
