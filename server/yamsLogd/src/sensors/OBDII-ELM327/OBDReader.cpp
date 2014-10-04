@@ -116,9 +116,7 @@ OBDReader::~OBDReader()
   obd_freeConfig(obd_config);
 }
 
-
-
-int OBDReader::initConnection(int argc, char** argv) {
+void OBDReader::argsFromCmdLine(int argc, char** argv) {
   if(NULL != obd_config) {
     samplespersecond = obd_config->samplerate;
     enable_optimisations = obd_config->optimisations;
@@ -206,7 +204,89 @@ int OBDReader::initConnection(int argc, char** argv) {
       log_columns = strdup(OBD_DEFAULT_COLUMNS);
     }
   }
+}
 
+
+void OBDReader::argsFromStruct(OBDReader::argStruct* args) {
+  if(NULL != obd_config) {
+    samplespersecond = obd_config->samplerate;
+    enable_optimisations = obd_config->optimisations;
+    requested_baud = obd_config->baudrate;
+    baudrate_upgrade = obd_config->baudrate_upgrade;
+  }
+	
+  // Do not attempt to buffer stdout at all
+  setvbuf(stdout, (char *)NULL, _IONBF, 0);
+
+  if(NULL !=args->s)
+  {
+    if(NULL != serialport) {
+      free(serialport);
+    }
+    serialport = strdup(args->s);
+  }
+
+  if(args->optimizations) 
+    enable_optimisations = 1;
+  
+  if(args->spamStdout)
+    spam_stdout = 1;
+  
+  if(args->c != -1)
+     samplecount = args->c;
+
+  if(args->baud)
+    requested_baud = args->baud;
+
+  if(args->modifyBaud)
+      baudrate_upgrade = args->modifyBaud;
+
+  if( NULL != args->logColums)
+  {
+    if(NULL != log_columns) {
+      free(log_columns);
+    }
+    log_columns = strdup(args->logColums);
+  }
+
+  if(args->sampleRate != 0)
+    samplespersecond = args->sampleRate;
+
+  if(NULL != args->serialLog)
+  {
+    enable_seriallog = 1;
+    if(NULL != seriallogname) {
+      free(seriallogname);
+    }
+    seriallogname = strdup(args->serialLog);
+  }
+
+  
+  if(0 >= samplespersecond) {
+    frametime = 0;
+  } else {
+    frametime = 1000000 / samplespersecond;
+  }
+
+  if(NULL == serialport) {
+    if(NULL != obd_config && NULL != obd_config->obd_device) {
+      serialport = strdup(obd_config->obd_device);
+    } else {
+      serialport = strdup(OBD_DEFAULT_SERIALPORT);
+    }
+  }
+  if(NULL == log_columns) {
+    if(NULL != obd_config && NULL != obd_config->log_columns) {
+      log_columns = strdup(obd_config->log_columns);
+    } else {
+      log_columns = strdup(OBD_DEFAULT_COLUMNS);
+    }
+  }
+}
+
+
+
+int OBDReader::initConnection() {
   if(enable_seriallog && NULL != seriallogname) {
     startseriallog(seriallogname);
   }

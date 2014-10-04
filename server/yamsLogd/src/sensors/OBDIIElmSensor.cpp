@@ -19,6 +19,7 @@
  */
 
 #include "OBDIIElmSensor.h"
+#include "OBDII-ELM327/OBDReader.h"
 #include <iostream>
 
 #include <thread>
@@ -28,13 +29,22 @@ const int SLEEP_TIME_MS = 500;
 const int MAX_ATTRIBUTES = 12;
 
 OBDIIElmSensor::OBDIIElmSensor(int id, CommunicationServer& comm_server)
-  : AbstractSensor(id, MAX_ATTRIBUTES, comm_server), sampleTime(1.0/50.0) { }
+  : AbstractSensor(id, MAX_ATTRIBUTES, comm_server), sampleTime(1.0/50.0) {obdreader = new OBDReader(); }
+
+OBDIIElmSensor::~OBDIIElmSensor()
+{
+  delete obdreader;
+}
 
 bool OBDIIElmSensor::initialize()
 {
 #ifndef NDEBUG
   std::cout << "OBDIIElmSensor: DEBUG Initializing" << std::endl;
 #endif
+  OBDReader::argStruct argStruct;
+  argStruct.s = "/dev/pts/2";
+  obdreader->argsFromStruct(&argStruct);
+  obdreader->initConnection();
   return true;
 }
 
@@ -79,6 +89,9 @@ OBDIIElmSensor::read_one_data(std::vector<float>* values)
   printf("_");
   fflush(stdout); // Will now print everything in the stdout buffer
   set_working(true);
+
+  obdreader->readLoop();     
+
   float sensorValue = sin(2*M_PI*1/5.0*currentTime);
   values->push_back( sensorValue );
   

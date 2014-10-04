@@ -102,7 +102,7 @@ target_link_libraries(yamsLogd DataLogger ProjectHandler Project
   CommunicationServerService KeyboardInputService
   ProtobufFileOutputService ProtobufTcpOutputService
   TextFileOutputService AbstractSensor CanSensor CorrsysSensor
-  GpsSensor OBDIIElmSensor VirtualSensor ImuSensor CAN MTComm
+  GpsSensor OBDIIElmSensor OBDIIElm VirtualSensor ImuSensor CAN MTComm
   SerialLib XSensIMU SensorMinMax ModificationCallbackImpl
   boost_system boost_filesystem boost_thread pthread rt protobuf)
 

@@ -22,11 +22,12 @@
 #define SENSORS_OBDIIELMSENSOR_H_
 
 #include "AbstractSensor.h"
+#include "OBDII-ELM327/OBDReader.h"
 
 class OBDIIElmSensor : public AbstractSensor {
  public:
   OBDIIElmSensor(int id, CommunicationServer& comm_server);
-
+  ~OBDIIElmSensor();
   virtual void idle() override;
   virtual void finalize() override;
   virtual bool read_one_data(std::vector<float>* values) override;
@@ -38,6 +39,7 @@ class OBDIIElmSensor : public AbstractSensor {
  private:
   double sampleTime;
   double currentTime;
+  OBDReader* obdreader;
 };
 
 #endif  // SENSORS_OBDIIELMSENSOR_H_

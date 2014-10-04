@@ -25,7 +25,8 @@ int main(int argc, char** argv) {
   // This is supposed to be divided into Init, log, deinit, etc...
   // when It's all done
   OBDReader obdreader;
-  if( obdreader.initConnection(argc,argv) !=-1 )
+  obdreader.argsFromCmdLine(argc,argv);
+  if( obdreader.initConnection() !=-1 )
   {
     while(obdreader.readLoop() != -1);     
   }

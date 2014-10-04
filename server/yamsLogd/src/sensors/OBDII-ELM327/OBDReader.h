@@ -33,13 +33,29 @@
 
 class OBDReader{
 public:
+
+  struct argStruct{
+    char *s = NULL;
+    int c = -1;
+    char *logColums = NULL;
+    bool spamStdout = false;
+    bool optimizations = false;
+    char *outPutLog = NULL;
+    unsigned int baud = 0;
+    unsigned int modifyBaud = 0;
+    char *serialLog = NULL;
+    unsigned int sampleRate = 0;
+  };
+
   OBDReader();
   ~OBDReader();
 
-  int initConnection(int argc, char** argv);
+  int initConnection();
   int readLoop();
   void printHelp(const char *argv0);
   void printVersion();
+  void argsFromCmdLine(int argc, char** argv);
+  void argsFromStruct(OBDReader::argStruct* args);
 
 private:
   int receive_exitsignal; 
