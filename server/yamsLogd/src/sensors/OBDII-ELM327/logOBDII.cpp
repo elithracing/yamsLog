@@ -105,7 +105,7 @@ public:
 
 OBDIIData::OBDIIData()
 {
-        int receive_exitsignal = 0; 
+        receive_exitsignal = 0; 
 
 	/// Serial port full path to open
 	serialport = NULL;
@@ -302,8 +302,8 @@ int logOBDII(int argc, char** argv) {
 	obd_freeConfigCmds(wishlist_cmds);
 	wishlist_cmds=NULL;
        
-	int ii = 0;
-	for(ii=0; ii<sizeof(obdcmds_mode1)/sizeof(obdcmds_mode1[0]); ii++) {
+	unsigned int ii = 0;
+	for(ii=0; ii < sizeof(obdcmds_mode1)/sizeof(obdcmds_mode1[0]); ii++) {
 		if(NULL != obdcmds_mode1[ii].db_column  && isobdcapabilitysupported(obdcaps,ii)) {
 			obddata.obdnumcols++;
 		}
@@ -313,7 +313,7 @@ int logOBDII(int argc, char** argv) {
 	// All of these have obddata.obdnumcols-1 since the last column is time
 	obddata.cmdlist = new int[obddata.obdnumcols-1]; // Commands to send [index into obdcmds_mode1]
 
-	int i,j;
+	unsigned int i,j;
 	for(i=0,j=0; i<sizeof(obdcmds_mode1)/sizeof(obdcmds_mode1[0]); i++) {
 		if(NULL != obdcmds_mode1[i].db_column) {
 			if(isobdcapabilitysupported(obdcaps,i)) {
@@ -359,7 +359,7 @@ void printhelp(const char *argv0) {
 void obdreadloop(OBDIIData* obddata)
 {
   // The current time we're inserting
-  double time_insert;
+  // double time_insert;
   
   while(obddata->samplecount == -1 || obddata->samplecount-- > 0) {
     struct timeval starttime; // start time through loop
@@ -372,7 +372,7 @@ void obdreadloop(OBDIIData* obddata)
       break;
     }
     
-    time_insert = (double)starttime.tv_sec+(double)starttime.tv_usec/1000000.0f;
+    // time_insert = (double)starttime.tv_sec+(double)starttime.tv_usec/1000000.0f;
     
     enum obd_serial_status obdstatus;
     if(-1 < obddata->obd_serial_port) {

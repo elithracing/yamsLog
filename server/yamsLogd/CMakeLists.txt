@@ -54,6 +54,9 @@ add_library(CorrsysSensor src/sensors/CorrsysSensor.cpp src/sensors/CorrsysSenso
 add_library(GpsSensor src/sensors/GpsSensor.cpp src/sensors/GpsSensor.h)
 add_library(ImuSensor src/sensors/ImuSensor.cpp src/sensors/ImuSensor.h)
 add_library(VirtualSensor src/sensors/VirtualSensor.cpp src/sensors/VirtualSensor.h)
+
+add_library(OBDIIElm src/sensors/OBDII-ELM327/logOBDII.cpp src/sensors/OBDII-ELM327/obdservicecommands.cpp src/sensors/OBDII-ELM327/obdconfigfile.cpp src/sensors/OBDII-ELM327/obdconvertfunctions.cpp src/sensors/OBDII-ELM327/obdrevconvertfunctions.cpp src/sensors/OBDII-ELM327/obdserial.cpp src/sensors/OBDII-ELM327/supportedcommands.cpp src/sensors/OBDII-ELM327/logOBDII.h src/sensors/OBDII-ELM327/obdconfigfile.h src/sensors/OBDII-ELM327/obdconvertfunctions.h  src/sensors/OBDII-ELM327/obdserial.h src/sensors/OBDII-ELM327/obdservicecommands.h src/sensors/OBDII-ELM327/supportedcommands.cpp)
+
 add_library(OBDIIElmSensor src/sensors/OBDIIElmSensor.cpp src/sensors/OBDIIElmSensor.h)
 
 add_library(Experiment src/Experiment.cpp src/Experiment.h)
@@ -71,8 +74,12 @@ if("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
       src/sensors/MTComm.cpp src/sensors/MTComm.h
       src/sensors/SerialPortLib.cpp src/sensors/SerialPortLib.h
       src/sensors/XSensIMU.cpp src/sensors/XSensIMU.h
+      src/sensors/OBDII-ELM327/obdconvertfunctions.cpp
+      src/sensors/OBDII-ELM327/obdrevconvertfunctions.cpp
+      src/sensors/OBDII-ELM327/obdconfigfile.cpp
+      src/sensors/OBDII-ELM327/obdserial.cpp
       ../../protobuf/gen/cpp/protocol.pb.cc ../../protobuf/gen/cpp/protocol.pb.h
-      PROPERTIES COMPILE_FLAGS "-Wno-unused-parameter -Wno-maybe-uninitialized -Wno-type-limits -Wno-shadow -Wno-cast-qual -Wno-switch")
+      PROPERTIES COMPILE_FLAGS "-Wno-unused-parameter -Wno-maybe-uninitialized -Wno-cast-qual -Wno-type-limits -Wno-shadow -Wno-switch -Wno-format-contains-nul") 
 # If using Clang
 elseif("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang")
   # Add compiler flags for all files
@@ -87,6 +94,17 @@ elseif("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang")
 endif()
 
 add_executable(yamsLogd src/Main.cpp)
-target_link_libraries(yamsLogd DataLogger ProjectHandler Project Experiment Protobuf CommunicationServer ClientConnection StatusObserver ClientCallbackImpl AbstractService 
-CommunicationServerService KeyboardInputService ProtobufFileOutputService ProtobufTcpOutputService TextFileOutputService AbstractSensor CanSensor CorrsysSensor GpsSensor 
-OBDIIElmSensor VirtualSensor ImuSensor CAN MTComm SerialLib XSensIMU SensorMinMax ModificationCallbackImpl boost_system boost_filesystem boost_thread pthread rt protobuf)
+add_executable(OBDtool src/sensors/OBDII-ELM327/logOBDII_main.cpp)
+
+target_link_libraries(yamsLogd DataLogger ProjectHandler Project
+  Experiment Protobuf CommunicationServer ClientConnection
+  StatusObserver ClientCallbackImpl AbstractService
+  CommunicationServerService KeyboardInputService
+  ProtobufFileOutputService ProtobufTcpOutputService
+  TextFileOutputService AbstractSensor CanSensor CorrsysSensor
+  GpsSensor OBDIIElmSensor VirtualSensor ImuSensor CAN MTComm
+  SerialLib XSensIMU SensorMinMax ModificationCallbackImpl
+  boost_system boost_filesystem boost_thread pthread rt protobuf)
+
+
+target_link_libraries(OBDtool OBDIIElm)

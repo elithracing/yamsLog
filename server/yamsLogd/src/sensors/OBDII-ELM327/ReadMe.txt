@@ -1,5 +1,5 @@
 The code in this directory is used by the OBDII_ELM327 sensor. For
-troubleshooting and other experiments a stand-alone tool "logOBDII" is
+troubleshooting and other experiments a stand-alone tool "OBDtool" is
 available, using exactly the same code as the sensor. 
 
 Note on troubleshooting
@@ -14,7 +14,7 @@ hard-coded.
 To be able to troubleshoot the interface it can be wise to look at the actual
 serial-port communication using 
 
-> logOBDII --serial-log logname.txt 
+> OBDtool --serial-log logname.txt 
 
 Also: There are excellent documentation from ELM about how to communicate
 with the chips using a terminal emulator. See for example: [1]
@@ -24,7 +24,12 @@ Note on supported PIDS
 ------------------------
 It is possible to learn what PIDS your car is supporting using 
 
-> logOBDII --capabilities
+> OBDtool --capabilities
 
+
+Upcoming features 
+----------------------------
+* Quqery/Set OBD-protocol from OBD-dongle
+* Document practical termial-commands
 
 [1] Upcoming documentation link...

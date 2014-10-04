@@ -280,6 +280,7 @@ static int semiblindcmd(int fd, const char *cmd, const char* exp_response) {
 	    fprintf(stderr, "OBD response invalid. No bytes at all recieved. There's really no use continuing!\n");
 	    return -1;
 	}
+	return 0;
 }
 
 
@@ -464,7 +465,7 @@ long upgradebaudrate(int fd, long baudrate_target, long current_baudrate) {
 	// Try these speeds
 	long speeds[] = { 38400, 57600, 115200, 230400, 460800, 500000, 576000 };
 
-	int i;
+	unsigned int i;
 
 	if(-1 == baudrate_target) {
 		return 0;
@@ -494,7 +495,7 @@ long upgradebaudrate(int fd, long baudrate_target, long current_baudrate) {
 long guessbaudrate(int fd) {
 	const char testcmd[] = "ATI\r\n";
 	long guesses[] = { 9600, 38400, 115200, 57600, 2400, 1200 };
-	int i;
+	unsigned int i;
 
 	printf("Baudrate guessing: ");
 
@@ -831,8 +832,8 @@ static enum obd_serial_status parseobdline(const char *line, unsigned int mode, 
 		return OBD_INVALID_MODE;
 	}
 
-	int i;
-	for(i=0;i<count-count_sub && i<retvals_size;i++) {
+	unsigned int i;
+	for(i=0;i< (unsigned)(count-count_sub) && i<retvals_size;i++) {
 		retvals[i] = currbytes[i];
 	}
 
@@ -937,7 +938,7 @@ enum obd_serial_status getobdbytes(int fd, unsigned int mode, unsigned int cmd, 
 			local_rets, sizeof(local_rets)/sizeof(local_rets[0]), &vals_read, quiet);
 
 		if(OBD_SUCCESS == ret) {
-			int i;
+		        unsigned int i;
 			for(i=0; i<vals_read; i++, values_returned++) {
 				retvals[values_returned] = local_rets[i];
 			}

@@ -151,7 +151,7 @@ void *getobdcapabilities(int obd_serial_port, struct obdservicecmd **wishlist) {
 			int in_wishlist = 1;
 			if(wishlist != NULL) {
 				in_wishlist = 0;
-				int i;
+				unsigned int i;
 				for(i=0;NULL != wishlist[i];i++) {
 					if(wishlist[i]->cmdid == c) {
 						in_wishlist = 1;
