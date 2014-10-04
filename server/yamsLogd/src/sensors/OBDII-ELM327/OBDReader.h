@@ -25,11 +25,74 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
-#ifndef __MAIN_H
-#define __MAIN_H
+#ifndef __OBDREADER_H
+#define __OBDREADER_H
 
 #include <getopt.h>
 #include <stdlib.h>
+
+class OBDReader{
+public:
+  OBDReader();
+  ~OBDReader();
+
+  int initConnection(int argc, char** argv);
+  int readLoop();
+  void printHelp(const char *argv0);
+  void printVersion();
+
+private:
+  int receive_exitsignal; 
+  
+  /// Serial port full path to open
+  char *serialport;
+  
+  /// List of columsn to log
+  char *log_columns;
+  
+  /// Number of samples to take
+  int samplecount;
+  
+  /// Number of samples per second
+  int samplespersecond;
+  
+  /// Ask to show the capabilities of the OBD device then exit
+  int showcapabilities;
+  
+  /// Set if the user wishes to upgrade the baudrate
+  long baudrate_upgrade;
+  
+  /// Time between samples, measured in microseconds
+  long frametime;
+  
+  /// Spam all readings to stdout
+  int spam_stdout;
+  
+  /// Enable elm optimisations
+  int enable_optimisations;
+  
+  /// Enable serial logging
+  int enable_seriallog;
+  
+  /// Serial log filename
+  char *seriallogname;
+  
+  /// Requested baudrate
+  long requested_baud;
+  
+  // Config File
+  struct OBDGPSConfig *obd_config;
+
+  // Serial port 
+  int obd_serial_port;
+
+  // To keep track of actual number of colums logged
+  int obdnumcols;
+
+  // Pointer to command list for all logged signals
+  int* cmdlist;
+};
+
 
 static const struct option longopts[] = {
 	{ "help", no_argument, NULL, 'h' }, ///< Print the help text
@@ -58,9 +121,6 @@ static const char shortopts[] = "htd:i:b:vs:l:c:a:opu:B:"
 #endif //OBDPLATFORM_POSIX
 ;
 
-void printhelp(const char *argv0);
-
-void printversion();
 
 #endif // __MAIN_H
 

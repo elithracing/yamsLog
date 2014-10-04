@@ -55,7 +55,7 @@ add_library(GpsSensor src/sensors/GpsSensor.cpp src/sensors/GpsSensor.h)
 add_library(ImuSensor src/sensors/ImuSensor.cpp src/sensors/ImuSensor.h)
 add_library(VirtualSensor src/sensors/VirtualSensor.cpp src/sensors/VirtualSensor.h)
 
-add_library(OBDIIElm src/sensors/OBDII-ELM327/logOBDII.cpp src/sensors/OBDII-ELM327/obdservicecommands.cpp src/sensors/OBDII-ELM327/obdconfigfile.cpp src/sensors/OBDII-ELM327/obdconvertfunctions.cpp src/sensors/OBDII-ELM327/obdrevconvertfunctions.cpp src/sensors/OBDII-ELM327/obdserial.cpp src/sensors/OBDII-ELM327/supportedcommands.cpp src/sensors/OBDII-ELM327/logOBDII.h src/sensors/OBDII-ELM327/obdconfigfile.h src/sensors/OBDII-ELM327/obdconvertfunctions.h  src/sensors/OBDII-ELM327/obdserial.h src/sensors/OBDII-ELM327/obdservicecommands.h src/sensors/OBDII-ELM327/supportedcommands.cpp)
+add_library(OBDIIElm src/sensors/OBDII-ELM327/OBDReader.cpp src/sensors/OBDII-ELM327/obdservicecommands.cpp src/sensors/OBDII-ELM327/obdconfigfile.cpp src/sensors/OBDII-ELM327/obdconvertfunctions.cpp src/sensors/OBDII-ELM327/obdrevconvertfunctions.cpp src/sensors/OBDII-ELM327/obdserial.cpp src/sensors/OBDII-ELM327/supportedcommands.cpp src/sensors/OBDII-ELM327/OBDReader.h src/sensors/OBDII-ELM327/obdconfigfile.h src/sensors/OBDII-ELM327/obdconvertfunctions.h  src/sensors/OBDII-ELM327/obdserial.h src/sensors/OBDII-ELM327/obdservicecommands.h src/sensors/OBDII-ELM327/supportedcommands.cpp)
 
 add_library(OBDIIElmSensor src/sensors/OBDIIElmSensor.cpp src/sensors/OBDIIElmSensor.h)
 
@@ -94,7 +94,7 @@ elseif("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang")
 endif()
 
 add_executable(yamsLogd src/Main.cpp)
-add_executable(OBDtool src/sensors/OBDII-ELM327/logOBDII_main.cpp)
+add_executable(OBDtool src/sensors/OBDII-ELM327/OBDtool.cpp)
 
 target_link_libraries(yamsLogd DataLogger ProjectHandler Project
   Experiment Protobuf CommunicationServer ClientConnection

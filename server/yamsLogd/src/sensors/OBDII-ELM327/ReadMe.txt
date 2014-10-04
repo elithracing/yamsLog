@@ -17,8 +17,8 @@ serial-port communication using
 > OBDtool --serial-log logname.txt 
 
 Also: There are excellent documentation from ELM about how to communicate
-with the chips using a terminal emulator. See for example: [1]
-
+with the chips using a terminal emulator,  see for example: [1]. There's also a nice 
+ELM327-simulator available for testing your stuff at [2].
 
 Note on supported PIDS
 ------------------------
@@ -33,3 +33,4 @@ Upcoming features
 * Document practical termial-commands
 
 [1] Upcoming documentation link...
+[2] http://icculus.org/obdgpslogger/obdsim.html

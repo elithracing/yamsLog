@@ -4,7 +4,8 @@
 1,/dev/ttyXSens ,imucar
 2,can0,carcan1
 9,dummy,virtualsensor
-10,/dev/ttyOBDII,obdiielm
+%10,/dev/ttyOBDII,obdiielm
+10,/dev/pts/2,obdiielm
 %3,can1,can
 %4,/dev/ttyGPSublox,gps
 %6,can0,carcan2

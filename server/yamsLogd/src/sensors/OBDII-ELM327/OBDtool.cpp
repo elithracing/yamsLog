@@ -19,10 +19,16 @@
  */
 
 
-int logOBDII(int argc, char** argv);
+#include "OBDReader.h"
 
 int main(int argc, char** argv) {
   // This is supposed to be divided into Init, log, deinit, etc...
-  logOBDII(argc,argv);
+  // when It's all done
+  OBDReader obdreader;
+  if( obdreader.initConnection(argc,argv) !=-1 )
+  {
+    while(obdreader.readLoop() != -1);     
+  }
+  return 0;
 }
 
