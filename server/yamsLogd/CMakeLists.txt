@@ -38,7 +38,7 @@ add_library(CommunicationServer src/CommunicationServer.cpp src/CommunicationSer
 add_library(ClientConnection src/ClientConnection.cpp src/ClientConnection.h)
 add_library(StatusObserver src/StatusObserver.cpp src/StatusObserver.h)
 add_library(ClientCallbackImpl src/ClientCallbackImpl.cpp src/ClientCallbackImpl.h)
-add_library(SensorMinMax src/SensorMinMax.cpp src/SensorMinMax.h)
+add_library(SensorDefinitionReader src/SensorDefinitionReader.cpp src/SensorDefinitionReader.h)
 add_library(ModificationCallbackImpl src/ModificationCallbackImpl.cpp src/ModificationCallbackImpl.h)
 
 add_library(AbstractService src/services/AbstractService.cpp src/services/AbstractService.h)
@@ -103,7 +103,7 @@ target_link_libraries(yamsLogd DataLogger ProjectHandler Project
   ProtobufFileOutputService ProtobufTcpOutputService
   TextFileOutputService AbstractSensor CanSensor CorrsysSensor
   GpsSensor OBDIIElmSensor OBDIIElm VirtualSensor ImuSensor CAN MTComm
-  SerialLib XSensIMU SensorMinMax ModificationCallbackImpl
+  SerialLib XSensIMU SensorDefinitionReader ModificationCallbackImpl
   boost_system boost_filesystem boost_thread pthread rt protobuf)
 
 

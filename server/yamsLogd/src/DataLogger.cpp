@@ -31,7 +31,7 @@
 #include <boost/make_shared.hpp>
 
 #include "ClientCallbackImpl.h"
-#include "SensorMinMax.h"
+#include "SensorDefinitionReader.h"
 #include "ModificationCallbackImpl.h"
 #include "ProjectHandlerConstants.h"
 
@@ -67,7 +67,7 @@ using std::string;
 using std::unique_ptr;
 
 static const int DEFAULT_COMMUNICATION_PORT = 2001;
-std::string DEFAULT_MIN_MAX_FILE_NAME = "min_max_sensor_values.txt";
+std::string DEFAULT_SENSOR_DEFINITION_FILE_NAME = "sensor_definitions.txt";
 const std::string DEFAULT_PORT_CONFIG_FILE_NAME = "port_config.txt";
 
 DataLogger::DataLogger() : status_changed_sema_(0), project_handler_(DEFAULT_PROJECT_PATH) {
@@ -165,11 +165,11 @@ int DataLogger::run(int argc, const char** argv) {
       boost::bind(&DataLogger::status_observer_callback, this,
                   _1, boost::cref(comm_server)));
 
-  // Setup sensor limits as found in min_max_sensor_values
+  // Setup sensor limits and attribute names
 
-  SensorMinMax sensor_min_max;
-  if (sensor_min_max.initialize_min_max_values(DEFAULT_MIN_MAX_FILE_NAME, sensors_) == false) {
-    std::cerr << "Could not locate sensor limits configuration file at \"" << DEFAULT_MIN_MAX_FILE_NAME << "\". Exiting..." << std::endl;
+  SensorDefinitionReader sensor_definitions;
+  if (sensor_definitions.initialize_sensor_attributes(DEFAULT_SENSOR_DEFINITION_FILE_NAME, sensors_) == false) {
+    std::cerr << "Could not locate sensor limits configuration file at \"" << DEFAULT_SENSOR_DEFINITION_FILE_NAME << "\". Exiting..." << std::endl;
     finalize(service_threads, sensor_threads);
     return EXIT_FAILURE;
   }

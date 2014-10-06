@@ -18,8 +18,8 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
-#ifndef SENSORMINMAX_H_
-#define SENSORMINMAX_H_
+#ifndef SENSORDEFINITIONREADER_H_
+#define SENSORDEFINITIONREADER_H_
 
 #include <vector>
 #include <string>
@@ -33,19 +33,19 @@
 #include "sensors/AbstractSensor.h"
 
 // This class inititates the range that the reasonable values can be.
-class SensorMinMax {
+class SensorDefinitionReader {
  public:
-  SensorMinMax();
-  virtual ~SensorMinMax();
+  SensorDefinitionReader();
+  virtual ~SensorDefinitionReader();
 
-  bool initialize_min_max_values(const std::string& file_name, const std::vector<boost::shared_ptr<AbstractSensor>>& 
+  bool initialize_sensor_attributes(const std::string& file_name, const std::vector<boost::shared_ptr<AbstractSensor>>& 
 sensors);
 
  private:
   void delimit_string(const std::string& line, std::string lines[]);
-  void insert_min_max(const std::vector<boost::shared_ptr<AbstractSensor>>& sensors,
+  void insert_sensor_attributes(const std::vector<boost::shared_ptr<AbstractSensor>>& sensors,
                                         std::string lines[]);
   bool is_number(const std::string& s);
 };
 
-#endif  // SENSORMINMAX_H_
+#endif  // SENSORDEFINITIONREADER_H_

@@ -1,10 +1,13 @@
-%% This file defines the reasonable values for the sensors.
+%% This file defines reasonable values as well as attribute names for 
+%% all sensors.
 %%
 %% HowTo: SensorName, SensorAttribute, min, max, index
 %% Example: imucam, accX, -100, 100, 1
 %%
 %% If blank value => all values acceptable
 %%
+%% NOTE: Attribute names needs to be listed for attribute names to show 
+%%       up correcetly in the gui
 
 %% ----------------------------------------------------------------------
 %% IMU cam - Info (port name imucam)

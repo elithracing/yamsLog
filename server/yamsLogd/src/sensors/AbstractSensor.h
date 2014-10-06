@@ -123,7 +123,7 @@ class AbstractSensor : public AbstractService {
    * that the values for the desired attribute is in range.
    */
  // void insert_attribute_min_max(int attr, float min, float max, const std::string& attr_name);
-  void insert_attribute_min_max(AbstractSensor::attr_struct attr_struct);
+  void insert_attributes(AbstractSensor::attr_struct attr_struct);
   // Updates the status of desiered attributes status, returns false if the attribute cannot be found in the map
   bool update_attribute_status(int attr, protobuf::SensorStatusMsg::AttributeStatusType status);
 

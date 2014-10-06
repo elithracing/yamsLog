@@ -131,7 +131,7 @@ int AbstractSensor::get_max_attributes() {
   return max_attributes_;
 }
 
-void AbstractSensor::insert_attribute_min_max(AbstractSensor::attr_struct attribute_struct){
+void AbstractSensor::insert_attributes(AbstractSensor::attr_struct attribute_struct){
   // If for some reason the attributes min and max values already have been inserted, just update them.
   auto it = attr_properties_.find(attribute_struct.attr_index);
   if (it == attr_properties_.end()) {

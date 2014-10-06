@@ -18,7 +18,7 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
-#include "SensorMinMax.h"
+#include "SensorDefinitionReader.h"
 
 #include <iostream>
 #include <fstream>
@@ -30,13 +30,13 @@
 
 static const int COLUMNS = 5;
 
-SensorMinMax::SensorMinMax() {
+SensorDefinitionReader::SensorDefinitionReader() {
 }
 
-SensorMinMax::~SensorMinMax() {
+SensorDefinitionReader::~SensorDefinitionReader() {
 }
 
-bool SensorMinMax::initialize_min_max_values(const std::string& file_name, const 
+bool SensorDefinitionReader::initialize_sensor_attributes(const std::string& file_name, const 
 std::vector<boost::shared_ptr<AbstractSensor>>& sensors) {
   std::fstream instream;
   instream.open(file_name, std::ios_base::in);
@@ -51,14 +51,14 @@ std::vector<boost::shared_ptr<AbstractSensor>>& sensors) {
     std::getline(instream, line);
     if ((line[0] != '%') && (line[0] != 0)) {  // 0 is the same as '/n' in the file
       delimit_string(line, lines);
-      insert_min_max(sensors, lines);
+      insert_sensor_attributes(sensors, lines);
     }
   }
 
   return true;
 }
 
-void SensorMinMax::delimit_string(const std::string& line, std::string lines[]) {
+void SensorDefinitionReader::delimit_string(const std::string& line, std::string lines[]) {
   int i = 0;
   std::stringstream ssin(line);
   while (ssin.good() && i < COLUMNS) {
@@ -68,7 +68,7 @@ void SensorMinMax::delimit_string(const std::string& line, std::string lines[]) 
   }
 }
 
-void SensorMinMax::insert_min_max(const std::vector<boost::shared_ptr<AbstractSensor>>& sensors,
+void SensorDefinitionReader::insert_sensor_attributes(const std::vector<boost::shared_ptr<AbstractSensor>>& sensors,
                                       std::string lines[]) {
   std::string attr_name = lines[1];
   std::string min = lines[2];
@@ -97,13 +97,13 @@ void SensorMinMax::insert_min_max(const std::vector<boost::shared_ptr<AbstractSe
         attr_struct.min = 0;
       }
       attr_struct.status = protobuf::SensorStatusMsg::INSIDE_LIMITS;
-      sensor->insert_attribute_min_max(attr_struct);
+      sensor->insert_attributes(attr_struct);
       break;
     }
   }
 }
 
-bool SensorMinMax::is_number(const std::string& s){
+bool SensorDefinitionReader::is_number(const std::string& s){
     auto it = s.begin();
     //Account for negative sign characther
     if(*it == '-')it++;
