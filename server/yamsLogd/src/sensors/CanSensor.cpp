@@ -96,7 +96,7 @@ bool CanSensor::read_one_data(std::vector<float>* values){
       //Add padding so every message is the same length
       for(int i = can_frame_.can_dlc; i < MAX_ATTRIBUTES -2; i++){
         //MAX_ATTRIBUTES - 2 to account for attributes CAN_ID and CAN_MESSAGE_LENGTH
-        //wich will always be in a message regarding of length
+        //wich will always be in a message regardless of length
         values->push_back(0);
       }
       return true;

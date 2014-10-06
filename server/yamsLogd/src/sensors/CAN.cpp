@@ -61,6 +61,7 @@ bool init_can(char* deviceName, int& CANsock, std::string& returnstring) {
   setsockopt(CANsock, SOL_SOCKET, SO_RCVTIMEO, (char *)&tv,sizeof(struct timeval));
 
   if(!rc){
+    returnstring = oss.str();
     return true;
   }else{
     oss<<("%% Cannot initialize CAN")<<std::endl;
