@@ -26,3 +26,4 @@
 # Mac finder files
 *.DS_Store
 DerivedData
+yamsLogd.xcodeproj/xcuserdata/**
