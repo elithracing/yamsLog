@@ -67,8 +67,8 @@ using std::string;
 using std::unique_ptr;
 
 static const int DEFAULT_COMMUNICATION_PORT = 2001;
-std::string DEFAULT_SENSOR_DEFINITION_FILE_NAME = "sensor_definitions.txt";
-const std::string DEFAULT_PORT_CONFIG_FILE_NAME = "port_config.txt";
+std::string DEFAULT_SENSOR_DEFINITION_FILE_NAME = "sensor_definitions.conf";
+const std::string DEFAULT_PORT_CONFIG_FILE_NAME = "port_config.conf";
 
 DataLogger::DataLogger() : status_changed_sema_(0), project_handler_(DEFAULT_PROJECT_PATH) {
 }
