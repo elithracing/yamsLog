@@ -1,0 +1,26 @@
+
+CanSensor
+---------
+* What happens to returnstring in CAN-init, does it just go away?
+
+* CanSensor.cpp seems to initialize can-sock two times
+
+* Timestamping in read_one in CanSensor seems to occur before actual
+  reading. Possible OBOB
+
+* Interpreted sensors,like some known CAN-messages should be recorded
+  both as CAN and as interpreted sensors. All CAN messages should
+  therefore be sent to an interpretation stage that tries to identify
+  what sensors are conencted to what ports.
+
+
+Corrsyssensor
+----------------
+* Interpretated CAN messages should be timestamped according to the first message that arrives in a batch. The logics should be that if messages arrive with time diffs "short,short,short, short, long ,short, short ,short ..." the first message after a longer timediff should be considered a new burst of sensor values. 
+
+IMUSensor
+------------
+
+* Timestamping off IMUSensor.cpp seems to be quite late in the sensor interpretation. Should be at least after read from MTComm class. If possible, it should be inside MTComm class, just after serial port com.
+
+

@@ -32,6 +32,10 @@ class OBDIIElmSensor : public AbstractSensor {
   virtual void finalize() override;
   virtual bool read_one_data(std::vector<float>* values) override;
 
+  /*  struct loggedPIDS{
+    double ;
+    };*/
+
  protected:
   virtual bool initialize() override;
   virtual void execute() override;
@@ -40,6 +44,7 @@ class OBDIIElmSensor : public AbstractSensor {
   double sampleTime;
   double currentTime;
   OBDReader* obdreader;
+  std::list<OBDReader::measData*> measDataQueue;
 };
 
 #endif  // SENSORS_OBDIIELMSENSOR_H_

@@ -76,7 +76,7 @@ bool
 VirtualSensor::read_one_data(std::vector<float>* values)
 {
   usleep( sampleTime*1e6 );
-  printf(".");
+  std::cout << ".";
   fflush(stdout); // Will now print everything in the stdout buffer
   set_working(true);
   float sensorValue = sin(2*M_PI*1/5.0*currentTime);

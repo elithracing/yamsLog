@@ -42,7 +42,8 @@ bool OBDIIElmSensor::initialize()
   std::cout << "OBDIIElmSensor: DEBUG Initializing" << std::endl;
 #endif
   OBDReader::argStruct argStruct;
-  argStruct.s = "/dev/pts/2";
+  argStruct.s = get_port_name().c_str();
+  argStruct.sampleRate = 0;
   obdreader->argsFromStruct(&argStruct);
   obdreader->initConnection();
   return true;
@@ -86,18 +87,47 @@ bool
 OBDIIElmSensor::read_one_data(std::vector<float>* values)
 {
   usleep( sampleTime*1e6 );
-  printf("_");
+  std::cout << "_";
   fflush(stdout); // Will now print everything in the stdout buffer
   set_working(true);
-
-  obdreader->readLoop();     
-
-  float sensorValue = sin(2*M_PI*1/5.0*currentTime);
-  values->push_back( sensorValue );
   
-  double abstime = get_time_diff() + get_time_stamp().tv_sec
-    + (get_time_stamp().tv_nsec) / 1000000000.0;
-  values->push_back(abstime);
+  obdreader->readLoop(&measDataQueue);     
+  OBDReader::measData* measData;
+
+
+  // Go through list of attributes in order of attr_index
+  auto iterators = get_attribute_iterators();
+  auto selected = iterators.first;
+  for(int ii = 1; ii < MAX_ATTRIBUTES ; ii = ii+2)
+  {
+    for (auto itr = iterators.first; itr != iterators.second; ++itr) {
+      if(itr->first == ii)
+      {
+	selected = itr;
+	break;
+      }
+    }
+    if(selected->first == ii)
+    {
+      // Now we have the name of the attribute that we should write to  (selected->second.attr_name)
+      //printf("Property name: %s \n",selected->second.attr_name.c_str());
+      for(auto itr = measDataQueue.begin(); itr != measDataQueue.end(); itr++ )
+      {
+	measData = *itr;
+	if(measData->name == selected->second.attr_name)
+	{
+	  values->push_back(get_time_diff_us(&(measData->time)));
+	  values->push_back(measData->val);
+#ifndef NDEBUG
+	  printf("t=%f,%s=%f\n", measData->time.tv_sec+(double)measData->time.tv_usec/1000000.0f,measData->name.c_str(), measData->val);
+#endif
+	}
+	
+      }
+    }
+  }
+  measDataQueue.clear();
+  
   return true;
 }
 

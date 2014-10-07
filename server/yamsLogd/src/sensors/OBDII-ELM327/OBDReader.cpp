@@ -249,7 +249,7 @@ void OBDReader::argsFromStruct(OBDReader::argStruct* args) {
     log_columns = strdup(args->logColums);
   }
 
-  if(args->sampleRate != 0)
+  if(args->sampleRate != -1)
     samplespersecond = args->sampleRate;
 
   if(NULL != args->serialLog)
@@ -372,7 +372,7 @@ void OBDReader::printHelp(const char *argv0) {
 }
 
 
-int OBDReader::readLoop()
+int OBDReader::readLoop(std::list<measData*>* returnQueue)
 {
   if(obdnumcols > 1 && (samplecount == -1 || samplecount-- > 0))
   {
@@ -385,7 +385,9 @@ int OBDReader::readLoop()
       perror("Couldn't gettimeofday");
       return -1;
     }
-    
+
+    //printf("Frametime is: %d\n",frametime);
+
     enum obd_serial_status obdstatus;
     if(-1 < obd_serial_port) {
       
@@ -401,9 +403,16 @@ int OBDReader::readLoop()
 	gettimeofday(&logged_time,NULL);
 	if(OBD_SUCCESS == obdstatus) {
 	  if(spam_stdout) {
-	    printf("Spamming STDOUT (not necessary anymore since program changed): %s=%f\n", obdcmds_mode1[cmdlist[i]].db_column, val);
+	    printf("t=%f,%s=%f\n", (double)logged_time.tv_sec+(double)logged_time.tv_usec/1000000.0f,obdcmds_mode1[cmdlist[i]].db_column, val);
 	  }
-	  printf("t=%f,%s=%f\n", (double)logged_time.tv_sec+(double)logged_time.tv_usec/1000000.0f,obdcmds_mode1[cmdlist[i]].db_column, val);
+	  if(returnQueue)
+	  {
+	    measData* obdmeasdata  =  new measData();
+	    obdmeasdata->time = logged_time;
+	    obdmeasdata->name = obdcmds_mode1[cmdlist[i]].db_column;
+	    obdmeasdata->val  = val;
+	    returnQueue->push_back(obdmeasdata);
+	  }
 	} else {
 	  return -1;
 	}
@@ -420,18 +429,25 @@ int OBDReader::readLoop()
       return -1;
     }
     
-    if(0 < frametime) {
+    if(0 < frametime) 
+    {
       selecttime.tv_sec = endtime.tv_sec - starttime.tv_sec;
-      if (selecttime.tv_sec != 0) {
+      if (selecttime.tv_sec != 0) 
+      {
 	endtime.tv_usec += 1000000*selecttime.tv_sec;
 	selecttime.tv_sec = 0;
       }
       selecttime.tv_usec = (frametime) - 
 	(endtime.tv_usec - starttime.tv_usec);
-      if(selecttime.tv_usec < 0) {
+      if(selecttime.tv_usec < 0) 
+      {
 	selecttime.tv_usec = 1;
       }
       select(0,NULL,NULL,NULL,&selecttime);
+    }
+    else
+    {
+      // printf("OBDReader: Skipping sleep, frametime set to zero (sampleSpeed = 0) \n");
     }
     if(receive_exitsignal )
       return -1;

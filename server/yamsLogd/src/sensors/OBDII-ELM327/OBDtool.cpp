@@ -28,7 +28,7 @@ int main(int argc, char** argv) {
   obdreader.argsFromCmdLine(argc,argv);
   if( obdreader.initConnection() !=-1 )
   {
-    while(obdreader.readLoop() != -1);     
+    while(obdreader.readLoop(NULL) != -1);     
   }
   return 0;
 }

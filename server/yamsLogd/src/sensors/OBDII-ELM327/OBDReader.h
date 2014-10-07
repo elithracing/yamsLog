@@ -30,28 +30,36 @@
 
 #include <getopt.h>
 #include <stdlib.h>
+#include <list>
+#include <string>
 
 class OBDReader{
 public:
 
   struct argStruct{
-    char *s = NULL;
+    const char *s = NULL;
     int c = -1;
-    char *logColums = NULL;
+    const char *logColums = NULL;
     bool spamStdout = false;
     bool optimizations = false;
-    char *outPutLog = NULL;
+    const char *outPutLog = NULL;
     unsigned int baud = 0;
     unsigned int modifyBaud = 0;
-    char *serialLog = NULL;
-    unsigned int sampleRate = 0;
+    const char *serialLog = NULL;
+    unsigned int sampleRate = -1;
+  };
+
+  struct measData{
+    struct timeval time;
+    std::string name;
+    double val;
   };
 
   OBDReader();
   ~OBDReader();
 
   int initConnection();
-  int readLoop();
+  int readLoop(std::list<measData*>* returnQueue);
   void printHelp(const char *argv0);
   void printVersion();
   void argsFromCmdLine(int argc, char** argv);

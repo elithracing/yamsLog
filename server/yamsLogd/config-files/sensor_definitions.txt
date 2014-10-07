@@ -78,7 +78,7 @@ can,CAN_message_length,,,1
 %% ----------------------------------------------------------------------
 %% ID = 4
 %% Interpretation of GPS1 messages is as follows: 
-%% t,ID,UTC-Time,Lat,Lon,Speed(m/s),Course/Heading
+%% UTC-Time,Lat,Lon,Speed(m/s),Course/Heading
 %% 
 
 gps, UT-Time,  , , 0
@@ -92,7 +92,7 @@ gps, Course/Heading, , ,4
 %% corrsys - Info
 %% ----------------------------------------------------------------------
 %% Interpretation of corrsys messages is as follows:
-%% time,ID,abstime,starttime,h1,h2,h3,hc1,hc2,hc3,pitch,roll,roll2,pitchrate,rollrate,roll2rate,vabs,vlat,vtrans,slipangle 
+%% abstime,starttime,h1,h2,h3,hc1,hc2,hc3,pitch,roll,roll2,pitchrate,rollrate,roll2rate,vabs,vlat,vtrans,slipangle 
 %%
 
 corrsys, abstime, , ,0
@@ -115,3 +115,21 @@ corrsys, vtrans, , ,16
 corrsys, slipangle, , ,17
 
 
+%% ----------------------------------------------------------------------
+%% OBDII - Info (port name obdiielm)
+%% ----------------------------------------------------------------------
+%% ID = 10
+%% Data from car OBD-port: 
+%% time_temp,temp,time_rpm,rpm,time_vvs,vss,time_maf,maf,time_throttlepos,throttlepos
+%%
+
+obdiielm,time_temp, , ,0
+obdiielm,temp, , ,1
+obdiielm,time_rpm, , ,2
+obdiielm,rpm, , ,3
+obdiielm,time_vvs, , ,4
+obdiielm,vss, , ,5
+obdiielm,time_maf, , ,6
+obdiielm,maf, , ,7
+obdiielm,time_throttlepos, , ,8
+obdiielm,throttlepos, , ,9
