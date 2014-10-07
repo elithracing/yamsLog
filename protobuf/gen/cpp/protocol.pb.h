@@ -58,7 +58,6 @@ class RemoveProjectResponseMsg;
 class SetActiveProjectRequestMsg;
 class SetActiveProjectResponseMsg;
 class ActiveProjectMsg;
-class ActiveExperimentMsg;
 class ProjectListMsg;
 class ProjectMetadataStruct;
 class SetProjectMetadataRequestMsg;
@@ -83,6 +82,7 @@ class ExperimentMetadataMsg;
 class ExperimentMetadataMsg_MetadataStruct;
 class DebugMsg;
 class ErrorMsg;
+class ActiveExperimentMsg;
 
 enum GeneralMsg_SubType {
   GeneralMsg_SubType_DATA_T = 1,
@@ -3473,93 +3473,6 @@ class ActiveProjectMsg : public ::google::protobuf::Message {
 };
 // -------------------------------------------------------------------
 
-class ActiveExperimentMsg : public ::google::protobuf::Message {
- public:
-  ActiveExperimentMsg();
-  virtual ~ActiveExperimentMsg();
-
-  ActiveExperimentMsg(const ActiveExperimentMsg& from);
-
-  inline ActiveExperimentMsg& operator=(const ActiveExperimentMsg& from) {
-    CopyFrom(from);
-    return *this;
-  }
-
-  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
-    return _unknown_fields_;
-  }
-
-  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
-    return &_unknown_fields_;
-  }
-
-  static const ::google::protobuf::Descriptor* descriptor();
-  static const ActiveExperimentMsg& default_instance();
-
-  void Swap(ActiveExperimentMsg* other);
-
-  // implements Message ----------------------------------------------
-
-  ActiveExperimentMsg* New() const;
-  void CopyFrom(const ::google::protobuf::Message& from);
-  void MergeFrom(const ::google::protobuf::Message& from);
-  void CopyFrom(const ActiveExperimentMsg& from);
-  void MergeFrom(const ActiveExperimentMsg& from);
-  void Clear();
-  bool IsInitialized() const;
-
-  int ByteSize() const;
-  bool MergePartialFromCodedStream(
-      ::google::protobuf::io::CodedInputStream* input);
-  void SerializeWithCachedSizes(
-      ::google::protobuf::io::CodedOutputStream* output) const;
-  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
-  int GetCachedSize() const { return _cached_size_; }
-  private:
-  void SharedCtor();
-  void SharedDtor();
-  void SetCachedSize(int size) const;
-  public:
-
-  ::google::protobuf::Metadata GetMetadata() const;
-
-  // nested types ----------------------------------------------------
-
-  // accessors -------------------------------------------------------
-
-  // optional string name = 1;
-  inline bool has_name() const;
-  inline void clear_name();
-  static const int kNameFieldNumber = 1;
-  inline const ::std::string& name() const;
-  inline void set_name(const ::std::string& value);
-  inline void set_name(const char* value);
-  inline void set_name(const char* value, size_t size);
-  inline ::std::string* mutable_name();
-  inline ::std::string* release_name();
-  inline void set_allocated_name(::std::string* name);
-
-  // @@protoc_insertion_point(class_scope:protobuf.ActiveExperimentMsg)
- private:
-  inline void set_has_name();
-  inline void clear_has_name();
-
-  ::google::protobuf::UnknownFieldSet _unknown_fields_;
-
-  ::std::string* name_;
-
-  mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(1 + 31) / 32];
-
-  friend void  protobuf_AddDesc_protocol_2eproto();
-  friend void protobuf_AssignDesc_protocol_2eproto();
-  friend void protobuf_ShutdownFile_protocol_2eproto();
-
-  void InitAsDefaultInstance();
-  static ActiveExperimentMsg* default_instance_;
-};
-// -------------------------------------------------------------------
-
 class ProjectListMsg : public ::google::protobuf::Message {
  public:
   ProjectListMsg();
@@ -5979,6 +5892,93 @@ class ErrorMsg : public ::google::protobuf::Message {
 
   void InitAsDefaultInstance();
   static ErrorMsg* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class ActiveExperimentMsg : public ::google::protobuf::Message {
+ public:
+  ActiveExperimentMsg();
+  virtual ~ActiveExperimentMsg();
+
+  ActiveExperimentMsg(const ActiveExperimentMsg& from);
+
+  inline ActiveExperimentMsg& operator=(const ActiveExperimentMsg& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const ActiveExperimentMsg& default_instance();
+
+  void Swap(ActiveExperimentMsg* other);
+
+  // implements Message ----------------------------------------------
+
+  ActiveExperimentMsg* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const ActiveExperimentMsg& from);
+  void MergeFrom(const ActiveExperimentMsg& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional string name = 1;
+  inline bool has_name() const;
+  inline void clear_name();
+  static const int kNameFieldNumber = 1;
+  inline const ::std::string& name() const;
+  inline void set_name(const ::std::string& value);
+  inline void set_name(const char* value);
+  inline void set_name(const char* value, size_t size);
+  inline ::std::string* mutable_name();
+  inline ::std::string* release_name();
+  inline void set_allocated_name(::std::string* name);
+
+  // @@protoc_insertion_point(class_scope:protobuf.ActiveExperimentMsg)
+ private:
+  inline void set_has_name();
+  inline void clear_has_name();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::std::string* name_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(1 + 31) / 32];
+
+  friend void  protobuf_AddDesc_protocol_2eproto();
+  friend void protobuf_AssignDesc_protocol_2eproto();
+  friend void protobuf_ShutdownFile_protocol_2eproto();
+
+  void InitAsDefaultInstance();
+  static ActiveExperimentMsg* default_instance_;
 };
 // ===================================================================
 
@@ -8993,80 +8993,6 @@ inline void ActiveProjectMsg::set_allocated_name(::std::string* name) {
 
 // -------------------------------------------------------------------
 
-// ActiveExperimentMsg
-
-// optional string name = 1;
-inline bool ActiveExperimentMsg::has_name() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
-}
-inline void ActiveExperimentMsg::set_has_name() {
-  _has_bits_[0] |= 0x00000001u;
-}
-inline void ActiveExperimentMsg::clear_has_name() {
-  _has_bits_[0] &= ~0x00000001u;
-}
-inline void ActiveExperimentMsg::clear_name() {
-  if (name_ != &::google::protobuf::internal::kEmptyString) {
-    name_->clear();
-  }
-  clear_has_name();
-}
-inline const ::std::string& ActiveExperimentMsg::name() const {
-  return *name_;
-}
-inline void ActiveExperimentMsg::set_name(const ::std::string& value) {
-  set_has_name();
-  if (name_ == &::google::protobuf::internal::kEmptyString) {
-    name_ = new ::std::string;
-  }
-  name_->assign(value);
-}
-inline void ActiveExperimentMsg::set_name(const char* value) {
-  set_has_name();
-  if (name_ == &::google::protobuf::internal::kEmptyString) {
-    name_ = new ::std::string;
-  }
-  name_->assign(value);
-}
-inline void ActiveExperimentMsg::set_name(const char* value, size_t size) {
-  set_has_name();
-  if (name_ == &::google::protobuf::internal::kEmptyString) {
-    name_ = new ::std::string;
-  }
-  name_->assign(reinterpret_cast<const char*>(value), size);
-}
-inline ::std::string* ActiveExperimentMsg::mutable_name() {
-  set_has_name();
-  if (name_ == &::google::protobuf::internal::kEmptyString) {
-    name_ = new ::std::string;
-  }
-  return name_;
-}
-inline ::std::string* ActiveExperimentMsg::release_name() {
-  clear_has_name();
-  if (name_ == &::google::protobuf::internal::kEmptyString) {
-    return NULL;
-  } else {
-    ::std::string* temp = name_;
-    name_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
-    return temp;
-  }
-}
-inline void ActiveExperimentMsg::set_allocated_name(::std::string* name) {
-  if (name_ != &::google::protobuf::internal::kEmptyString) {
-    delete name_;
-  }
-  if (name) {
-    set_has_name();
-    name_ = name;
-  } else {
-    clear_has_name();
-    name_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
-  }
-}
-
-// -------------------------------------------------------------------
-
 // ProjectListMsg
 
 // repeated string projects = 1;
@@ -10726,6 +10652,80 @@ inline void ErrorMsg::set_error_type(::protobuf::ErrorMsg_ErrorType value) {
   assert(::protobuf::ErrorMsg_ErrorType_IsValid(value));
   set_has_error_type();
   error_type_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// ActiveExperimentMsg
+
+// optional string name = 1;
+inline bool ActiveExperimentMsg::has_name() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void ActiveExperimentMsg::set_has_name() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void ActiveExperimentMsg::clear_has_name() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void ActiveExperimentMsg::clear_name() {
+  if (name_ != &::google::protobuf::internal::kEmptyString) {
+    name_->clear();
+  }
+  clear_has_name();
+}
+inline const ::std::string& ActiveExperimentMsg::name() const {
+  return *name_;
+}
+inline void ActiveExperimentMsg::set_name(const ::std::string& value) {
+  set_has_name();
+  if (name_ == &::google::protobuf::internal::kEmptyString) {
+    name_ = new ::std::string;
+  }
+  name_->assign(value);
+}
+inline void ActiveExperimentMsg::set_name(const char* value) {
+  set_has_name();
+  if (name_ == &::google::protobuf::internal::kEmptyString) {
+    name_ = new ::std::string;
+  }
+  name_->assign(value);
+}
+inline void ActiveExperimentMsg::set_name(const char* value, size_t size) {
+  set_has_name();
+  if (name_ == &::google::protobuf::internal::kEmptyString) {
+    name_ = new ::std::string;
+  }
+  name_->assign(reinterpret_cast<const char*>(value), size);
+}
+inline ::std::string* ActiveExperimentMsg::mutable_name() {
+  set_has_name();
+  if (name_ == &::google::protobuf::internal::kEmptyString) {
+    name_ = new ::std::string;
+  }
+  return name_;
+}
+inline ::std::string* ActiveExperimentMsg::release_name() {
+  clear_has_name();
+  if (name_ == &::google::protobuf::internal::kEmptyString) {
+    return NULL;
+  } else {
+    ::std::string* temp = name_;
+    name_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+    return temp;
+  }
+}
+inline void ActiveExperimentMsg::set_allocated_name(::std::string* name) {
+  if (name_ != &::google::protobuf::internal::kEmptyString) {
+    delete name_;
+  }
+  if (name) {
+    set_has_name();
+    name_ = name;
+  } else {
+    clear_has_name();
+    name_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+  }
 }
 
 

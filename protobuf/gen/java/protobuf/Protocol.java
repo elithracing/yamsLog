@@ -23108,485 +23108,6 @@ public final class Protocol {
     // @@protoc_insertion_point(class_scope:protobuf.ActiveProjectMsg)
   }
 
-  public interface ActiveExperimentMsgOrBuilder
-      extends com.google.protobuf.MessageOrBuilder {
-
-    // optional string name = 1;
-    /**
-     * <code>optional string name = 1;</code>
-     */
-    boolean hasName();
-    /**
-     * <code>optional string name = 1;</code>
-     */
-    java.lang.String getName();
-    /**
-     * <code>optional string name = 1;</code>
-     */
-    com.google.protobuf.ByteString
-        getNameBytes();
-  }
-  /**
-   * Protobuf type {@code protobuf.ActiveExperimentMsg}
-   *
-   * <pre>
-   * Server -&gt; Client
-   * </pre>
-   */
-  public static final class ActiveExperimentMsg extends
-      com.google.protobuf.GeneratedMessage
-      implements ActiveExperimentMsgOrBuilder {
-    // Use ActiveExperimentMsg.newBuilder() to construct.
-    private ActiveExperimentMsg(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
-      super(builder);
-      this.unknownFields = builder.getUnknownFields();
-    }
-    private ActiveExperimentMsg(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
-
-    private static final ActiveExperimentMsg defaultInstance;
-    public static ActiveExperimentMsg getDefaultInstance() {
-      return defaultInstance;
-    }
-
-    public ActiveExperimentMsg getDefaultInstanceForType() {
-      return defaultInstance;
-    }
-
-    private final com.google.protobuf.UnknownFieldSet unknownFields;
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-        getUnknownFields() {
-      return this.unknownFields;
-    }
-    private ActiveExperimentMsg(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      initFields();
-      int mutable_bitField0_ = 0;
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            default: {
-              if (!parseUnknownField(input, unknownFields,
-                                     extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-            case 10: {
-              bitField0_ |= 0x00000001;
-              name_ = input.readBytes();
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e.getMessage()).setUnfinishedMessage(this);
-      } finally {
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return protobuf.Protocol.internal_static_protobuf_ActiveExperimentMsg_descriptor;
-    }
-
-    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return protobuf.Protocol.internal_static_protobuf_ActiveExperimentMsg_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              protobuf.Protocol.ActiveExperimentMsg.class, protobuf.Protocol.ActiveExperimentMsg.Builder.class);
-    }
-
-    public static com.google.protobuf.Parser<ActiveExperimentMsg> PARSER =
-        new com.google.protobuf.AbstractParser<ActiveExperimentMsg>() {
-      public ActiveExperimentMsg parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new ActiveExperimentMsg(input, extensionRegistry);
-      }
-    };
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<ActiveExperimentMsg> getParserForType() {
-      return PARSER;
-    }
-
-    private int bitField0_;
-    // optional string name = 1;
-    public static final int NAME_FIELD_NUMBER = 1;
-    private java.lang.Object name_;
-    /**
-     * <code>optional string name = 1;</code>
-     */
-    public boolean hasName() {
-      return ((bitField0_ & 0x00000001) == 0x00000001);
-    }
-    /**
-     * <code>optional string name = 1;</code>
-     */
-    public java.lang.String getName() {
-      java.lang.Object ref = name_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        if (bs.isValidUtf8()) {
-          name_ = s;
-        }
-        return s;
-      }
-    }
-    /**
-     * <code>optional string name = 1;</code>
-     */
-    public com.google.protobuf.ByteString
-        getNameBytes() {
-      java.lang.Object ref = name_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        name_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
-    private void initFields() {
-      name_ = "";
-    }
-    private byte memoizedIsInitialized = -1;
-    public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized != -1) return isInitialized == 1;
-
-      memoizedIsInitialized = 1;
-      return true;
-    }
-
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
-      getSerializedSize();
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        output.writeBytes(1, getNameBytes());
-      }
-      getUnknownFields().writeTo(output);
-    }
-
-    private int memoizedSerializedSize = -1;
-    public int getSerializedSize() {
-      int size = memoizedSerializedSize;
-      if (size != -1) return size;
-
-      size = 0;
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(1, getNameBytes());
-      }
-      size += getUnknownFields().getSerializedSize();
-      memoizedSerializedSize = size;
-      return size;
-    }
-
-    private static final long serialVersionUID = 0L;
-    @java.lang.Override
-    protected java.lang.Object writeReplace()
-        throws java.io.ObjectStreamException {
-      return super.writeReplace();
-    }
-
-    public static protobuf.Protocol.ActiveExperimentMsg parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static protobuf.Protocol.ActiveExperimentMsg parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static protobuf.Protocol.ActiveExperimentMsg parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static protobuf.Protocol.ActiveExperimentMsg parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static protobuf.Protocol.ActiveExperimentMsg parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return PARSER.parseFrom(input);
-    }
-    public static protobuf.Protocol.ActiveExperimentMsg parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
-    }
-    public static protobuf.Protocol.ActiveExperimentMsg parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input);
-    }
-    public static protobuf.Protocol.ActiveExperimentMsg parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input, extensionRegistry);
-    }
-    public static protobuf.Protocol.ActiveExperimentMsg parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return PARSER.parseFrom(input);
-    }
-    public static protobuf.Protocol.ActiveExperimentMsg parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
-    }
-
-    public static Builder newBuilder() { return Builder.create(); }
-    public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder(protobuf.Protocol.ActiveExperimentMsg prototype) {
-      return newBuilder().mergeFrom(prototype);
-    }
-    public Builder toBuilder() { return newBuilder(this); }
-
-    @java.lang.Override
-    protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
-    }
-    /**
-     * Protobuf type {@code protobuf.ActiveExperimentMsg}
-     *
-     * <pre>
-     * Server -&gt; Client
-     * </pre>
-     */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessage.Builder<Builder>
-       implements protobuf.Protocol.ActiveExperimentMsgOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return protobuf.Protocol.internal_static_protobuf_ActiveExperimentMsg_descriptor;
-      }
-
-      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return protobuf.Protocol.internal_static_protobuf_ActiveExperimentMsg_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                protobuf.Protocol.ActiveExperimentMsg.class, protobuf.Protocol.ActiveExperimentMsg.Builder.class);
-      }
-
-      // Construct using protobuf.Protocol.ActiveExperimentMsg.newBuilder()
-      private Builder() {
-        maybeForceBuilderInitialization();
-      }
-
-      private Builder(
-          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
-        super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
-        }
-      }
-      private static Builder create() {
-        return new Builder();
-      }
-
-      public Builder clear() {
-        super.clear();
-        name_ = "";
-        bitField0_ = (bitField0_ & ~0x00000001);
-        return this;
-      }
-
-      public Builder clone() {
-        return create().mergeFrom(buildPartial());
-      }
-
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return protobuf.Protocol.internal_static_protobuf_ActiveExperimentMsg_descriptor;
-      }
-
-      public protobuf.Protocol.ActiveExperimentMsg getDefaultInstanceForType() {
-        return protobuf.Protocol.ActiveExperimentMsg.getDefaultInstance();
-      }
-
-      public protobuf.Protocol.ActiveExperimentMsg build() {
-        protobuf.Protocol.ActiveExperimentMsg result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(result);
-        }
-        return result;
-      }
-
-      public protobuf.Protocol.ActiveExperimentMsg buildPartial() {
-        protobuf.Protocol.ActiveExperimentMsg result = new protobuf.Protocol.ActiveExperimentMsg(this);
-        int from_bitField0_ = bitField0_;
-        int to_bitField0_ = 0;
-        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
-          to_bitField0_ |= 0x00000001;
-        }
-        result.name_ = name_;
-        result.bitField0_ = to_bitField0_;
-        onBuilt();
-        return result;
-      }
-
-      public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof protobuf.Protocol.ActiveExperimentMsg) {
-          return mergeFrom((protobuf.Protocol.ActiveExperimentMsg)other);
-        } else {
-          super.mergeFrom(other);
-          return this;
-        }
-      }
-
-      public Builder mergeFrom(protobuf.Protocol.ActiveExperimentMsg other) {
-        if (other == protobuf.Protocol.ActiveExperimentMsg.getDefaultInstance()) return this;
-        if (other.hasName()) {
-          bitField0_ |= 0x00000001;
-          name_ = other.name_;
-          onChanged();
-        }
-        this.mergeUnknownFields(other.getUnknownFields());
-        return this;
-      }
-
-      public final boolean isInitialized() {
-        return true;
-      }
-
-      public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        protobuf.Protocol.ActiveExperimentMsg parsedMessage = null;
-        try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (protobuf.Protocol.ActiveExperimentMsg) e.getUnfinishedMessage();
-          throw e;
-        } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
-        return this;
-      }
-      private int bitField0_;
-
-      // optional string name = 1;
-      private java.lang.Object name_ = "";
-      /**
-       * <code>optional string name = 1;</code>
-       */
-      public boolean hasName() {
-        return ((bitField0_ & 0x00000001) == 0x00000001);
-      }
-      /**
-       * <code>optional string name = 1;</code>
-       */
-      public java.lang.String getName() {
-        java.lang.Object ref = name_;
-        if (!(ref instanceof java.lang.String)) {
-          java.lang.String s = ((com.google.protobuf.ByteString) ref)
-              .toStringUtf8();
-          name_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <code>optional string name = 1;</code>
-       */
-      public com.google.protobuf.ByteString
-          getNameBytes() {
-        java.lang.Object ref = name_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          name_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>optional string name = 1;</code>
-       */
-      public Builder setName(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000001;
-        name_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional string name = 1;</code>
-       */
-      public Builder clearName() {
-        bitField0_ = (bitField0_ & ~0x00000001);
-        name_ = getDefaultInstance().getName();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional string name = 1;</code>
-       */
-      public Builder setNameBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000001;
-        name_ = value;
-        onChanged();
-        return this;
-      }
-
-      // @@protoc_insertion_point(builder_scope:protobuf.ActiveExperimentMsg)
-    }
-
-    static {
-      defaultInstance = new ActiveExperimentMsg(true);
-      defaultInstance.initFields();
-    }
-
-    // @@protoc_insertion_point(class_scope:protobuf.ActiveExperimentMsg)
-  }
-
   public interface ProjectListMsgOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
@@ -37740,6 +37261,477 @@ public final class Protocol {
     // @@protoc_insertion_point(class_scope:protobuf.ErrorMsg)
   }
 
+  public interface ActiveExperimentMsgOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+
+    // optional string name = 1;
+    /**
+     * <code>optional string name = 1;</code>
+     */
+    boolean hasName();
+    /**
+     * <code>optional string name = 1;</code>
+     */
+    java.lang.String getName();
+    /**
+     * <code>optional string name = 1;</code>
+     */
+    com.google.protobuf.ByteString
+        getNameBytes();
+  }
+  /**
+   * Protobuf type {@code protobuf.ActiveExperimentMsg}
+   */
+  public static final class ActiveExperimentMsg extends
+      com.google.protobuf.GeneratedMessage
+      implements ActiveExperimentMsgOrBuilder {
+    // Use ActiveExperimentMsg.newBuilder() to construct.
+    private ActiveExperimentMsg(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private ActiveExperimentMsg(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final ActiveExperimentMsg defaultInstance;
+    public static ActiveExperimentMsg getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public ActiveExperimentMsg getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private ActiveExperimentMsg(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 10: {
+              bitField0_ |= 0x00000001;
+              name_ = input.readBytes();
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return protobuf.Protocol.internal_static_protobuf_ActiveExperimentMsg_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return protobuf.Protocol.internal_static_protobuf_ActiveExperimentMsg_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              protobuf.Protocol.ActiveExperimentMsg.class, protobuf.Protocol.ActiveExperimentMsg.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<ActiveExperimentMsg> PARSER =
+        new com.google.protobuf.AbstractParser<ActiveExperimentMsg>() {
+      public ActiveExperimentMsg parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new ActiveExperimentMsg(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<ActiveExperimentMsg> getParserForType() {
+      return PARSER;
+    }
+
+    private int bitField0_;
+    // optional string name = 1;
+    public static final int NAME_FIELD_NUMBER = 1;
+    private java.lang.Object name_;
+    /**
+     * <code>optional string name = 1;</code>
+     */
+    public boolean hasName() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>optional string name = 1;</code>
+     */
+    public java.lang.String getName() {
+      java.lang.Object ref = name_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          name_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>optional string name = 1;</code>
+     */
+    public com.google.protobuf.ByteString
+        getNameBytes() {
+      java.lang.Object ref = name_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        name_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    private void initFields() {
+      name_ = "";
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeBytes(1, getNameBytes());
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(1, getNameBytes());
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static protobuf.Protocol.ActiveExperimentMsg parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static protobuf.Protocol.ActiveExperimentMsg parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static protobuf.Protocol.ActiveExperimentMsg parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static protobuf.Protocol.ActiveExperimentMsg parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static protobuf.Protocol.ActiveExperimentMsg parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static protobuf.Protocol.ActiveExperimentMsg parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static protobuf.Protocol.ActiveExperimentMsg parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static protobuf.Protocol.ActiveExperimentMsg parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static protobuf.Protocol.ActiveExperimentMsg parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static protobuf.Protocol.ActiveExperimentMsg parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(protobuf.Protocol.ActiveExperimentMsg prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code protobuf.ActiveExperimentMsg}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements protobuf.Protocol.ActiveExperimentMsgOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return protobuf.Protocol.internal_static_protobuf_ActiveExperimentMsg_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return protobuf.Protocol.internal_static_protobuf_ActiveExperimentMsg_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                protobuf.Protocol.ActiveExperimentMsg.class, protobuf.Protocol.ActiveExperimentMsg.Builder.class);
+      }
+
+      // Construct using protobuf.Protocol.ActiveExperimentMsg.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        name_ = "";
+        bitField0_ = (bitField0_ & ~0x00000001);
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return protobuf.Protocol.internal_static_protobuf_ActiveExperimentMsg_descriptor;
+      }
+
+      public protobuf.Protocol.ActiveExperimentMsg getDefaultInstanceForType() {
+        return protobuf.Protocol.ActiveExperimentMsg.getDefaultInstance();
+      }
+
+      public protobuf.Protocol.ActiveExperimentMsg build() {
+        protobuf.Protocol.ActiveExperimentMsg result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public protobuf.Protocol.ActiveExperimentMsg buildPartial() {
+        protobuf.Protocol.ActiveExperimentMsg result = new protobuf.Protocol.ActiveExperimentMsg(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.name_ = name_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof protobuf.Protocol.ActiveExperimentMsg) {
+          return mergeFrom((protobuf.Protocol.ActiveExperimentMsg)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(protobuf.Protocol.ActiveExperimentMsg other) {
+        if (other == protobuf.Protocol.ActiveExperimentMsg.getDefaultInstance()) return this;
+        if (other.hasName()) {
+          bitField0_ |= 0x00000001;
+          name_ = other.name_;
+          onChanged();
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        protobuf.Protocol.ActiveExperimentMsg parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (protobuf.Protocol.ActiveExperimentMsg) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      // optional string name = 1;
+      private java.lang.Object name_ = "";
+      /**
+       * <code>optional string name = 1;</code>
+       */
+      public boolean hasName() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>optional string name = 1;</code>
+       */
+      public java.lang.String getName() {
+        java.lang.Object ref = name_;
+        if (!(ref instanceof java.lang.String)) {
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
+              .toStringUtf8();
+          name_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>optional string name = 1;</code>
+       */
+      public com.google.protobuf.ByteString
+          getNameBytes() {
+        java.lang.Object ref = name_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          name_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string name = 1;</code>
+       */
+      public Builder setName(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000001;
+        name_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string name = 1;</code>
+       */
+      public Builder clearName() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        name_ = getDefaultInstance().getName();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string name = 1;</code>
+       */
+      public Builder setNameBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000001;
+        name_ = value;
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:protobuf.ActiveExperimentMsg)
+    }
+
+    static {
+      defaultInstance = new ActiveExperimentMsg(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:protobuf.ActiveExperimentMsg)
+  }
+
   private static com.google.protobuf.Descriptors.Descriptor
     internal_static_protobuf_GeneralMsg_descriptor;
   private static
@@ -37861,11 +37853,6 @@ public final class Protocol {
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_protobuf_ActiveProjectMsg_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
-    internal_static_protobuf_ActiveExperimentMsg_descriptor;
-  private static
-    com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_protobuf_ActiveExperimentMsg_fieldAccessorTable;
-  private static com.google.protobuf.Descriptors.Descriptor
     internal_static_protobuf_ProjectListMsg_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
@@ -37985,6 +37972,11 @@ public final class Protocol {
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_protobuf_ErrorMsg_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_protobuf_ActiveExperimentMsg_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_protobuf_ActiveExperimentMsg_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -38163,80 +38155,80 @@ public final class Protocol {
       "seMsg.ResponseType\"Y\n\014ResponseType\022\013\n\007SU" +
       "CCESS\020\001\022\025\n\021PROJECT_NOT_FOUND\020\002\022\024\n\020NOT_IN" +
       "_IDLE_MODE\020\003\022\017\n\013OTHER_ERROR\020\004\" \n\020ActiveP" +
-      "rojectMsg\022\014\n\004name\030\001 \001(\t\"#\n\023ActiveExperim",
-      "entMsg\022\014\n\004name\030\001 \001(\t\"\"\n\016ProjectListMsg\022\020" +
-      "\n\010projects\030\001 \003(\t\"\202\001\n\025ProjectMetadataStru" +
-      "ct\022\023\n\013test_leader\030\001 \001(\t\022\014\n\004date\030\002 \001(\003\022\r\n" +
-      "\005email\030\003 \001(\t\022\024\n\014member_names\030\004 \003(\t\022\014\n\004ta" +
-      "gs\030\005 \003(\t\022\023\n\013description\030\006 \001(\t\"Q\n\034SetProj" +
-      "ectMetadataRequestMsg\0221\n\010metadata\030\001 \002(\0132" +
-      "\037.protobuf.ProjectMetadataStruct\"\261\001\n\035Set" +
-      "ProjectMetadataResponseMsg\022K\n\rresponse_t" +
-      "ype\030\001 \002(\01624.protobuf.SetProjectMetadataR" +
-      "esponseMsg.ResponseType\"C\n\014ResponseType\022",
-      "\013\n\007SUCCESS\020\001\022\025\n\021NO_ACTIVE_PROJECT\020\002\022\017\n\013O" +
-      "THER_ERROR\020\003\"G\n\022ProjectMetadataMsg\0221\n\010me" +
-      "tadata\030\001 \002(\0132\037.protobuf.ProjectMetadataS" +
-      "truct\"7\n\'ExperimentDataCollectionStartRe" +
-      "questMsg\022\014\n\004name\030\001 \002(\t\"\377\001\n(ExperimentDat" +
-      "aCollectionStartResponseMsg\022V\n\rresponse_" +
-      "type\030\001 \002(\0162?.protobuf.ExperimentDataColl" +
-      "ectionStartResponseMsg.ResponseType\"{\n\014R" +
-      "esponseType\022\013\n\007SUCCESS\020\001\022\025\n\021NO_ACTIVE_PR" +
-      "OJECT\020\002\022\024\n\020NOT_IN_IDLE_MODE\020\003\022\016\n\nNAME_TA",
-      "KEN\020\004\022\020\n\014ILLEGAL_NAME\020\005\022\017\n\013OTHER_ERROR\020\006" +
-      "\"(\n&ExperimentDataCollectionStopRequestM" +
-      "sg\"\317\001\n\'ExperimentDataCollectionStopRespo" +
-      "nseMsg\022U\n\rresponse_type\030\001 \002(\0162>.protobuf" +
-      ".ExperimentDataCollectionStopResponseMsg" +
-      ".ResponseType\"M\n\014ResponseType\022\013\n\007SUCCESS" +
-      "\020\001\022\037\n\033NOT_IN_DATA_COLLECTION_MODE\020\002\022\017\n\013O" +
-      "THER_ERROR\020\003\"@\n\032RenameExperimentRequestM" +
-      "sg\022\020\n\010old_name\030\001 \002(\t\022\020\n\010new_name\030\002 \002(\t\"\327" +
-      "\001\n\033RenameExperimentResponseMsg\022I\n\rrespon",
-      "se_type\030\001 \002(\01622.protobuf.RenameExperimen" +
-      "tResponseMsg.ResponseType\"m\n\014ResponseTyp" +
-      "e\022\013\n\007SUCCESS\020\001\022\025\n\021NO_ACTIVE_PROJECT\020\002\022\016\n" +
-      "\nNAME_TAKEN\020\003\022\030\n\024EXPERIMENT_NOT_FOUND\020\004\022" +
-      "\017\n\013OTHER_ERROR\020\005\"*\n\032RemoveExperimentRequ" +
-      "estMsg\022\014\n\004name\030\001 \002(\t\"\307\001\n\033RemoveExperimen" +
-      "tResponseMsg\022I\n\rresponse_type\030\001 \002(\01622.pr" +
-      "otobuf.RemoveExperimentResponseMsg.Respo" +
-      "nseType\"]\n\014ResponseType\022\013\n\007SUCCESS\020\001\022\025\n\021" +
-      "NO_ACTIVE_PROJECT\020\002\022\030\n\024EXPERIMENT_NOT_FO",
-      "UND\020\003\022\017\n\013OTHER_ERROR\020\004\"E\n!ExperimentPlay" +
-      "backStartRequestMsg\022\014\n\004name\030\001 \002(\t\022\022\n\nsen" +
-      "sor_ids\030\002 \003(\005\"\353\001\n\"ExperimentPlaybackStar" +
-      "tResponseMsg\022P\n\rresponse_type\030\001 \002(\01629.pr" +
-      "otobuf.ExperimentPlaybackStartResponseMs" +
-      "g.ResponseType\"s\n\014ResponseType\022\013\n\007SUCCES" +
-      "S\020\001\022\025\n\021NO_ACTIVE_PROJECT\020\002\022\030\n\024EXPERIMENT" +
-      "_NOT_FOUND\020\003\022\024\n\020NOT_IN_IDLE_MODE\020\004\022\017\n\013OT" +
-      "HER_ERROR\020\005\"\"\n ExperimentPlaybackStopReq" +
-      "uestMsg\"\274\001\n!ExperimentPlaybackStopRespon",
-      "seMsg\022O\n\rresponse_type\030\001 \002(\01628.protobuf." +
-      "ExperimentPlaybackStopResponseMsg.Respon" +
-      "seType\"F\n\014ResponseType\022\013\n\007SUCCESS\020\001\022\030\n\024N" +
-      "OT_IN_PLAYBACK_MODE\020\002\022\017\n\013OTHER_ERROR\020\003\"\"" +
-      "\n\021ExperimentListMsg\022\r\n\005names\030\001 \003(\t\"W\n\037Se" +
-      "tExperimentMetadataRequestMsg\022\027\n\017experim" +
-      "ent_name\030\001 \002(\t\022\014\n\004tags\030\002 \003(\t\022\r\n\005notes\030\003 " +
-      "\001(\t\"\321\001\n SetExperimentMetadataResponseMsg" +
-      "\022N\n\rresponse_type\030\001 \002(\01627.protobuf.SetEx" +
-      "perimentMetadataResponseMsg.ResponseType",
-      "\"]\n\014ResponseType\022\013\n\007SUCCESS\020\001\022\025\n\021NO_ACTI" +
-      "VE_PROJECT\020\002\022\030\n\024EXPERIMENT_NOT_FOUND\020\003\022\017" +
-      "\n\013OTHER_ERROR\020\004\"\337\001\n\025ExperimentMetadataMs" +
-      "g\022\027\n\017experiment_name\030\001 \002(\t\022@\n\010metadata\030\002" +
-      " \002(\0132..protobuf.ExperimentMetadataMsg.Me" +
-      "tadataStruct\032k\n\016MetadataStruct\022\014\n\004tags\030\001" +
-      " \003(\t\022\r\n\005notes\030\002 \001(\t\022<\n\025sensor_configurat" +
-      "ions\030\003 \003(\0132\035.protobuf.SensorConfiguratio" +
-      "n\"!\n\010DebugMsg\022\025\n\rdebug_message\030\001 \002(\t\"\200\001\n" +
-      "\010ErrorMsg\0220\n\nerror_type\030\001 \002(\0162\034.protobuf",
-      ".ErrorMsg.ErrorType\"B\n\tErrorType\022\025\n\021UNKN" +
-      "OWN_SENSOR_ID\020\001\022\036\n\032UNKNOWN_GENERALMSG_SU" +
-      "BTYPE\020\002"
+      "rojectMsg\022\014\n\004name\030\001 \001(\t\"\"\n\016ProjectListMs",
+      "g\022\020\n\010projects\030\001 \003(\t\"\202\001\n\025ProjectMetadataS" +
+      "truct\022\023\n\013test_leader\030\001 \001(\t\022\014\n\004date\030\002 \001(\003" +
+      "\022\r\n\005email\030\003 \001(\t\022\024\n\014member_names\030\004 \003(\t\022\014\n" +
+      "\004tags\030\005 \003(\t\022\023\n\013description\030\006 \001(\t\"Q\n\034SetP" +
+      "rojectMetadataRequestMsg\0221\n\010metadata\030\001 \002" +
+      "(\0132\037.protobuf.ProjectMetadataStruct\"\261\001\n\035" +
+      "SetProjectMetadataResponseMsg\022K\n\rrespons" +
+      "e_type\030\001 \002(\01624.protobuf.SetProjectMetada" +
+      "taResponseMsg.ResponseType\"C\n\014ResponseTy" +
+      "pe\022\013\n\007SUCCESS\020\001\022\025\n\021NO_ACTIVE_PROJECT\020\002\022\017",
+      "\n\013OTHER_ERROR\020\003\"G\n\022ProjectMetadataMsg\0221\n" +
+      "\010metadata\030\001 \002(\0132\037.protobuf.ProjectMetada" +
+      "taStruct\"7\n\'ExperimentDataCollectionStar" +
+      "tRequestMsg\022\014\n\004name\030\001 \002(\t\"\377\001\n(Experiment" +
+      "DataCollectionStartResponseMsg\022V\n\rrespon" +
+      "se_type\030\001 \002(\0162?.protobuf.ExperimentDataC" +
+      "ollectionStartResponseMsg.ResponseType\"{" +
+      "\n\014ResponseType\022\013\n\007SUCCESS\020\001\022\025\n\021NO_ACTIVE" +
+      "_PROJECT\020\002\022\024\n\020NOT_IN_IDLE_MODE\020\003\022\016\n\nNAME" +
+      "_TAKEN\020\004\022\020\n\014ILLEGAL_NAME\020\005\022\017\n\013OTHER_ERRO",
+      "R\020\006\"(\n&ExperimentDataCollectionStopReque" +
+      "stMsg\"\317\001\n\'ExperimentDataCollectionStopRe" +
+      "sponseMsg\022U\n\rresponse_type\030\001 \002(\0162>.proto" +
+      "buf.ExperimentDataCollectionStopResponse" +
+      "Msg.ResponseType\"M\n\014ResponseType\022\013\n\007SUCC" +
+      "ESS\020\001\022\037\n\033NOT_IN_DATA_COLLECTION_MODE\020\002\022\017" +
+      "\n\013OTHER_ERROR\020\003\"@\n\032RenameExperimentReque" +
+      "stMsg\022\020\n\010old_name\030\001 \002(\t\022\020\n\010new_name\030\002 \002(" +
+      "\t\"\327\001\n\033RenameExperimentResponseMsg\022I\n\rres" +
+      "ponse_type\030\001 \002(\01622.protobuf.RenameExperi",
+      "mentResponseMsg.ResponseType\"m\n\014Response" +
+      "Type\022\013\n\007SUCCESS\020\001\022\025\n\021NO_ACTIVE_PROJECT\020\002" +
+      "\022\016\n\nNAME_TAKEN\020\003\022\030\n\024EXPERIMENT_NOT_FOUND" +
+      "\020\004\022\017\n\013OTHER_ERROR\020\005\"*\n\032RemoveExperimentR" +
+      "equestMsg\022\014\n\004name\030\001 \002(\t\"\307\001\n\033RemoveExperi" +
+      "mentResponseMsg\022I\n\rresponse_type\030\001 \002(\01622" +
+      ".protobuf.RemoveExperimentResponseMsg.Re" +
+      "sponseType\"]\n\014ResponseType\022\013\n\007SUCCESS\020\001\022" +
+      "\025\n\021NO_ACTIVE_PROJECT\020\002\022\030\n\024EXPERIMENT_NOT" +
+      "_FOUND\020\003\022\017\n\013OTHER_ERROR\020\004\"E\n!ExperimentP",
+      "laybackStartRequestMsg\022\014\n\004name\030\001 \002(\t\022\022\n\n" +
+      "sensor_ids\030\002 \003(\005\"\353\001\n\"ExperimentPlaybackS" +
+      "tartResponseMsg\022P\n\rresponse_type\030\001 \002(\01629" +
+      ".protobuf.ExperimentPlaybackStartRespons" +
+      "eMsg.ResponseType\"s\n\014ResponseType\022\013\n\007SUC" +
+      "CESS\020\001\022\025\n\021NO_ACTIVE_PROJECT\020\002\022\030\n\024EXPERIM" +
+      "ENT_NOT_FOUND\020\003\022\024\n\020NOT_IN_IDLE_MODE\020\004\022\017\n" +
+      "\013OTHER_ERROR\020\005\"\"\n ExperimentPlaybackStop" +
+      "RequestMsg\"\274\001\n!ExperimentPlaybackStopRes" +
+      "ponseMsg\022O\n\rresponse_type\030\001 \002(\01628.protob",
+      "uf.ExperimentPlaybackStopResponseMsg.Res" +
+      "ponseType\"F\n\014ResponseType\022\013\n\007SUCCESS\020\001\022\030" +
+      "\n\024NOT_IN_PLAYBACK_MODE\020\002\022\017\n\013OTHER_ERROR\020" +
+      "\003\"\"\n\021ExperimentListMsg\022\r\n\005names\030\001 \003(\t\"W\n" +
+      "\037SetExperimentMetadataRequestMsg\022\027\n\017expe" +
+      "riment_name\030\001 \002(\t\022\014\n\004tags\030\002 \003(\t\022\r\n\005notes" +
+      "\030\003 \001(\t\"\321\001\n SetExperimentMetadataResponse" +
+      "Msg\022N\n\rresponse_type\030\001 \002(\01627.protobuf.Se" +
+      "tExperimentMetadataResponseMsg.ResponseT" +
+      "ype\"]\n\014ResponseType\022\013\n\007SUCCESS\020\001\022\025\n\021NO_A",
+      "CTIVE_PROJECT\020\002\022\030\n\024EXPERIMENT_NOT_FOUND\020" +
+      "\003\022\017\n\013OTHER_ERROR\020\004\"\337\001\n\025ExperimentMetadat" +
+      "aMsg\022\027\n\017experiment_name\030\001 \002(\t\022@\n\010metadat" +
+      "a\030\002 \002(\0132..protobuf.ExperimentMetadataMsg" +
+      ".MetadataStruct\032k\n\016MetadataStruct\022\014\n\004tag" +
+      "s\030\001 \003(\t\022\r\n\005notes\030\002 \001(\t\022<\n\025sensor_configu" +
+      "rations\030\003 \003(\0132\035.protobuf.SensorConfigura" +
+      "tion\"!\n\010DebugMsg\022\025\n\rdebug_message\030\001 \002(\t\"" +
+      "\200\001\n\010ErrorMsg\0220\n\nerror_type\030\001 \002(\0162\034.proto" +
+      "buf.ErrorMsg.ErrorType\"B\n\tErrorType\022\025\n\021U",
+      "NKNOWN_SENSOR_ID\020\001\022\036\n\032UNKNOWN_GENERALMSG" +
+      "_SUBTYPE\020\002\"#\n\023ActiveExperimentMsg\022\014\n\004nam" +
+      "e\030\001 \001(\t"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -38387,134 +38379,128 @@ public final class Protocol {
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_protobuf_ActiveProjectMsg_descriptor,
               new java.lang.String[] { "Name", });
-          internal_static_protobuf_ActiveExperimentMsg_descriptor =
-            getDescriptor().getMessageTypes().get(22);
-          internal_static_protobuf_ActiveExperimentMsg_fieldAccessorTable = new
-            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-              internal_static_protobuf_ActiveExperimentMsg_descriptor,
-              new java.lang.String[] { "Name", });
           internal_static_protobuf_ProjectListMsg_descriptor =
-            getDescriptor().getMessageTypes().get(23);
+            getDescriptor().getMessageTypes().get(22);
           internal_static_protobuf_ProjectListMsg_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_protobuf_ProjectListMsg_descriptor,
               new java.lang.String[] { "Projects", });
           internal_static_protobuf_ProjectMetadataStruct_descriptor =
-            getDescriptor().getMessageTypes().get(24);
+            getDescriptor().getMessageTypes().get(23);
           internal_static_protobuf_ProjectMetadataStruct_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_protobuf_ProjectMetadataStruct_descriptor,
               new java.lang.String[] { "TestLeader", "Date", "Email", "MemberNames", "Tags", "Description", });
           internal_static_protobuf_SetProjectMetadataRequestMsg_descriptor =
-            getDescriptor().getMessageTypes().get(25);
+            getDescriptor().getMessageTypes().get(24);
           internal_static_protobuf_SetProjectMetadataRequestMsg_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_protobuf_SetProjectMetadataRequestMsg_descriptor,
               new java.lang.String[] { "Metadata", });
           internal_static_protobuf_SetProjectMetadataResponseMsg_descriptor =
-            getDescriptor().getMessageTypes().get(26);
+            getDescriptor().getMessageTypes().get(25);
           internal_static_protobuf_SetProjectMetadataResponseMsg_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_protobuf_SetProjectMetadataResponseMsg_descriptor,
               new java.lang.String[] { "ResponseType", });
           internal_static_protobuf_ProjectMetadataMsg_descriptor =
-            getDescriptor().getMessageTypes().get(27);
+            getDescriptor().getMessageTypes().get(26);
           internal_static_protobuf_ProjectMetadataMsg_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_protobuf_ProjectMetadataMsg_descriptor,
               new java.lang.String[] { "Metadata", });
           internal_static_protobuf_ExperimentDataCollectionStartRequestMsg_descriptor =
-            getDescriptor().getMessageTypes().get(28);
+            getDescriptor().getMessageTypes().get(27);
           internal_static_protobuf_ExperimentDataCollectionStartRequestMsg_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_protobuf_ExperimentDataCollectionStartRequestMsg_descriptor,
               new java.lang.String[] { "Name", });
           internal_static_protobuf_ExperimentDataCollectionStartResponseMsg_descriptor =
-            getDescriptor().getMessageTypes().get(29);
+            getDescriptor().getMessageTypes().get(28);
           internal_static_protobuf_ExperimentDataCollectionStartResponseMsg_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_protobuf_ExperimentDataCollectionStartResponseMsg_descriptor,
               new java.lang.String[] { "ResponseType", });
           internal_static_protobuf_ExperimentDataCollectionStopRequestMsg_descriptor =
-            getDescriptor().getMessageTypes().get(30);
+            getDescriptor().getMessageTypes().get(29);
           internal_static_protobuf_ExperimentDataCollectionStopRequestMsg_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_protobuf_ExperimentDataCollectionStopRequestMsg_descriptor,
               new java.lang.String[] { });
           internal_static_protobuf_ExperimentDataCollectionStopResponseMsg_descriptor =
-            getDescriptor().getMessageTypes().get(31);
+            getDescriptor().getMessageTypes().get(30);
           internal_static_protobuf_ExperimentDataCollectionStopResponseMsg_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_protobuf_ExperimentDataCollectionStopResponseMsg_descriptor,
               new java.lang.String[] { "ResponseType", });
           internal_static_protobuf_RenameExperimentRequestMsg_descriptor =
-            getDescriptor().getMessageTypes().get(32);
+            getDescriptor().getMessageTypes().get(31);
           internal_static_protobuf_RenameExperimentRequestMsg_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_protobuf_RenameExperimentRequestMsg_descriptor,
               new java.lang.String[] { "OldName", "NewName", });
           internal_static_protobuf_RenameExperimentResponseMsg_descriptor =
-            getDescriptor().getMessageTypes().get(33);
+            getDescriptor().getMessageTypes().get(32);
           internal_static_protobuf_RenameExperimentResponseMsg_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_protobuf_RenameExperimentResponseMsg_descriptor,
               new java.lang.String[] { "ResponseType", });
           internal_static_protobuf_RemoveExperimentRequestMsg_descriptor =
-            getDescriptor().getMessageTypes().get(34);
+            getDescriptor().getMessageTypes().get(33);
           internal_static_protobuf_RemoveExperimentRequestMsg_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_protobuf_RemoveExperimentRequestMsg_descriptor,
               new java.lang.String[] { "Name", });
           internal_static_protobuf_RemoveExperimentResponseMsg_descriptor =
-            getDescriptor().getMessageTypes().get(35);
+            getDescriptor().getMessageTypes().get(34);
           internal_static_protobuf_RemoveExperimentResponseMsg_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_protobuf_RemoveExperimentResponseMsg_descriptor,
               new java.lang.String[] { "ResponseType", });
           internal_static_protobuf_ExperimentPlaybackStartRequestMsg_descriptor =
-            getDescriptor().getMessageTypes().get(36);
+            getDescriptor().getMessageTypes().get(35);
           internal_static_protobuf_ExperimentPlaybackStartRequestMsg_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_protobuf_ExperimentPlaybackStartRequestMsg_descriptor,
               new java.lang.String[] { "Name", "SensorIds", });
           internal_static_protobuf_ExperimentPlaybackStartResponseMsg_descriptor =
-            getDescriptor().getMessageTypes().get(37);
+            getDescriptor().getMessageTypes().get(36);
           internal_static_protobuf_ExperimentPlaybackStartResponseMsg_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_protobuf_ExperimentPlaybackStartResponseMsg_descriptor,
               new java.lang.String[] { "ResponseType", });
           internal_static_protobuf_ExperimentPlaybackStopRequestMsg_descriptor =
-            getDescriptor().getMessageTypes().get(38);
+            getDescriptor().getMessageTypes().get(37);
           internal_static_protobuf_ExperimentPlaybackStopRequestMsg_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_protobuf_ExperimentPlaybackStopRequestMsg_descriptor,
               new java.lang.String[] { });
           internal_static_protobuf_ExperimentPlaybackStopResponseMsg_descriptor =
-            getDescriptor().getMessageTypes().get(39);
+            getDescriptor().getMessageTypes().get(38);
           internal_static_protobuf_ExperimentPlaybackStopResponseMsg_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_protobuf_ExperimentPlaybackStopResponseMsg_descriptor,
               new java.lang.String[] { "ResponseType", });
           internal_static_protobuf_ExperimentListMsg_descriptor =
-            getDescriptor().getMessageTypes().get(40);
+            getDescriptor().getMessageTypes().get(39);
           internal_static_protobuf_ExperimentListMsg_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_protobuf_ExperimentListMsg_descriptor,
               new java.lang.String[] { "Names", });
           internal_static_protobuf_SetExperimentMetadataRequestMsg_descriptor =
-            getDescriptor().getMessageTypes().get(41);
+            getDescriptor().getMessageTypes().get(40);
           internal_static_protobuf_SetExperimentMetadataRequestMsg_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_protobuf_SetExperimentMetadataRequestMsg_descriptor,
               new java.lang.String[] { "ExperimentName", "Tags", "Notes", });
           internal_static_protobuf_SetExperimentMetadataResponseMsg_descriptor =
-            getDescriptor().getMessageTypes().get(42);
+            getDescriptor().getMessageTypes().get(41);
           internal_static_protobuf_SetExperimentMetadataResponseMsg_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_protobuf_SetExperimentMetadataResponseMsg_descriptor,
               new java.lang.String[] { "ResponseType", });
           internal_static_protobuf_ExperimentMetadataMsg_descriptor =
-            getDescriptor().getMessageTypes().get(43);
+            getDescriptor().getMessageTypes().get(42);
           internal_static_protobuf_ExperimentMetadataMsg_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_protobuf_ExperimentMetadataMsg_descriptor,
@@ -38526,17 +38512,23 @@ public final class Protocol {
               internal_static_protobuf_ExperimentMetadataMsg_MetadataStruct_descriptor,
               new java.lang.String[] { "Tags", "Notes", "SensorConfigurations", });
           internal_static_protobuf_DebugMsg_descriptor =
-            getDescriptor().getMessageTypes().get(44);
+            getDescriptor().getMessageTypes().get(43);
           internal_static_protobuf_DebugMsg_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_protobuf_DebugMsg_descriptor,
               new java.lang.String[] { "DebugMessage", });
           internal_static_protobuf_ErrorMsg_descriptor =
-            getDescriptor().getMessageTypes().get(45);
+            getDescriptor().getMessageTypes().get(44);
           internal_static_protobuf_ErrorMsg_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_protobuf_ErrorMsg_descriptor,
               new java.lang.String[] { "ErrorType", });
+          internal_static_protobuf_ActiveExperimentMsg_descriptor =
+            getDescriptor().getMessageTypes().get(45);
+          internal_static_protobuf_ActiveExperimentMsg_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_protobuf_ActiveExperimentMsg_descriptor,
+              new java.lang.String[] { "Name", });
           return null;
         }
       };

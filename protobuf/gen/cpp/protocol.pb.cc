@@ -102,9 +102,6 @@ const ::google::protobuf::EnumDescriptor* SetActiveProjectResponseMsg_ResponseTy
 const ::google::protobuf::Descriptor* ActiveProjectMsg_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   ActiveProjectMsg_reflection_ = NULL;
-const ::google::protobuf::Descriptor* ActiveExperimentMsg_descriptor_ = NULL;
-const ::google::protobuf::internal::GeneratedMessageReflection*
-  ActiveExperimentMsg_reflection_ = NULL;
 const ::google::protobuf::Descriptor* ProjectListMsg_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   ProjectListMsg_reflection_ = NULL;
@@ -186,6 +183,9 @@ const ::google::protobuf::Descriptor* ErrorMsg_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   ErrorMsg_reflection_ = NULL;
 const ::google::protobuf::EnumDescriptor* ErrorMsg_ErrorType_descriptor_ = NULL;
+const ::google::protobuf::Descriptor* ActiveExperimentMsg_descriptor_ = NULL;
+const ::google::protobuf::internal::GeneratedMessageReflection*
+  ActiveExperimentMsg_reflection_ = NULL;
 
 }  // namespace
 
@@ -620,22 +620,7 @@ void protobuf_AssignDesc_protocol_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(ActiveProjectMsg));
-  ActiveExperimentMsg_descriptor_ = file->message_type(22);
-  static const int ActiveExperimentMsg_offsets_[1] = {
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ActiveExperimentMsg, name_),
-  };
-  ActiveExperimentMsg_reflection_ =
-    new ::google::protobuf::internal::GeneratedMessageReflection(
-      ActiveExperimentMsg_descriptor_,
-      ActiveExperimentMsg::default_instance_,
-      ActiveExperimentMsg_offsets_,
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ActiveExperimentMsg, _has_bits_[0]),
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ActiveExperimentMsg, _unknown_fields_),
-      -1,
-      ::google::protobuf::DescriptorPool::generated_pool(),
-      ::google::protobuf::MessageFactory::generated_factory(),
-      sizeof(ActiveExperimentMsg));
-  ProjectListMsg_descriptor_ = file->message_type(23);
+  ProjectListMsg_descriptor_ = file->message_type(22);
   static const int ProjectListMsg_offsets_[1] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ProjectListMsg, projects_),
   };
@@ -650,7 +635,7 @@ void protobuf_AssignDesc_protocol_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(ProjectListMsg));
-  ProjectMetadataStruct_descriptor_ = file->message_type(24);
+  ProjectMetadataStruct_descriptor_ = file->message_type(23);
   static const int ProjectMetadataStruct_offsets_[6] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ProjectMetadataStruct, test_leader_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ProjectMetadataStruct, date_),
@@ -670,7 +655,7 @@ void protobuf_AssignDesc_protocol_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(ProjectMetadataStruct));
-  SetProjectMetadataRequestMsg_descriptor_ = file->message_type(25);
+  SetProjectMetadataRequestMsg_descriptor_ = file->message_type(24);
   static const int SetProjectMetadataRequestMsg_offsets_[1] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SetProjectMetadataRequestMsg, metadata_),
   };
@@ -685,7 +670,7 @@ void protobuf_AssignDesc_protocol_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(SetProjectMetadataRequestMsg));
-  SetProjectMetadataResponseMsg_descriptor_ = file->message_type(26);
+  SetProjectMetadataResponseMsg_descriptor_ = file->message_type(25);
   static const int SetProjectMetadataResponseMsg_offsets_[1] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SetProjectMetadataResponseMsg, response_type_),
   };
@@ -701,7 +686,7 @@ void protobuf_AssignDesc_protocol_2eproto() {
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(SetProjectMetadataResponseMsg));
   SetProjectMetadataResponseMsg_ResponseType_descriptor_ = SetProjectMetadataResponseMsg_descriptor_->enum_type(0);
-  ProjectMetadataMsg_descriptor_ = file->message_type(27);
+  ProjectMetadataMsg_descriptor_ = file->message_type(26);
   static const int ProjectMetadataMsg_offsets_[1] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ProjectMetadataMsg, metadata_),
   };
@@ -716,7 +701,7 @@ void protobuf_AssignDesc_protocol_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(ProjectMetadataMsg));
-  ExperimentDataCollectionStartRequestMsg_descriptor_ = file->message_type(28);
+  ExperimentDataCollectionStartRequestMsg_descriptor_ = file->message_type(27);
   static const int ExperimentDataCollectionStartRequestMsg_offsets_[1] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ExperimentDataCollectionStartRequestMsg, name_),
   };
@@ -731,7 +716,7 @@ void protobuf_AssignDesc_protocol_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(ExperimentDataCollectionStartRequestMsg));
-  ExperimentDataCollectionStartResponseMsg_descriptor_ = file->message_type(29);
+  ExperimentDataCollectionStartResponseMsg_descriptor_ = file->message_type(28);
   static const int ExperimentDataCollectionStartResponseMsg_offsets_[1] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ExperimentDataCollectionStartResponseMsg, response_type_),
   };
@@ -747,7 +732,7 @@ void protobuf_AssignDesc_protocol_2eproto() {
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(ExperimentDataCollectionStartResponseMsg));
   ExperimentDataCollectionStartResponseMsg_ResponseType_descriptor_ = ExperimentDataCollectionStartResponseMsg_descriptor_->enum_type(0);
-  ExperimentDataCollectionStopRequestMsg_descriptor_ = file->message_type(30);
+  ExperimentDataCollectionStopRequestMsg_descriptor_ = file->message_type(29);
   static const int ExperimentDataCollectionStopRequestMsg_offsets_[1] = {
   };
   ExperimentDataCollectionStopRequestMsg_reflection_ =
@@ -761,7 +746,7 @@ void protobuf_AssignDesc_protocol_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(ExperimentDataCollectionStopRequestMsg));
-  ExperimentDataCollectionStopResponseMsg_descriptor_ = file->message_type(31);
+  ExperimentDataCollectionStopResponseMsg_descriptor_ = file->message_type(30);
   static const int ExperimentDataCollectionStopResponseMsg_offsets_[1] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ExperimentDataCollectionStopResponseMsg, response_type_),
   };
@@ -777,7 +762,7 @@ void protobuf_AssignDesc_protocol_2eproto() {
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(ExperimentDataCollectionStopResponseMsg));
   ExperimentDataCollectionStopResponseMsg_ResponseType_descriptor_ = ExperimentDataCollectionStopResponseMsg_descriptor_->enum_type(0);
-  RenameExperimentRequestMsg_descriptor_ = file->message_type(32);
+  RenameExperimentRequestMsg_descriptor_ = file->message_type(31);
   static const int RenameExperimentRequestMsg_offsets_[2] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(RenameExperimentRequestMsg, old_name_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(RenameExperimentRequestMsg, new_name_),
@@ -793,7 +778,7 @@ void protobuf_AssignDesc_protocol_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(RenameExperimentRequestMsg));
-  RenameExperimentResponseMsg_descriptor_ = file->message_type(33);
+  RenameExperimentResponseMsg_descriptor_ = file->message_type(32);
   static const int RenameExperimentResponseMsg_offsets_[1] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(RenameExperimentResponseMsg, response_type_),
   };
@@ -809,7 +794,7 @@ void protobuf_AssignDesc_protocol_2eproto() {
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(RenameExperimentResponseMsg));
   RenameExperimentResponseMsg_ResponseType_descriptor_ = RenameExperimentResponseMsg_descriptor_->enum_type(0);
-  RemoveExperimentRequestMsg_descriptor_ = file->message_type(34);
+  RemoveExperimentRequestMsg_descriptor_ = file->message_type(33);
   static const int RemoveExperimentRequestMsg_offsets_[1] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(RemoveExperimentRequestMsg, name_),
   };
@@ -824,7 +809,7 @@ void protobuf_AssignDesc_protocol_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(RemoveExperimentRequestMsg));
-  RemoveExperimentResponseMsg_descriptor_ = file->message_type(35);
+  RemoveExperimentResponseMsg_descriptor_ = file->message_type(34);
   static const int RemoveExperimentResponseMsg_offsets_[1] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(RemoveExperimentResponseMsg, response_type_),
   };
@@ -840,7 +825,7 @@ void protobuf_AssignDesc_protocol_2eproto() {
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(RemoveExperimentResponseMsg));
   RemoveExperimentResponseMsg_ResponseType_descriptor_ = RemoveExperimentResponseMsg_descriptor_->enum_type(0);
-  ExperimentPlaybackStartRequestMsg_descriptor_ = file->message_type(36);
+  ExperimentPlaybackStartRequestMsg_descriptor_ = file->message_type(35);
   static const int ExperimentPlaybackStartRequestMsg_offsets_[2] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ExperimentPlaybackStartRequestMsg, name_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ExperimentPlaybackStartRequestMsg, sensor_ids_),
@@ -856,7 +841,7 @@ void protobuf_AssignDesc_protocol_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(ExperimentPlaybackStartRequestMsg));
-  ExperimentPlaybackStartResponseMsg_descriptor_ = file->message_type(37);
+  ExperimentPlaybackStartResponseMsg_descriptor_ = file->message_type(36);
   static const int ExperimentPlaybackStartResponseMsg_offsets_[1] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ExperimentPlaybackStartResponseMsg, response_type_),
   };
@@ -872,7 +857,7 @@ void protobuf_AssignDesc_protocol_2eproto() {
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(ExperimentPlaybackStartResponseMsg));
   ExperimentPlaybackStartResponseMsg_ResponseType_descriptor_ = ExperimentPlaybackStartResponseMsg_descriptor_->enum_type(0);
-  ExperimentPlaybackStopRequestMsg_descriptor_ = file->message_type(38);
+  ExperimentPlaybackStopRequestMsg_descriptor_ = file->message_type(37);
   static const int ExperimentPlaybackStopRequestMsg_offsets_[1] = {
   };
   ExperimentPlaybackStopRequestMsg_reflection_ =
@@ -886,7 +871,7 @@ void protobuf_AssignDesc_protocol_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(ExperimentPlaybackStopRequestMsg));
-  ExperimentPlaybackStopResponseMsg_descriptor_ = file->message_type(39);
+  ExperimentPlaybackStopResponseMsg_descriptor_ = file->message_type(38);
   static const int ExperimentPlaybackStopResponseMsg_offsets_[1] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ExperimentPlaybackStopResponseMsg, response_type_),
   };
@@ -902,7 +887,7 @@ void protobuf_AssignDesc_protocol_2eproto() {
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(ExperimentPlaybackStopResponseMsg));
   ExperimentPlaybackStopResponseMsg_ResponseType_descriptor_ = ExperimentPlaybackStopResponseMsg_descriptor_->enum_type(0);
-  ExperimentListMsg_descriptor_ = file->message_type(40);
+  ExperimentListMsg_descriptor_ = file->message_type(39);
   static const int ExperimentListMsg_offsets_[1] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ExperimentListMsg, names_),
   };
@@ -917,7 +902,7 @@ void protobuf_AssignDesc_protocol_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(ExperimentListMsg));
-  SetExperimentMetadataRequestMsg_descriptor_ = file->message_type(41);
+  SetExperimentMetadataRequestMsg_descriptor_ = file->message_type(40);
   static const int SetExperimentMetadataRequestMsg_offsets_[3] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SetExperimentMetadataRequestMsg, experiment_name_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SetExperimentMetadataRequestMsg, tags_),
@@ -934,7 +919,7 @@ void protobuf_AssignDesc_protocol_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(SetExperimentMetadataRequestMsg));
-  SetExperimentMetadataResponseMsg_descriptor_ = file->message_type(42);
+  SetExperimentMetadataResponseMsg_descriptor_ = file->message_type(41);
   static const int SetExperimentMetadataResponseMsg_offsets_[1] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SetExperimentMetadataResponseMsg, response_type_),
   };
@@ -950,7 +935,7 @@ void protobuf_AssignDesc_protocol_2eproto() {
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(SetExperimentMetadataResponseMsg));
   SetExperimentMetadataResponseMsg_ResponseType_descriptor_ = SetExperimentMetadataResponseMsg_descriptor_->enum_type(0);
-  ExperimentMetadataMsg_descriptor_ = file->message_type(43);
+  ExperimentMetadataMsg_descriptor_ = file->message_type(42);
   static const int ExperimentMetadataMsg_offsets_[2] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ExperimentMetadataMsg, experiment_name_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ExperimentMetadataMsg, metadata_),
@@ -983,7 +968,7 @@ void protobuf_AssignDesc_protocol_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(ExperimentMetadataMsg_MetadataStruct));
-  DebugMsg_descriptor_ = file->message_type(44);
+  DebugMsg_descriptor_ = file->message_type(43);
   static const int DebugMsg_offsets_[1] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(DebugMsg, debug_message_),
   };
@@ -998,7 +983,7 @@ void protobuf_AssignDesc_protocol_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(DebugMsg));
-  ErrorMsg_descriptor_ = file->message_type(45);
+  ErrorMsg_descriptor_ = file->message_type(44);
   static const int ErrorMsg_offsets_[1] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ErrorMsg, error_type_),
   };
@@ -1014,6 +999,21 @@ void protobuf_AssignDesc_protocol_2eproto() {
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(ErrorMsg));
   ErrorMsg_ErrorType_descriptor_ = ErrorMsg_descriptor_->enum_type(0);
+  ActiveExperimentMsg_descriptor_ = file->message_type(45);
+  static const int ActiveExperimentMsg_offsets_[1] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ActiveExperimentMsg, name_),
+  };
+  ActiveExperimentMsg_reflection_ =
+    new ::google::protobuf::internal::GeneratedMessageReflection(
+      ActiveExperimentMsg_descriptor_,
+      ActiveExperimentMsg::default_instance_,
+      ActiveExperimentMsg_offsets_,
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ActiveExperimentMsg, _has_bits_[0]),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ActiveExperimentMsg, _unknown_fields_),
+      -1,
+      ::google::protobuf::DescriptorPool::generated_pool(),
+      ::google::protobuf::MessageFactory::generated_factory(),
+      sizeof(ActiveExperimentMsg));
 }
 
 namespace {
@@ -1075,8 +1075,6 @@ void protobuf_RegisterTypes(const ::std::string&) {
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
     ActiveProjectMsg_descriptor_, &ActiveProjectMsg::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
-    ActiveExperimentMsg_descriptor_, &ActiveExperimentMsg::default_instance());
-  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
     ProjectListMsg_descriptor_, &ProjectListMsg::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
     ProjectMetadataStruct_descriptor_, &ProjectMetadataStruct::default_instance());
@@ -1124,6 +1122,8 @@ void protobuf_RegisterTypes(const ::std::string&) {
     DebugMsg_descriptor_, &DebugMsg::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
     ErrorMsg_descriptor_, &ErrorMsg::default_instance());
+  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
+    ActiveExperimentMsg_descriptor_, &ActiveExperimentMsg::default_instance());
 }
 
 }  // namespace
@@ -1177,8 +1177,6 @@ void protobuf_ShutdownFile_protocol_2eproto() {
   delete SetActiveProjectResponseMsg_reflection_;
   delete ActiveProjectMsg::default_instance_;
   delete ActiveProjectMsg_reflection_;
-  delete ActiveExperimentMsg::default_instance_;
-  delete ActiveExperimentMsg_reflection_;
   delete ProjectListMsg::default_instance_;
   delete ProjectListMsg_reflection_;
   delete ProjectMetadataStruct::default_instance_;
@@ -1227,6 +1225,8 @@ void protobuf_ShutdownFile_protocol_2eproto() {
   delete DebugMsg_reflection_;
   delete ErrorMsg::default_instance_;
   delete ErrorMsg_reflection_;
+  delete ActiveExperimentMsg::default_instance_;
+  delete ActiveExperimentMsg_reflection_;
 }
 
 void protobuf_AddDesc_protocol_2eproto() {
@@ -1405,80 +1405,80 @@ void protobuf_AddDesc_protocol_2eproto() {
     "seMsg.ResponseType\"Y\n\014ResponseType\022\013\n\007SU"
     "CCESS\020\001\022\025\n\021PROJECT_NOT_FOUND\020\002\022\024\n\020NOT_IN"
     "_IDLE_MODE\020\003\022\017\n\013OTHER_ERROR\020\004\" \n\020ActiveP"
-    "rojectMsg\022\014\n\004name\030\001 \001(\t\"#\n\023ActiveExperim"
-    "entMsg\022\014\n\004name\030\001 \001(\t\"\"\n\016ProjectListMsg\022\020"
-    "\n\010projects\030\001 \003(\t\"\202\001\n\025ProjectMetadataStru"
-    "ct\022\023\n\013test_leader\030\001 \001(\t\022\014\n\004date\030\002 \001(\003\022\r\n"
-    "\005email\030\003 \001(\t\022\024\n\014member_names\030\004 \003(\t\022\014\n\004ta"
-    "gs\030\005 \003(\t\022\023\n\013description\030\006 \001(\t\"Q\n\034SetProj"
-    "ectMetadataRequestMsg\0221\n\010metadata\030\001 \002(\0132"
-    "\037.protobuf.ProjectMetadataStruct\"\261\001\n\035Set"
-    "ProjectMetadataResponseMsg\022K\n\rresponse_t"
-    "ype\030\001 \002(\01624.protobuf.SetProjectMetadataR"
-    "esponseMsg.ResponseType\"C\n\014ResponseType\022"
-    "\013\n\007SUCCESS\020\001\022\025\n\021NO_ACTIVE_PROJECT\020\002\022\017\n\013O"
-    "THER_ERROR\020\003\"G\n\022ProjectMetadataMsg\0221\n\010me"
-    "tadata\030\001 \002(\0132\037.protobuf.ProjectMetadataS"
-    "truct\"7\n\'ExperimentDataCollectionStartRe"
-    "questMsg\022\014\n\004name\030\001 \002(\t\"\377\001\n(ExperimentDat"
-    "aCollectionStartResponseMsg\022V\n\rresponse_"
-    "type\030\001 \002(\0162\?.protobuf.ExperimentDataColl"
-    "ectionStartResponseMsg.ResponseType\"{\n\014R"
-    "esponseType\022\013\n\007SUCCESS\020\001\022\025\n\021NO_ACTIVE_PR"
-    "OJECT\020\002\022\024\n\020NOT_IN_IDLE_MODE\020\003\022\016\n\nNAME_TA"
-    "KEN\020\004\022\020\n\014ILLEGAL_NAME\020\005\022\017\n\013OTHER_ERROR\020\006"
-    "\"(\n&ExperimentDataCollectionStopRequestM"
-    "sg\"\317\001\n\'ExperimentDataCollectionStopRespo"
-    "nseMsg\022U\n\rresponse_type\030\001 \002(\0162>.protobuf"
-    ".ExperimentDataCollectionStopResponseMsg"
-    ".ResponseType\"M\n\014ResponseType\022\013\n\007SUCCESS"
-    "\020\001\022\037\n\033NOT_IN_DATA_COLLECTION_MODE\020\002\022\017\n\013O"
-    "THER_ERROR\020\003\"@\n\032RenameExperimentRequestM"
-    "sg\022\020\n\010old_name\030\001 \002(\t\022\020\n\010new_name\030\002 \002(\t\"\327"
-    "\001\n\033RenameExperimentResponseMsg\022I\n\rrespon"
-    "se_type\030\001 \002(\01622.protobuf.RenameExperimen"
-    "tResponseMsg.ResponseType\"m\n\014ResponseTyp"
-    "e\022\013\n\007SUCCESS\020\001\022\025\n\021NO_ACTIVE_PROJECT\020\002\022\016\n"
-    "\nNAME_TAKEN\020\003\022\030\n\024EXPERIMENT_NOT_FOUND\020\004\022"
-    "\017\n\013OTHER_ERROR\020\005\"*\n\032RemoveExperimentRequ"
-    "estMsg\022\014\n\004name\030\001 \002(\t\"\307\001\n\033RemoveExperimen"
-    "tResponseMsg\022I\n\rresponse_type\030\001 \002(\01622.pr"
-    "otobuf.RemoveExperimentResponseMsg.Respo"
-    "nseType\"]\n\014ResponseType\022\013\n\007SUCCESS\020\001\022\025\n\021"
-    "NO_ACTIVE_PROJECT\020\002\022\030\n\024EXPERIMENT_NOT_FO"
-    "UND\020\003\022\017\n\013OTHER_ERROR\020\004\"E\n!ExperimentPlay"
-    "backStartRequestMsg\022\014\n\004name\030\001 \002(\t\022\022\n\nsen"
-    "sor_ids\030\002 \003(\005\"\353\001\n\"ExperimentPlaybackStar"
-    "tResponseMsg\022P\n\rresponse_type\030\001 \002(\01629.pr"
-    "otobuf.ExperimentPlaybackStartResponseMs"
-    "g.ResponseType\"s\n\014ResponseType\022\013\n\007SUCCES"
-    "S\020\001\022\025\n\021NO_ACTIVE_PROJECT\020\002\022\030\n\024EXPERIMENT"
-    "_NOT_FOUND\020\003\022\024\n\020NOT_IN_IDLE_MODE\020\004\022\017\n\013OT"
-    "HER_ERROR\020\005\"\"\n ExperimentPlaybackStopReq"
-    "uestMsg\"\274\001\n!ExperimentPlaybackStopRespon"
-    "seMsg\022O\n\rresponse_type\030\001 \002(\01628.protobuf."
-    "ExperimentPlaybackStopResponseMsg.Respon"
-    "seType\"F\n\014ResponseType\022\013\n\007SUCCESS\020\001\022\030\n\024N"
-    "OT_IN_PLAYBACK_MODE\020\002\022\017\n\013OTHER_ERROR\020\003\"\""
-    "\n\021ExperimentListMsg\022\r\n\005names\030\001 \003(\t\"W\n\037Se"
-    "tExperimentMetadataRequestMsg\022\027\n\017experim"
-    "ent_name\030\001 \002(\t\022\014\n\004tags\030\002 \003(\t\022\r\n\005notes\030\003 "
-    "\001(\t\"\321\001\n SetExperimentMetadataResponseMsg"
-    "\022N\n\rresponse_type\030\001 \002(\01627.protobuf.SetEx"
-    "perimentMetadataResponseMsg.ResponseType"
-    "\"]\n\014ResponseType\022\013\n\007SUCCESS\020\001\022\025\n\021NO_ACTI"
-    "VE_PROJECT\020\002\022\030\n\024EXPERIMENT_NOT_FOUND\020\003\022\017"
-    "\n\013OTHER_ERROR\020\004\"\337\001\n\025ExperimentMetadataMs"
-    "g\022\027\n\017experiment_name\030\001 \002(\t\022@\n\010metadata\030\002"
-    " \002(\0132..protobuf.ExperimentMetadataMsg.Me"
-    "tadataStruct\032k\n\016MetadataStruct\022\014\n\004tags\030\001"
-    " \003(\t\022\r\n\005notes\030\002 \001(\t\022<\n\025sensor_configurat"
-    "ions\030\003 \003(\0132\035.protobuf.SensorConfiguratio"
-    "n\"!\n\010DebugMsg\022\025\n\rdebug_message\030\001 \002(\t\"\200\001\n"
-    "\010ErrorMsg\0220\n\nerror_type\030\001 \002(\0162\034.protobuf"
-    ".ErrorMsg.ErrorType\"B\n\tErrorType\022\025\n\021UNKN"
-    "OWN_SENSOR_ID\020\001\022\036\n\032UNKNOWN_GENERALMSG_SU"
-    "BTYPE\020\002", 9687);
+    "rojectMsg\022\014\n\004name\030\001 \001(\t\"\"\n\016ProjectListMs"
+    "g\022\020\n\010projects\030\001 \003(\t\"\202\001\n\025ProjectMetadataS"
+    "truct\022\023\n\013test_leader\030\001 \001(\t\022\014\n\004date\030\002 \001(\003"
+    "\022\r\n\005email\030\003 \001(\t\022\024\n\014member_names\030\004 \003(\t\022\014\n"
+    "\004tags\030\005 \003(\t\022\023\n\013description\030\006 \001(\t\"Q\n\034SetP"
+    "rojectMetadataRequestMsg\0221\n\010metadata\030\001 \002"
+    "(\0132\037.protobuf.ProjectMetadataStruct\"\261\001\n\035"
+    "SetProjectMetadataResponseMsg\022K\n\rrespons"
+    "e_type\030\001 \002(\01624.protobuf.SetProjectMetada"
+    "taResponseMsg.ResponseType\"C\n\014ResponseTy"
+    "pe\022\013\n\007SUCCESS\020\001\022\025\n\021NO_ACTIVE_PROJECT\020\002\022\017"
+    "\n\013OTHER_ERROR\020\003\"G\n\022ProjectMetadataMsg\0221\n"
+    "\010metadata\030\001 \002(\0132\037.protobuf.ProjectMetada"
+    "taStruct\"7\n\'ExperimentDataCollectionStar"
+    "tRequestMsg\022\014\n\004name\030\001 \002(\t\"\377\001\n(Experiment"
+    "DataCollectionStartResponseMsg\022V\n\rrespon"
+    "se_type\030\001 \002(\0162\?.protobuf.ExperimentDataC"
+    "ollectionStartResponseMsg.ResponseType\"{"
+    "\n\014ResponseType\022\013\n\007SUCCESS\020\001\022\025\n\021NO_ACTIVE"
+    "_PROJECT\020\002\022\024\n\020NOT_IN_IDLE_MODE\020\003\022\016\n\nNAME"
+    "_TAKEN\020\004\022\020\n\014ILLEGAL_NAME\020\005\022\017\n\013OTHER_ERRO"
+    "R\020\006\"(\n&ExperimentDataCollectionStopReque"
+    "stMsg\"\317\001\n\'ExperimentDataCollectionStopRe"
+    "sponseMsg\022U\n\rresponse_type\030\001 \002(\0162>.proto"
+    "buf.ExperimentDataCollectionStopResponse"
+    "Msg.ResponseType\"M\n\014ResponseType\022\013\n\007SUCC"
+    "ESS\020\001\022\037\n\033NOT_IN_DATA_COLLECTION_MODE\020\002\022\017"
+    "\n\013OTHER_ERROR\020\003\"@\n\032RenameExperimentReque"
+    "stMsg\022\020\n\010old_name\030\001 \002(\t\022\020\n\010new_name\030\002 \002("
+    "\t\"\327\001\n\033RenameExperimentResponseMsg\022I\n\rres"
+    "ponse_type\030\001 \002(\01622.protobuf.RenameExperi"
+    "mentResponseMsg.ResponseType\"m\n\014Response"
+    "Type\022\013\n\007SUCCESS\020\001\022\025\n\021NO_ACTIVE_PROJECT\020\002"
+    "\022\016\n\nNAME_TAKEN\020\003\022\030\n\024EXPERIMENT_NOT_FOUND"
+    "\020\004\022\017\n\013OTHER_ERROR\020\005\"*\n\032RemoveExperimentR"
+    "equestMsg\022\014\n\004name\030\001 \002(\t\"\307\001\n\033RemoveExperi"
+    "mentResponseMsg\022I\n\rresponse_type\030\001 \002(\01622"
+    ".protobuf.RemoveExperimentResponseMsg.Re"
+    "sponseType\"]\n\014ResponseType\022\013\n\007SUCCESS\020\001\022"
+    "\025\n\021NO_ACTIVE_PROJECT\020\002\022\030\n\024EXPERIMENT_NOT"
+    "_FOUND\020\003\022\017\n\013OTHER_ERROR\020\004\"E\n!ExperimentP"
+    "laybackStartRequestMsg\022\014\n\004name\030\001 \002(\t\022\022\n\n"
+    "sensor_ids\030\002 \003(\005\"\353\001\n\"ExperimentPlaybackS"
+    "tartResponseMsg\022P\n\rresponse_type\030\001 \002(\01629"
+    ".protobuf.ExperimentPlaybackStartRespons"
+    "eMsg.ResponseType\"s\n\014ResponseType\022\013\n\007SUC"
+    "CESS\020\001\022\025\n\021NO_ACTIVE_PROJECT\020\002\022\030\n\024EXPERIM"
+    "ENT_NOT_FOUND\020\003\022\024\n\020NOT_IN_IDLE_MODE\020\004\022\017\n"
+    "\013OTHER_ERROR\020\005\"\"\n ExperimentPlaybackStop"
+    "RequestMsg\"\274\001\n!ExperimentPlaybackStopRes"
+    "ponseMsg\022O\n\rresponse_type\030\001 \002(\01628.protob"
+    "uf.ExperimentPlaybackStopResponseMsg.Res"
+    "ponseType\"F\n\014ResponseType\022\013\n\007SUCCESS\020\001\022\030"
+    "\n\024NOT_IN_PLAYBACK_MODE\020\002\022\017\n\013OTHER_ERROR\020"
+    "\003\"\"\n\021ExperimentListMsg\022\r\n\005names\030\001 \003(\t\"W\n"
+    "\037SetExperimentMetadataRequestMsg\022\027\n\017expe"
+    "riment_name\030\001 \002(\t\022\014\n\004tags\030\002 \003(\t\022\r\n\005notes"
+    "\030\003 \001(\t\"\321\001\n SetExperimentMetadataResponse"
+    "Msg\022N\n\rresponse_type\030\001 \002(\01627.protobuf.Se"
+    "tExperimentMetadataResponseMsg.ResponseT"
+    "ype\"]\n\014ResponseType\022\013\n\007SUCCESS\020\001\022\025\n\021NO_A"
+    "CTIVE_PROJECT\020\002\022\030\n\024EXPERIMENT_NOT_FOUND\020"
+    "\003\022\017\n\013OTHER_ERROR\020\004\"\337\001\n\025ExperimentMetadat"
+    "aMsg\022\027\n\017experiment_name\030\001 \002(\t\022@\n\010metadat"
+    "a\030\002 \002(\0132..protobuf.ExperimentMetadataMsg"
+    ".MetadataStruct\032k\n\016MetadataStruct\022\014\n\004tag"
+    "s\030\001 \003(\t\022\r\n\005notes\030\002 \001(\t\022<\n\025sensor_configu"
+    "rations\030\003 \003(\0132\035.protobuf.SensorConfigura"
+    "tion\"!\n\010DebugMsg\022\025\n\rdebug_message\030\001 \002(\t\""
+    "\200\001\n\010ErrorMsg\0220\n\nerror_type\030\001 \002(\0162\034.proto"
+    "buf.ErrorMsg.ErrorType\"B\n\tErrorType\022\025\n\021U"
+    "NKNOWN_SENSOR_ID\020\001\022\036\n\032UNKNOWN_GENERALMSG"
+    "_SUBTYPE\020\002\"#\n\023ActiveExperimentMsg\022\014\n\004nam"
+    "e\030\001 \001(\t", 9687);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "protocol.proto", &protobuf_RegisterTypes);
   GeneralMsg::default_instance_ = new GeneralMsg();
@@ -1505,7 +1505,6 @@ void protobuf_AddDesc_protocol_2eproto() {
   SetActiveProjectRequestMsg::default_instance_ = new SetActiveProjectRequestMsg();
   SetActiveProjectResponseMsg::default_instance_ = new SetActiveProjectResponseMsg();
   ActiveProjectMsg::default_instance_ = new ActiveProjectMsg();
-  ActiveExperimentMsg::default_instance_ = new ActiveExperimentMsg();
   ProjectListMsg::default_instance_ = new ProjectListMsg();
   ProjectMetadataStruct::default_instance_ = new ProjectMetadataStruct();
   SetProjectMetadataRequestMsg::default_instance_ = new SetProjectMetadataRequestMsg();
@@ -1530,6 +1529,7 @@ void protobuf_AddDesc_protocol_2eproto() {
   ExperimentMetadataMsg_MetadataStruct::default_instance_ = new ExperimentMetadataMsg_MetadataStruct();
   DebugMsg::default_instance_ = new DebugMsg();
   ErrorMsg::default_instance_ = new ErrorMsg();
+  ActiveExperimentMsg::default_instance_ = new ActiveExperimentMsg();
   GeneralMsg::default_instance_->InitAsDefaultInstance();
   DataMsg::default_instance_->InitAsDefaultInstance();
   DynamicEventStruct::default_instance_->InitAsDefaultInstance();
@@ -1554,7 +1554,6 @@ void protobuf_AddDesc_protocol_2eproto() {
   SetActiveProjectRequestMsg::default_instance_->InitAsDefaultInstance();
   SetActiveProjectResponseMsg::default_instance_->InitAsDefaultInstance();
   ActiveProjectMsg::default_instance_->InitAsDefaultInstance();
-  ActiveExperimentMsg::default_instance_->InitAsDefaultInstance();
   ProjectListMsg::default_instance_->InitAsDefaultInstance();
   ProjectMetadataStruct::default_instance_->InitAsDefaultInstance();
   SetProjectMetadataRequestMsg::default_instance_->InitAsDefaultInstance();
@@ -1579,6 +1578,7 @@ void protobuf_AddDesc_protocol_2eproto() {
   ExperimentMetadataMsg_MetadataStruct::default_instance_->InitAsDefaultInstance();
   DebugMsg::default_instance_->InitAsDefaultInstance();
   ErrorMsg::default_instance_->InitAsDefaultInstance();
+  ActiveExperimentMsg::default_instance_->InitAsDefaultInstance();
   ::google::protobuf::internal::OnShutdown(&protobuf_ShutdownFile_protocol_2eproto);
 }
 
@@ -9677,231 +9677,6 @@ void ActiveProjectMsg::Swap(ActiveProjectMsg* other) {
 // ===================================================================
 
 #ifndef _MSC_VER
-const int ActiveExperimentMsg::kNameFieldNumber;
-#endif  // !_MSC_VER
-
-ActiveExperimentMsg::ActiveExperimentMsg()
-  : ::google::protobuf::Message() {
-  SharedCtor();
-}
-
-void ActiveExperimentMsg::InitAsDefaultInstance() {
-}
-
-ActiveExperimentMsg::ActiveExperimentMsg(const ActiveExperimentMsg& from)
-  : ::google::protobuf::Message() {
-  SharedCtor();
-  MergeFrom(from);
-}
-
-void ActiveExperimentMsg::SharedCtor() {
-  _cached_size_ = 0;
-  name_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
-  ::memset(_has_bits_, 0, sizeof(_has_bits_));
-}
-
-ActiveExperimentMsg::~ActiveExperimentMsg() {
-  SharedDtor();
-}
-
-void ActiveExperimentMsg::SharedDtor() {
-  if (name_ != &::google::protobuf::internal::kEmptyString) {
-    delete name_;
-  }
-  if (this != default_instance_) {
-  }
-}
-
-void ActiveExperimentMsg::SetCachedSize(int size) const {
-  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = size;
-  GOOGLE_SAFE_CONCURRENT_WRITES_END();
-}
-const ::google::protobuf::Descriptor* ActiveExperimentMsg::descriptor() {
-  protobuf_AssignDescriptorsOnce();
-  return ActiveExperimentMsg_descriptor_;
-}
-
-const ActiveExperimentMsg& ActiveExperimentMsg::default_instance() {
-  if (default_instance_ == NULL) protobuf_AddDesc_protocol_2eproto();
-  return *default_instance_;
-}
-
-ActiveExperimentMsg* ActiveExperimentMsg::default_instance_ = NULL;
-
-ActiveExperimentMsg* ActiveExperimentMsg::New() const {
-  return new ActiveExperimentMsg;
-}
-
-void ActiveExperimentMsg::Clear() {
-  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    if (has_name()) {
-      if (name_ != &::google::protobuf::internal::kEmptyString) {
-        name_->clear();
-      }
-    }
-  }
-  ::memset(_has_bits_, 0, sizeof(_has_bits_));
-  mutable_unknown_fields()->Clear();
-}
-
-bool ActiveExperimentMsg::MergePartialFromCodedStream(
-    ::google::protobuf::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!(EXPRESSION)) return false
-  ::google::protobuf::uint32 tag;
-  while ((tag = input->ReadTag()) != 0) {
-    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // optional string name = 1;
-      case 1: {
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
-                input, this->mutable_name()));
-          ::google::protobuf::internal::WireFormat::VerifyUTF8String(
-            this->name().data(), this->name().length(),
-            ::google::protobuf::internal::WireFormat::PARSE);
-        } else {
-          goto handle_uninterpreted;
-        }
-        if (input->ExpectAtEnd()) return true;
-        break;
-      }
-
-      default: {
-      handle_uninterpreted:
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
-          return true;
-        }
-        DO_(::google::protobuf::internal::WireFormat::SkipField(
-              input, tag, mutable_unknown_fields()));
-        break;
-      }
-    }
-  }
-  return true;
-#undef DO_
-}
-
-void ActiveExperimentMsg::SerializeWithCachedSizes(
-    ::google::protobuf::io::CodedOutputStream* output) const {
-  // optional string name = 1;
-  if (has_name()) {
-    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
-      this->name().data(), this->name().length(),
-      ::google::protobuf::internal::WireFormat::SERIALIZE);
-    ::google::protobuf::internal::WireFormatLite::WriteString(
-      1, this->name(), output);
-  }
-
-  if (!unknown_fields().empty()) {
-    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
-        unknown_fields(), output);
-  }
-}
-
-::google::protobuf::uint8* ActiveExperimentMsg::SerializeWithCachedSizesToArray(
-    ::google::protobuf::uint8* target) const {
-  // optional string name = 1;
-  if (has_name()) {
-    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
-      this->name().data(), this->name().length(),
-      ::google::protobuf::internal::WireFormat::SERIALIZE);
-    target =
-      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        1, this->name(), target);
-  }
-
-  if (!unknown_fields().empty()) {
-    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
-        unknown_fields(), target);
-  }
-  return target;
-}
-
-int ActiveExperimentMsg::ByteSize() const {
-  int total_size = 0;
-
-  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    // optional string name = 1;
-    if (has_name()) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::StringSize(
-          this->name());
-    }
-
-  }
-  if (!unknown_fields().empty()) {
-    total_size +=
-      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
-        unknown_fields());
-  }
-  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = total_size;
-  GOOGLE_SAFE_CONCURRENT_WRITES_END();
-  return total_size;
-}
-
-void ActiveExperimentMsg::MergeFrom(const ::google::protobuf::Message& from) {
-  GOOGLE_CHECK_NE(&from, this);
-  const ActiveExperimentMsg* source =
-    ::google::protobuf::internal::dynamic_cast_if_available<const ActiveExperimentMsg*>(
-      &from);
-  if (source == NULL) {
-    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
-  } else {
-    MergeFrom(*source);
-  }
-}
-
-void ActiveExperimentMsg::MergeFrom(const ActiveExperimentMsg& from) {
-  GOOGLE_CHECK_NE(&from, this);
-  if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    if (from.has_name()) {
-      set_name(from.name());
-    }
-  }
-  mutable_unknown_fields()->MergeFrom(from.unknown_fields());
-}
-
-void ActiveExperimentMsg::CopyFrom(const ::google::protobuf::Message& from) {
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-void ActiveExperimentMsg::CopyFrom(const ActiveExperimentMsg& from) {
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-bool ActiveExperimentMsg::IsInitialized() const {
-
-  return true;
-}
-
-void ActiveExperimentMsg::Swap(ActiveExperimentMsg* other) {
-  if (other != this) {
-    std::swap(name_, other->name_);
-    std::swap(_has_bits_[0], other->_has_bits_[0]);
-    _unknown_fields_.Swap(&other->_unknown_fields_);
-    std::swap(_cached_size_, other->_cached_size_);
-  }
-}
-
-::google::protobuf::Metadata ActiveExperimentMsg::GetMetadata() const {
-  protobuf_AssignDescriptorsOnce();
-  ::google::protobuf::Metadata metadata;
-  metadata.descriptor = ActiveExperimentMsg_descriptor_;
-  metadata.reflection = ActiveExperimentMsg_reflection_;
-  return metadata;
-}
-
-
-// ===================================================================
-
-#ifndef _MSC_VER
 const int ProjectListMsg::kProjectsFieldNumber;
 #endif  // !_MSC_VER
 
@@ -15847,6 +15622,231 @@ void ErrorMsg::Swap(ErrorMsg* other) {
   ::google::protobuf::Metadata metadata;
   metadata.descriptor = ErrorMsg_descriptor_;
   metadata.reflection = ErrorMsg_reflection_;
+  return metadata;
+}
+
+
+// ===================================================================
+
+#ifndef _MSC_VER
+const int ActiveExperimentMsg::kNameFieldNumber;
+#endif  // !_MSC_VER
+
+ActiveExperimentMsg::ActiveExperimentMsg()
+  : ::google::protobuf::Message() {
+  SharedCtor();
+}
+
+void ActiveExperimentMsg::InitAsDefaultInstance() {
+}
+
+ActiveExperimentMsg::ActiveExperimentMsg(const ActiveExperimentMsg& from)
+  : ::google::protobuf::Message() {
+  SharedCtor();
+  MergeFrom(from);
+}
+
+void ActiveExperimentMsg::SharedCtor() {
+  _cached_size_ = 0;
+  name_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+}
+
+ActiveExperimentMsg::~ActiveExperimentMsg() {
+  SharedDtor();
+}
+
+void ActiveExperimentMsg::SharedDtor() {
+  if (name_ != &::google::protobuf::internal::kEmptyString) {
+    delete name_;
+  }
+  if (this != default_instance_) {
+  }
+}
+
+void ActiveExperimentMsg::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const ::google::protobuf::Descriptor* ActiveExperimentMsg::descriptor() {
+  protobuf_AssignDescriptorsOnce();
+  return ActiveExperimentMsg_descriptor_;
+}
+
+const ActiveExperimentMsg& ActiveExperimentMsg::default_instance() {
+  if (default_instance_ == NULL) protobuf_AddDesc_protocol_2eproto();
+  return *default_instance_;
+}
+
+ActiveExperimentMsg* ActiveExperimentMsg::default_instance_ = NULL;
+
+ActiveExperimentMsg* ActiveExperimentMsg::New() const {
+  return new ActiveExperimentMsg;
+}
+
+void ActiveExperimentMsg::Clear() {
+  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    if (has_name()) {
+      if (name_ != &::google::protobuf::internal::kEmptyString) {
+        name_->clear();
+      }
+    }
+  }
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+  mutable_unknown_fields()->Clear();
+}
+
+bool ActiveExperimentMsg::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!(EXPRESSION)) return false
+  ::google::protobuf::uint32 tag;
+  while ((tag = input->ReadTag()) != 0) {
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // optional string name = 1;
+      case 1: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_name()));
+          ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+            this->name().data(), this->name().length(),
+            ::google::protobuf::internal::WireFormat::PARSE);
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectAtEnd()) return true;
+        break;
+      }
+
+      default: {
+      handle_uninterpreted:
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+          return true;
+        }
+        DO_(::google::protobuf::internal::WireFormat::SkipField(
+              input, tag, mutable_unknown_fields()));
+        break;
+      }
+    }
+  }
+  return true;
+#undef DO_
+}
+
+void ActiveExperimentMsg::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // optional string name = 1;
+  if (has_name()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->name().data(), this->name().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    ::google::protobuf::internal::WireFormatLite::WriteString(
+      1, this->name(), output);
+  }
+
+  if (!unknown_fields().empty()) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        unknown_fields(), output);
+  }
+}
+
+::google::protobuf::uint8* ActiveExperimentMsg::SerializeWithCachedSizesToArray(
+    ::google::protobuf::uint8* target) const {
+  // optional string name = 1;
+  if (has_name()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->name().data(), this->name().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        1, this->name(), target);
+  }
+
+  if (!unknown_fields().empty()) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        unknown_fields(), target);
+  }
+  return target;
+}
+
+int ActiveExperimentMsg::ByteSize() const {
+  int total_size = 0;
+
+  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    // optional string name = 1;
+    if (has_name()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::StringSize(
+          this->name());
+    }
+
+  }
+  if (!unknown_fields().empty()) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        unknown_fields());
+  }
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = total_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void ActiveExperimentMsg::MergeFrom(const ::google::protobuf::Message& from) {
+  GOOGLE_CHECK_NE(&from, this);
+  const ActiveExperimentMsg* source =
+    ::google::protobuf::internal::dynamic_cast_if_available<const ActiveExperimentMsg*>(
+      &from);
+  if (source == NULL) {
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+    MergeFrom(*source);
+  }
+}
+
+void ActiveExperimentMsg::MergeFrom(const ActiveExperimentMsg& from) {
+  GOOGLE_CHECK_NE(&from, this);
+  if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    if (from.has_name()) {
+      set_name(from.name());
+    }
+  }
+  mutable_unknown_fields()->MergeFrom(from.unknown_fields());
+}
+
+void ActiveExperimentMsg::CopyFrom(const ::google::protobuf::Message& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void ActiveExperimentMsg::CopyFrom(const ActiveExperimentMsg& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool ActiveExperimentMsg::IsInitialized() const {
+
+  return true;
+}
+
+void ActiveExperimentMsg::Swap(ActiveExperimentMsg* other) {
+  if (other != this) {
+    std::swap(name_, other->name_);
+    std::swap(_has_bits_[0], other->_has_bits_[0]);
+    _unknown_fields_.Swap(&other->_unknown_fields_);
+    std::swap(_cached_size_, other->_cached_size_);
+  }
+}
+
+::google::protobuf::Metadata ActiveExperimentMsg::GetMetadata() const {
+  protobuf_AssignDescriptorsOnce();
+  ::google::protobuf::Metadata metadata;
+  metadata.descriptor = ActiveExperimentMsg_descriptor_;
+  metadata.reflection = ActiveExperimentMsg_reflection_;
   return metadata;
 }
 
