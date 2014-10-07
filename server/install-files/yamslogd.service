@@ -1,0 +1,13 @@
+[Unit]
+Description=yamsLogd - Server daemon for  yamsLog (Yet another multi-sensor logger)
+
+[Service]
+Type=forking
+# The PID file is optional, but recommended in the manpage
+# "so that systemd can identify the main process of the daemon"
+ExecStart=/yamslogdir/run.bash
+PIDFile=/var/run/yamslogd.pid
+
+
+[Install]
+WantedBy=multi-user.target

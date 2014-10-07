@@ -1,0 +1,8 @@
+SUBSYSTEM=="tty",DRIVERS=="usb",ATTRS{idProduct}=="01a4",ATTRS{idVendor}=="1546",SYMLINK+="ttyGPSublox", MODE="0666"
+SUBSYSTEM=="tty",DRIVERS=="usb",ATTRS{idProduct}=="2303",ATTRS{idVendor}=="067b",SYMLINK+="ttyGPSProfilic", MODE="0666"
+SUBSYSTEM=="tty",DRIVERS=="usb",ATTRS{idProduct}=="d38b",ATTRS{idVendor}=="0403",SYMLINK+="ttyXSens", MODE="0666"
+SUBSYSTEM=="tty",DRIVERS=="usb",ATTRS{idProduct}=="6001",ATTRS{idVendor}=="0403",SYMLINK+="ttyComLink", MODE="0666"
+
+
+
+
