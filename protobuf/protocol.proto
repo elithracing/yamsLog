@@ -80,7 +80,9 @@ message GeneralMsg {
 
     DEBUG_T                                      = 39;
     ERROR_T                                      = 40;
+
     ACTIVE_EXPERIMENT_T                          = 41;
+
   }
 
   // The type of message that was sent, i.e. which union field was set
@@ -110,7 +112,7 @@ message GeneralMsg {
   optional SetProjectMetadataRequestMsg               set_project_metadata_request                = 21;
   optional SetProjectMetadataResponseMsg              set_project_metadata_response               = 22;
   optional ProjectMetadataMsg                         project_metadata                            = 23;
-  
+
   optional ExperimentDataCollectionStartRequestMsg    experiment_data_collection_start_request    = 24;
   optional ExperimentDataCollectionStartResponseMsg   experiment_data_collection_start_response   = 25;
   optional ExperimentDataCollectionStopRequestMsg     experiment_data_collection_stop_request     = 26;
@@ -131,8 +133,7 @@ message GeneralMsg {
   optional DebugMsg                                   debug_message                               = 40;
   optional ErrorMsg                                   error_message                               = 41;
 
-  optional ActiveExperimentMsg			      active_experiment                           = 42;
-
+  optional ActiveExperimentMsg			      active_experiment                           = 42;  
 }
 
 //-----------------------------------------------------------------------------
@@ -357,12 +358,6 @@ message ActiveProjectMsg {
   optional string name = 1;
 }
 
-// Server -> Client
-message ActiveExperimentMsg {
-  optional string name = 1;
-}
-
-
 //-----------------------------------------------------------------------------
 
 // Server -> Client
@@ -584,3 +579,9 @@ message ErrorMsg {
   
   required ErrorType error_type = 1;
 }
+
+// Server -> Client
+message ActiveExperimentMsg {
+  optional string name = 1;
+}
+
