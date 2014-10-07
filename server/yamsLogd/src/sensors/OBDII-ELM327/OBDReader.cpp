@@ -389,7 +389,8 @@ int OBDReader::readLoop(std::list<measData*>* returnQueue)
     //printf("Frametime is: %d\n",frametime);
 
     enum obd_serial_status obdstatus;
-    if(-1 < obd_serial_port) {
+    if(-1 < obd_serial_port) 
+    {
       
       // Get all the OBD data
       int i;
@@ -401,7 +402,8 @@ int OBDReader::readLoop(std::list<measData*>* returnQueue)
 	obdstatus = getobdvalue(obd_serial_port, cmdid, &val, numbytes, conv);
 	// Get time value just after data returned, will be somewhat close to actual time
 	gettimeofday(&logged_time,NULL);
-	if(OBD_SUCCESS == obdstatus) {
+	if(OBD_SUCCESS == obdstatus) 
+        {
 	  if(spam_stdout) {
 	    printf("t=%f,%s=%f\n", (double)logged_time.tv_sec+(double)logged_time.tv_usec/1000000.0f,obdcmds_mode1[cmdlist[i]].db_column, val);
 	  }
@@ -413,15 +415,15 @@ int OBDReader::readLoop(std::list<measData*>* returnQueue)
 	    obdmeasdata->val  = val;
 	    returnQueue->push_back(obdmeasdata);
 	  }
-	} else {
-	  return -1;
-	}
+	} 
+	else if(OBD_ERROR == obdstatus) 
+	{
+	  fprintf(stderr, "Received OBD_ERROR from serial read. Exiting\n");
+	  receive_exitsignal = 1;
+	} 
+	else 
+	  return obdstatus;
       }
-      
-      if(OBD_ERROR == obdstatus) {
-	fprintf(stderr, "Received OBD_ERROR from serial read. Exiting\n");
-	receive_exitsignal = 1;
-      } 
     }
     
     if(0 != gettimeofday(&endtime,NULL)) {

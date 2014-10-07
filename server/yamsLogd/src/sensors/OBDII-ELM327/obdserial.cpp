@@ -347,6 +347,10 @@ int openserial(const char *portfilename, long baudrate, long baudrate_target) {
 		blindcmd(fd,"ATL0",1);
 		// Don't insert spaces [readability is for ugly bags of mostly water]
 		blindcmd(fd,"ATS0",1);
+		// Reset timeout
+		blindcmd(fd,"ATST0",1);
+		// Enable agressive timing 
+		blindcmd(fd,"ATAT2",1);
 		// Then do it again to make sure the command really worked
 		blindcmd(fd,"0100",1);
 

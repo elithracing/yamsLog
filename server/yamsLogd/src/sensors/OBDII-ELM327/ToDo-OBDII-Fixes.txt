@@ -1,0 +1,18 @@
+* Serial log to console
+* Implement describe protocol
+* Implement battery-test
+
+Test serial communication first, is it an elm??
+-------------------------------------------------
+
+Steps:
+1) Test dev-file availability (typically /dev/ttyUSB0)
+2) Connect to device, ask simple questions, possibly autobaud, try multiple 
+   times
+3) Find out what protocol car speaks (Only once)
+3) Check capabilities (Only once)
+4) Start logging
+5) If connection lost: (car turned off gives "NO DATA"), try 2), then if it works try 4) again. If 2) fails, close file and retry availability
+6) Repeat 5) as long as connection is bad. 
+
+
