@@ -86,7 +86,7 @@ void OBDIIElmSensor::execute() {
 bool 
 OBDIIElmSensor::read_one_data(std::vector<float>* values)
 {
-  usleep( sampleTime*1e6 );
+  //usleep( sampleTime*1e6 );
   std::cout << "_";
   fflush(stdout); // Will now print everything in the stdout buffer
   set_working(true);
