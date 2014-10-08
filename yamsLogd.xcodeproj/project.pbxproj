@@ -7,16 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AE41CE7C19E52F9400C690DE /* Experiment.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AEB4F6B719D8C0670099EC55 /* Experiment.cpp */; };
+		AE41CE7F19E5341000C690DE /* SensorDefinitionReader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AE41CE7D19E5341000C690DE /* SensorDefinitionReader.cpp */; };
+		AE41CE9919E5343C00C690DE /* obdserial.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AE41CE8A19E5343C00C690DE /* obdserial.cpp */; };
+		AE41CEA019E5358C00C690DE /* port_config.conf in CopyFiles */ = {isa = PBXBuildFile; fileRef = AE41CE9E19E5357800C690DE /* port_config.conf */; };
+		AE41CEA119E5358C00C690DE /* sensor_definitions.conf in CopyFiles */ = {isa = PBXBuildFile; fileRef = AE41CE9F19E5357800C690DE /* sensor_definitions.conf */; };
 		AEB4F6EB19D8C0670099EC55 /* ClientCallbackImpl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AEB4F6AF19D8C0670099EC55 /* ClientCallbackImpl.cpp */; };
 		AEB4F6EC19D8C0670099EC55 /* ClientConnection.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AEB4F6B119D8C0670099EC55 /* ClientConnection.cpp */; };
 		AEB4F6ED19D8C0670099EC55 /* CommunicationServer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AEB4F6B319D8C0670099EC55 /* CommunicationServer.cpp */; };
 		AEB4F6EE19D8C0670099EC55 /* DataLogger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AEB4F6B519D8C0670099EC55 /* DataLogger.cpp */; };
-		AEB4F6EF19D8C0670099EC55 /* Experiment.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AEB4F6B719D8C0670099EC55 /* Experiment.cpp */; };
 		AEB4F6F119D8C0670099EC55 /* Main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AEB4F6BA19D8C0670099EC55 /* Main.cpp */; };
 		AEB4F6F219D8C0670099EC55 /* ModificationCallbackImpl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AEB4F6BB19D8C0670099EC55 /* ModificationCallbackImpl.cpp */; };
 		AEB4F6F319D8C0670099EC55 /* Project.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AEB4F6BD19D8C0670099EC55 /* Project.cpp */; };
 		AEB4F6F419D8C0670099EC55 /* ProjectHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AEB4F6BF19D8C0670099EC55 /* ProjectHandler.cpp */; };
-		AEB4F6F519D8C0670099EC55 /* SensorMinMax.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AEB4F6C319D8C0670099EC55 /* SensorMinMax.cpp */; };
 		AEB4F6F619D8C0670099EC55 /* AbstractSensor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AEB4F6C619D8C0670099EC55 /* AbstractSensor.cpp */; };
 		AEB4F6FD19D8C0670099EC55 /* SerialPortLib.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AEB4F6D419D8C0670099EC55 /* SerialPortLib.cpp */; };
 		AEB4F6FE19D8C0670099EC55 /* VirtualSensor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AEB4F6D619D8C0670099EC55 /* VirtualSensor.cpp */; };
@@ -32,8 +35,6 @@
 		AEE2705319DDB90A00D0950A /* libboost_filesystem.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = AEE2705019DDB90A00D0950A /* libboost_filesystem.dylib */; };
 		AEE2705419DDB90A00D0950A /* libboost_system.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = AEE2705119DDB90A00D0950A /* libboost_system.dylib */; };
 		AEE2705519DDB90A00D0950A /* libboost_thread.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = AEE2705219DDB90A00D0950A /* libboost_thread.dylib */; };
-		AEE2705919DDBAA200D0950A /* min_max_sensor_values.txt in CopyFiles */ = {isa = PBXBuildFile; fileRef = AEE2705619DDBA2E00D0950A /* min_max_sensor_values.txt */; };
-		AEE2705A19DDBAA200D0950A /* port_config.txt in CopyFiles */ = {isa = PBXBuildFile; fileRef = AEE2705719DDBA2E00D0950A /* port_config.txt */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -43,14 +44,37 @@
 			dstPath = "";
 			dstSubfolderSpec = 16;
 			files = (
-				AEE2705919DDBAA200D0950A /* min_max_sensor_values.txt in CopyFiles */,
-				AEE2705A19DDBAA200D0950A /* port_config.txt in CopyFiles */,
+				AE41CEA019E5358C00C690DE /* port_config.conf in CopyFiles */,
+				AE41CEA119E5358C00C690DE /* sensor_definitions.conf in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		AE41CE7D19E5341000C690DE /* SensorDefinitionReader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SensorDefinitionReader.cpp; sourceTree = "<group>"; };
+		AE41CE7E19E5341000C690DE /* SensorDefinitionReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SensorDefinitionReader.h; sourceTree = "<group>"; };
+		AE41CE8219E5343C00C690DE /* obdconfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = obdconfig.h; sourceTree = "<group>"; };
+		AE41CE8319E5343C00C690DE /* obdconfigfile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = obdconfigfile.cpp; sourceTree = "<group>"; };
+		AE41CE8419E5343C00C690DE /* obdconfigfile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = obdconfigfile.h; sourceTree = "<group>"; };
+		AE41CE8519E5343C00C690DE /* obdconvertfunctions.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = obdconvertfunctions.cpp; sourceTree = "<group>"; };
+		AE41CE8619E5343C00C690DE /* obdconvertfunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = obdconvertfunctions.h; sourceTree = "<group>"; };
+		AE41CE8719E5343C00C690DE /* OBDReader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OBDReader.cpp; sourceTree = "<group>"; };
+		AE41CE8819E5343C00C690DE /* OBDReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBDReader.h; sourceTree = "<group>"; };
+		AE41CE8919E5343C00C690DE /* obdrevconvertfunctions.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = obdrevconvertfunctions.cpp; sourceTree = "<group>"; };
+		AE41CE8A19E5343C00C690DE /* obdserial.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = obdserial.cpp; sourceTree = "<group>"; };
+		AE41CE8B19E5343C00C690DE /* obdserial.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = obdserial.h; sourceTree = "<group>"; };
+		AE41CE8C19E5343C00C690DE /* obdservicecommands.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = obdservicecommands.cpp; sourceTree = "<group>"; };
+		AE41CE8D19E5343C00C690DE /* obdservicecommands.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = obdservicecommands.h; sourceTree = "<group>"; };
+		AE41CE8E19E5343C00C690DE /* OBDtool.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OBDtool.cpp; sourceTree = "<group>"; };
+		AE41CE8F19E5343C00C690DE /* ReadMe.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ReadMe.txt; sourceTree = "<group>"; };
+		AE41CE9019E5343C00C690DE /* supportedcommands.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = supportedcommands.cpp; sourceTree = "<group>"; };
+		AE41CE9119E5343C00C690DE /* supportedcommands.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = supportedcommands.h; sourceTree = "<group>"; };
+		AE41CE9219E5343C00C690DE /* ToDo-OBDII-Fixes.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "ToDo-OBDII-Fixes.txt"; sourceTree = "<group>"; };
+		AE41CE9319E5343C00C690DE /* OBDIIElmSensor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OBDIIElmSensor.cpp; sourceTree = "<group>"; };
+		AE41CE9419E5343C00C690DE /* OBDIIElmSensor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBDIIElmSensor.h; sourceTree = "<group>"; };
+		AE41CE9E19E5357800C690DE /* port_config.conf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = port_config.conf; path = "../config-files/port_config.conf"; sourceTree = "<group>"; };
+		AE41CE9F19E5357800C690DE /* sensor_definitions.conf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = sensor_definitions.conf; path = "../config-files/sensor_definitions.conf"; sourceTree = "<group>"; };
 		AE9270B319D8C00A00169D81 /* yamsLogd */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = yamsLogd; sourceTree = BUILT_PRODUCTS_DIR; };
 		AEB4F6AF19D8C0670099EC55 /* ClientCallbackImpl.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ClientCallbackImpl.cpp; sourceTree = "<group>"; };
 		AEB4F6B019D8C0670099EC55 /* ClientCallbackImpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClientCallbackImpl.h; sourceTree = "<group>"; };
@@ -72,8 +96,6 @@
 		AEB4F6C019D8C0670099EC55 /* ProjectHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectHandler.h; sourceTree = "<group>"; };
 		AEB4F6C119D8C0670099EC55 /* ProjectHandlerConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectHandlerConstants.h; sourceTree = "<group>"; };
 		AEB4F6C219D8C0670099EC55 /* ProjectHandlerErrorCodes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectHandlerErrorCodes.h; sourceTree = "<group>"; };
-		AEB4F6C319D8C0670099EC55 /* SensorMinMax.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SensorMinMax.cpp; sourceTree = "<group>"; };
-		AEB4F6C419D8C0670099EC55 /* SensorMinMax.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SensorMinMax.h; sourceTree = "<group>"; };
 		AEB4F6C619D8C0670099EC55 /* AbstractSensor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AbstractSensor.cpp; sourceTree = "<group>"; };
 		AEB4F6C719D8C0670099EC55 /* AbstractSensor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AbstractSensor.h; sourceTree = "<group>"; };
 		AEB4F6C819D8C0670099EC55 /* CAN.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CAN.cpp; sourceTree = "<group>"; };
@@ -117,8 +139,6 @@
 		AEE2705019DDB90A00D0950A /* libboost_filesystem.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libboost_filesystem.dylib; path = ../../sw/boost/lib/libboost_filesystem.dylib; sourceTree = "<group>"; };
 		AEE2705119DDB90A00D0950A /* libboost_system.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libboost_system.dylib; path = ../../sw/boost/lib/libboost_system.dylib; sourceTree = "<group>"; };
 		AEE2705219DDB90A00D0950A /* libboost_thread.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libboost_thread.dylib; path = ../../sw/boost/lib/libboost_thread.dylib; sourceTree = "<group>"; };
-		AEE2705619DDBA2E00D0950A /* min_max_sensor_values.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = min_max_sensor_values.txt; path = server/yamsLogd/min_max_sensor_values.txt; sourceTree = SOURCE_ROOT; };
-		AEE2705719DDBA2E00D0950A /* port_config.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = port_config.txt; path = server/yamsLogd/port_config.txt; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,6 +156,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AE41CE8019E5343C00C690DE /* OBDII-ELM327 */ = {
+			isa = PBXGroup;
+			children = (
+				AE41CE8219E5343C00C690DE /* obdconfig.h */,
+				AE41CE8319E5343C00C690DE /* obdconfigfile.cpp */,
+				AE41CE8419E5343C00C690DE /* obdconfigfile.h */,
+				AE41CE8519E5343C00C690DE /* obdconvertfunctions.cpp */,
+				AE41CE8619E5343C00C690DE /* obdconvertfunctions.h */,
+				AE41CE8719E5343C00C690DE /* OBDReader.cpp */,
+				AE41CE8819E5343C00C690DE /* OBDReader.h */,
+				AE41CE8919E5343C00C690DE /* obdrevconvertfunctions.cpp */,
+				AE41CE8A19E5343C00C690DE /* obdserial.cpp */,
+				AE41CE8B19E5343C00C690DE /* obdserial.h */,
+				AE41CE8C19E5343C00C690DE /* obdservicecommands.cpp */,
+				AE41CE8D19E5343C00C690DE /* obdservicecommands.h */,
+				AE41CE8E19E5343C00C690DE /* OBDtool.cpp */,
+				AE41CE8F19E5343C00C690DE /* ReadMe.txt */,
+				AE41CE9019E5343C00C690DE /* supportedcommands.cpp */,
+				AE41CE9119E5343C00C690DE /* supportedcommands.h */,
+				AE41CE9219E5343C00C690DE /* ToDo-OBDII-Fixes.txt */,
+			);
+			path = "OBDII-ELM327";
+			sourceTree = "<group>";
+		};
 		AE9270AA19D8C00A00169D81 = {
 			isa = PBXGroup;
 			children = (
@@ -161,6 +205,8 @@
 		AEB4F6AE19D8C0670099EC55 /* src */ = {
 			isa = PBXGroup;
 			children = (
+				AE41CE7D19E5341000C690DE /* SensorDefinitionReader.cpp */,
+				AE41CE7E19E5341000C690DE /* SensorDefinitionReader.h */,
 				AEB4F6AF19D8C0670099EC55 /* ClientCallbackImpl.cpp */,
 				AEB4F6B019D8C0670099EC55 /* ClientCallbackImpl.h */,
 				AEB4F6B119D8C0670099EC55 /* ClientConnection.cpp */,
@@ -181,8 +227,6 @@
 				AEB4F6C019D8C0670099EC55 /* ProjectHandler.h */,
 				AEB4F6C119D8C0670099EC55 /* ProjectHandlerConstants.h */,
 				AEB4F6C219D8C0670099EC55 /* ProjectHandlerErrorCodes.h */,
-				AEB4F6C319D8C0670099EC55 /* SensorMinMax.cpp */,
-				AEB4F6C419D8C0670099EC55 /* SensorMinMax.h */,
 				AEB4F6C519D8C0670099EC55 /* sensors */,
 				AEB4F6DA19D8C0670099EC55 /* services */,
 				AEB4F6E819D8C0670099EC55 /* StatusObserver.cpp */,
@@ -196,6 +240,9 @@
 		AEB4F6C519D8C0670099EC55 /* sensors */ = {
 			isa = PBXGroup;
 			children = (
+				AE41CE8019E5343C00C690DE /* OBDII-ELM327 */,
+				AE41CE9319E5343C00C690DE /* OBDIIElmSensor.cpp */,
+				AE41CE9419E5343C00C690DE /* OBDIIElmSensor.h */,
 				AEB4F6C619D8C0670099EC55 /* AbstractSensor.cpp */,
 				AEB4F6C719D8C0670099EC55 /* AbstractSensor.h */,
 				AEB4F6C819D8C0670099EC55 /* CAN.cpp */,
@@ -253,8 +300,8 @@
 		AEE2705819DDBA3600D0950A /* Resource files */ = {
 			isa = PBXGroup;
 			children = (
-				AEE2705619DDBA2E00D0950A /* min_max_sensor_values.txt */,
-				AEE2705719DDBA2E00D0950A /* port_config.txt */,
+				AE41CE9E19E5357800C690DE /* port_config.conf */,
+				AE41CE9F19E5357800C690DE /* sensor_definitions.conf */,
 			);
 			name = "Resource files";
 			path = server/yamsLogd/src;
@@ -325,16 +372,17 @@
 				AEB4F6EC19D8C0670099EC55 /* ClientConnection.cpp in Sources */,
 				AEB4F70019D8C0670099EC55 /* AbstractService.cpp in Sources */,
 				AEB4F6F119D8C0670099EC55 /* Main.cpp in Sources */,
+				AE41CE9919E5343C00C690DE /* obdserial.cpp in Sources */,
 				AEB4F6F219D8C0670099EC55 /* ModificationCallbackImpl.cpp in Sources */,
 				AEB4F6FE19D8C0670099EC55 /* VirtualSensor.cpp in Sources */,
 				AEB4F6F619D8C0670099EC55 /* AbstractSensor.cpp in Sources */,
-				AEB4F6EF19D8C0670099EC55 /* Experiment.cpp in Sources */,
 				AEB4F6FD19D8C0670099EC55 /* SerialPortLib.cpp in Sources */,
 				AEB4F6EE19D8C0670099EC55 /* DataLogger.cpp in Sources */,
-				AEB4F6F519D8C0670099EC55 /* SensorMinMax.cpp in Sources */,
 				AEB4F70A19D8C2C80099EC55 /* protocol.pb.cc in Sources */,
 				AEB4F6ED19D8C0670099EC55 /* CommunicationServer.cpp in Sources */,
+				AE41CE7C19E52F9400C690DE /* Experiment.cpp in Sources */,
 				AEB4F70619D8C0670099EC55 /* StatusObserver.cpp in Sources */,
+				AE41CE7F19E5341000C690DE /* SensorDefinitionReader.cpp in Sources */,
 				AEB4F6EB19D8C0670099EC55 /* ClientCallbackImpl.cpp in Sources */,
 				AEB4F70119D8C0670099EC55 /* CommunicationServerService.cpp in Sources */,
 			);
