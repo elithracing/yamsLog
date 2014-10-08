@@ -83,7 +83,7 @@ void CommunicationServer::broadcast(const protobuf::GeneralMsg& msg) const {
 
 void CommunicationServer::async_reading_terminated(
     ClientConnection::pointer tccp) {
-  bool is_empty = false;
+//  bool is_empty = false;
   {
     std::lock_guard<std::mutex> lock(list_mutex_);
 
@@ -98,7 +98,7 @@ void CommunicationServer::async_reading_terminated(
       client_connections_.erase(pos);
     }
 
-    is_empty = client_connections_.empty();
+//    is_empty = client_connections_.empty();
   }
 
   //Uncomment if you wan't server to stop when there are no more clients connected
