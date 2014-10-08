@@ -46,9 +46,9 @@
 #include "sensors/CorrsysSensor.h"
 #include "sensors/GpsSensor.h"
 #include "sensors/ImuSensor.h"
+#include "sensors/OBDIIElmSensor.h"
 #endif
 #include "sensors/VirtualSensor.h"
-#include "sensors/OBDIIElmSensor.h"
 
 /**************************************************************************************
  HOWTO add more sensors:
