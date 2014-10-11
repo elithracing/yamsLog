@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">BilSensor</string>
+    <string name="title_sensor_detail">Sensor Detail</string>
+    <string name="new_project">New Project</string>    
+	<string name="projectname">Unknown name</string>
+    <string name="experiment">Experiment Name</string>
+    
+    <string name="done">Done</string>
+    <string name="load">Load</string>
+    <string name="delete">Delete</string>
+    <string name="server">192.168.2.121</string><!-- 192.168.2.121 -->
+    
+    <string name="removeviewtext">-</string>
+
+    <!-- Strings for AltSensorListFragment.java -->
+    <string name="opendynamiceventsbuttontext">Dynamic Events</string>
+    <string name="addnewdynamiceventtexthint">Dynamic Event</string>
+    <string name="addnewdynamiceventbuttontext">Add</string>
+    <string name="removedynamiceventtext">-</string>
+    <string name="dynamiceventstext">Dynamic Events</string>
+    
+     <!--  Strings for ChooseProject.java -->
+    <string name="welcometext">Please choose an existing project or create a new one.</string>
+    <string name="newproject">New Project</string>
+    <string name="projects">Projects:</string>
+	<string name="reconnect">Reconnect</string>
+	<string name="chooseserver">Choose Server and Port:</string>
+	<string name="servername">Server:</string>
+	<string name="port">Port:</string>
+	<string name="servernamehint">Server</string>
+	<string name="porthint">Port</string>
+	
+	<!--  String for ReconnectDialog.java -->
+	<string name="connectionfailedtext">Failed to connect to server. Try to reconnect or exit program.</string>
+	
+    <!--  Strings for CreateNewProject.java -->
+    <string name="project">Project Name:</string>
+    <string name="projecthint">Project Name</string>
+    <string name="leader">Leader:</string>
+    <string name="leaderhint">Project Leader</string>
+    <string name="leaderemail">Leader Email:</string>
+    <string name="leaderemailhint">Leader Email</string>    
+    <string name="participant">Participants:</string>
+    <string name="participanthint">Participant</string>
+    <string name="add_participant">Add</string>
+    <string name="add_tag">Add</string>
+    <string name="tag">Tags:</string>
+    <string name="taghint">Tag</string>
+    <string name="description">Project Description:</string>
+    <string name="descriptionhint">Project Description</string>
+    
+    <string name="removegraphview">Remove Graphview</string>
+    
+</resources>

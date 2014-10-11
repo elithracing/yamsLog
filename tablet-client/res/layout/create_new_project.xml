@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/LinearLayout1"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:layout_marginBottom="16dp"
+    android:layout_marginLeft="16dp"
+    android:layout_marginRight="16dp"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="8"
+        android:orientation="horizontal" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="horizontal" >
+
+            <ScrollView
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_marginRight="8dp"
+                android:layout_weight="1"
+                android:background="@drawable/participantlistborder"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp" >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" >
+
+                    <GridLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:columnCount="1"
+                        android:rowCount="12" >
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/project"
+                            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+                        <EditText
+                            android:id="@+id/projectname"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:hint="@string/projecthint"
+                            android:inputType="textCapSentences" 
+                            />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/leader"
+                            android:textAppearance="?android:attr/textAppearanceLarge"/>
+
+                        <EditText
+                            android:id="@+id/leadername"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:hint="@string/leaderhint" 
+                            android:inputType="textPersonName"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/leaderemail"
+                            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+                        <EditText
+                            android:id="@+id/leaderemail"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="@string/leaderemailhint"
+                            android:inputType="textEmailAddress"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/participant"
+                            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+                        <LinearLayout
+                            android:id="@+id/LinearLayout2"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" >
+
+                            <EditText
+                                android:id="@+id/participant_name"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:hint="@string/participanthint"
+                                android:inputType="textPersonName" />
+
+                            <Button
+                                android:id="@+id/add_participant"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="0"
+                                android:onClick="addMember"
+                                android:text="@string/add_participant" />
+                        </LinearLayout>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/tag"
+                            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" >
+
+                            <EditText
+                                android:id="@+id/tag_name"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:hint="@string/taghint"
+                                android:inputType="textPersonName" />
+
+                            <Button
+                                android:id="@+id/add_tag"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="0"
+                                android:onClick="addTag"
+                                android:text="@string/add_tag" />
+                        </LinearLayout>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/description"
+                            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+                        <EditText
+                            android:id="@+id/description"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="@string/descriptionhint"
+                            android:inputType="textMultiLine" />
+                    </GridLayout>
+                </LinearLayout>
+            </ScrollView>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="fill_parent"
+                android:layout_marginRight="8dp"
+                android:layout_weight="1"
+                android:background="@drawable/participantlistborder"
+                android:orientation="vertical"
+                android:paddingLeft="8dp" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/participant"
+                    android:textAppearance="?android:attr/textAppearanceLarge" />
+
+                <se.liu.tddd77.bilsensor.detail.AltParticipantList
+                    android:id="@+id/participant_list"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:background="@drawable/participantlistborder"
+                android:orientation="vertical"
+                android:paddingLeft="8dp" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/tag"
+                    android:textAppearance="?android:attr/textAppearanceLarge" />
+
+                <se.liu.tddd77.bilsensor.detail.AltParticipantList
+                    android:id="@+id/tag_list"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1" >
+
+
+        <Button
+            android:id="@+id/finishsettings"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:onClick="finishSettings"
+            android:text="@string/done"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+    </RelativeLayout>
+
+</LinearLayout>

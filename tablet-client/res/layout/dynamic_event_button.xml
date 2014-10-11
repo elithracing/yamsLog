@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/dynamic_event_button_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <Button
+        android:id="@+id/dynamic_event_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="sendDynamicEvent"/>
+
+    <Button
+        android:id="@+id/remove_dynamic_event_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="removeDynamicEvent"
+        android:text="@string/removedynamiceventtext" />
+
+</LinearLayout>

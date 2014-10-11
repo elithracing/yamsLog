@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- TODO: Add scroll and lower part -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/list_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <ListView
+        android:id="@+id/graph_list"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical" >
+    </ListView>
+
+    <LinearLayout
+        android:id="@+id/add_new_graph_button_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/participantlistborder"
+        android:orientation="vertical" >
+
+        <ScrollView
+            android:id="@+id/dynamic_events_scroll_view"
+            android:layout_width="match_parent"
+            android:layout_height="260dp"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:id="@+id/dynamic_events"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/dynamiceventstext" />
+
+                <LinearLayout
+                    android:id="@+id/dynamic_events_buttons_container"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical" >
+                </LinearLayout>
+            </LinearLayout>
+        </ScrollView>
+
+        <LinearLayout
+            android:id="@+id/add_new_dynamic_event_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/participantlistborder"
+            android:orientation="horizontal" >
+
+            <EditText
+                android:id="@+id/add_new_dynamic_event_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="@string/addnewdynamiceventtexthint"
+                android:layout_weight="1" />
+
+            <Button
+                android:id="@+id/add_new_dynamic_event_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="addNewDynamicEvent"
+                android:text="@string/addnewdynamiceventbuttontext" 
+                android:layout_weight="0"/>
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

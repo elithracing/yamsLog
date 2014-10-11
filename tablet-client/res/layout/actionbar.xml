@@ -1,0 +1,71 @@
+<RelativeLayout 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+	<LinearLayout 
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+	    android:orientation="horizontal"
+	    android:layout_alignParentLeft="true" >
+	     
+    	<ImageView
+        	android:id="@+id/icon"
+	        android:layout_width="wrap_content"
+    	    android:layout_height="wrap_content"
+        	android:layout_weight="0"
+	        android:src="@drawable/logo2"/>
+
+    	<TextView
+        	android:id="@+id/project_name"
+	        android:layout_width="wrap_content"
+    	    android:layout_height="wrap_content"
+        	android:layout_weight="0"
+        	android:text="@string/projectname"
+    	    android:textSize="30sp" />
+    	    
+    </LinearLayout>    
+
+    <LinearLayout
+        android:id="@+id/recLayout"
+   	    android:layout_width="wrap_content"
+       	android:layout_height="wrap_content"
+       	android:layout_centerInParent="true">
+
+        <ImageButton
+            android:id="@+id/recButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/recblack" />
+
+       <!--   <ImageButton
+            android:id="@+id/playButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:src="@drawable/play" />-->
+            
+	</LinearLayout>
+
+	<LinearLayout
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_alignParentRight="true">
+		
+	    <ImageButton
+    	    android:id="@+id/menuButton"
+        	android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+    	    android:layout_weight="0"
+        	android:src="@drawable/sav" />
+
+	    <ImageButton
+    	    android:id="@+id/loadButton"
+        	android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+    	    android:layout_weight="0"
+        	android:src="@drawable/load" />
+        	
+    </LinearLayout>
+
+</RelativeLayout>

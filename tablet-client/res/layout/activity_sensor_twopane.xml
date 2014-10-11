@@ -1,0 +1,42 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginLeft="16dp"
+    android:layout_marginRight="16dp"
+    android:layout_marginBottom="16dp"
+    android:baselineAligned="false"
+    android:divider="?android:attr/dividerHorizontal"
+    android:orientation="horizontal"
+    android:showDividers="middle"
+    tools:context=".SensorListActivity" >
+    
+     <!-- Dummy item to prevent AutoCompleteTextView from receiving focus -->
+    <LinearLayout
+    android:id="@+id/linearLayout_focus"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:layout_width="0px"
+    android:layout_height="0px"
+    android:orientation="horizontal"/>
+    
+
+    <!-- List fragment -->
+    <fragment
+        android:id="@+id/sensor_list"
+        android:name="se.liu.tddd77.bilsensor.list.AltSensorListFragment"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        tools:layout="@layout/list_selectors" />
+
+    <!-- Detail view -->
+    <fragment
+        android:id="@+id/sensor_detail_container"
+        android:name="se.liu.tddd77.bilsensor.SensorDetailFragment"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="3"
+        tools:layout="@layout/fragment_sensor_detail" />
+
+</LinearLayout>
