@@ -1,10 +1,18 @@
 This directoy holds the tablet-client for Android.  
 Below is a how-to for compiling Android-client
 
-TodoList: 
+Annoyances: 
+-----------------
+The "libs" dir contains 
+ * backend.jar  
+   -- Should really be linked from client-backend-dir...
+ * ProtobufJava.jar  
+   -- Would be much happier if this was from the platform protobuf installation
+ * android-support-v4.jar 
+  -- It seems like common practise is to copy these libs from the downloaded 
+     android SDK. I'd much rather declare it to use that directly instead.
 
-* libs-dir contains backend.jar, ProtobufJava.jar and android-support-v4 
-  These should be generated...
+
 
 Step 1: Java JDK
 -----------------
@@ -22,7 +30,8 @@ using your selectd platforms tools.
 Step 3: Setup workspace
 -------------------------
 
-Start eclipse and set up worspace to "SDK-workspaces/eclipse-android-SDK"
+Start eclipse and set up workspace to for example
+"SDK-workspaces/eclipse-android-SDK". Note that  you could choose anywhere you wnt, but I'd rather keep everything for one project in the same place.
 
 
 Step 4: Update Android SDK and Eclipse plugin
