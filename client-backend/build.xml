@@ -1,0 +1,37 @@
+<project>
+    <property name="external-lib.dir"     value="../external/libs"/>
+    <property name="protocol-lib.dir"     value="../protobuf/gen/"/>
+
+    <path id="classpath">
+      <fileset dir="${external-lib.dir}" includes="**/*.jar"/>
+      <fileset dir="${protocol-lib.dir}" includes="**/*.jar"/>
+    </path>
+
+    <target name="clean">
+        <delete dir="build"/>
+    </target>
+
+    <target name="compile">
+        <mkdir dir="build/classes"/>
+        <javac srcdir="src" destdir="build/classes" classpathref="classpath"/>
+    </target>
+
+    <target name="jar" depends="compile">
+        <mkdir dir="build/jar"/>
+        <jar destfile="backend.jar" basedir="build/classes">
+            <manifest>
+                <attribute name="Main-Class" value="OutsideCode"/>
+            </manifest>
+        </jar>
+    </target>
+
+    <target name="run" depends="jar">
+      <java jar="backend.jar" fork="true">
+      <classpath>
+	<path refid="classpath"/>
+	<path location="build/jar/backend.jar"/>
+      </classpath>
+      </java>
+    </target>
+
+</project>
