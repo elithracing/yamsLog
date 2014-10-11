@@ -37281,6 +37281,10 @@ public final class Protocol {
   }
   /**
    * Protobuf type {@code protobuf.ActiveExperimentMsg}
+   *
+   * <pre>
+   * Server -&gt; Client
+   * </pre>
    */
   public static final class ActiveExperimentMsg extends
       com.google.protobuf.GeneratedMessage
@@ -37529,6 +37533,10 @@ public final class Protocol {
     }
     /**
      * Protobuf type {@code protobuf.ActiveExperimentMsg}
+     *
+     * <pre>
+     * Server -&gt; Client
+     * </pre>
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder>
