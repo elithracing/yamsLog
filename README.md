@@ -51,6 +51,8 @@ Structure of root directory
 * documents: Contains documents such as Licensing and architecture
      notes. The GNU GPL license can be found in "documents/LICENSE.txt"
 
+* SDK-workspaces: A directory holding build-environments for different
+     parts of the project
 
 Project History
 ---------------
