@@ -57,6 +57,8 @@ with Log-Cat. This is generally a good idea.
 Now you can try out the application using the yamsLogd with for
 example the Virtual Sensor and connect to the server.
 
+Should eclipse complain about build-path, missing AndroidManifest.xml
+or similar you could try "Project->Clean"
 
 Links 
 ---------------------------
