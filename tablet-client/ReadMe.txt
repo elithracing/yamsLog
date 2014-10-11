@@ -1,18 +1,6 @@
 This directoy holds the tablet-client for Android.  
 Below is a how-to for compiling Android-client
 
-Annoyances: 
------------------
-The "libs" dir contains 
- * backend.jar  
-   -- Should really be linked from client-backend-dir...
- * ProtobufJava.jar  
-   -- Would be much happier if this was from the platform protobuf installation
- * android-support-v4.jar 
-  -- It seems like common practise is to copy these libs from the downloaded 
-     android SDK. I'd much rather declare it to use that directly instead.
-
-
 
 Step 1: Java JDK
 -----------------

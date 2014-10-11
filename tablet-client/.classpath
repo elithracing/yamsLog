@@ -6,6 +6,7 @@
 	<classpathentry kind="lib" path="../client-backend/libs/backend.jar"/>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="src" path="gen"/>
-	<classpathentry kind="lib" path="../external/libs"/>
+	<classpathentry kind="lib" path="../external/libs/ProtobufJava.jar"/>
+	<classpathentry kind="lib" path="../external/libs/android-support-v4.jar"/>
 	<classpathentry kind="output" path="bin/classes"/>
 </classpath>
