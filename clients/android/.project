@@ -39,22 +39,22 @@
 		<link>
 			<name>extLibs/ProtobufJava.jar</name>
 			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/external/extLibs/ProtobufJava.jar</locationURI>
+			<locationURI>PARENT-2-PROJECT_LOC/external/extLibs/ProtobufJava.jar</locationURI>
 		</link>
 		<link>
 			<name>extLibs/Protocol.jar</name>
 			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/protobuf/gen/Protocol.jar</locationURI>
+			<locationURI>PARENT-2-PROJECT_LOC/protobuf/gen/Protocol.jar</locationURI>
 		</link>
 		<link>
 			<name>extLibs/android-support-v4.jar</name>
 			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/external/extLibs/android-support-v4.jar</locationURI>
+			<locationURI>PARENT-2-PROJECT_LOC/external/extLibs/android-support-v4.jar</locationURI>
 		</link>
 		<link>
 			<name>extLibs/backend.jar</name>
 			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/client-backend/backend.jar</locationURI>
+			<locationURI>PARENT-2-PROJECT_LOC/client-backend/backend.jar</locationURI>
 		</link>
 	</linkedResources>
 </projectDescription>

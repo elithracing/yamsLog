@@ -1,7 +1,7 @@
 This directory holds, or rather will hold any external packages that
 are used together with this software.
 
-The "libs" dir contains 
+The "extLibs" dir contains 
  * ProtobufJava.jar  
    -- Would be much happier if this was from the platform protobuf installation
       but for now this is packaged with this code

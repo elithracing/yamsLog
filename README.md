@@ -42,10 +42,11 @@ Structure of root directory
 * client-backend: This is the common backend, which is the
       general implementation of the display device. It is written in Java.
 
-* tablet-client: The first, and currently only frontend at this
+* clients:
+  * android: The first, and currently only frontend at this
       writing. It is written in Java for Android.
 
-* iphone-client: A stand-alone iPhone client (doesn't use the
+* ios: A stand-alone iPhone client (doesn't use the
      client-backend). (Upcoming)
 
 * documents: Contains documents such as Licensing and architecture
@@ -54,9 +55,26 @@ Structure of root directory
 * SDK-workspaces: A directory holding build-environments for different
      parts of the project
 
+Building the different parts
+------------------------------
+
+Instructions for building the different parts are distributed in
+ReadMe files througout the project. A summary is provided below
+
+* client-backend: An ant file "build.xml" is provied to compile
+  "backend.jar"
+
+* server: cmake-files are available in the yamsLogd dir
+
+* protobuf: A shellscript "generate.sh" calls protoc and javac to
+  create "Protocol.jar"
+
+* android-client: An eclipse project is provided that imports
+  jar-files backend.jar from client-backend as well as extLisbs/* from
+  external and Protocol.jar from protobuf
+
 Project History
 ---------------
-
 
 * 2011: Started out as a set of different programs for logging and
       timestamping of CAN, GPS, accelerometers, and OBDII data by Per
