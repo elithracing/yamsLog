@@ -75,7 +75,7 @@
 		AE41CE9419E5343C00C690DE /* OBDIIElmSensor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBDIIElmSensor.h; sourceTree = "<group>"; };
 		AE41CE9E19E5357800C690DE /* port_config.conf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = port_config.conf; path = "../config-files/port_config.conf"; sourceTree = "<group>"; };
 		AE41CE9F19E5357800C690DE /* sensor_definitions.conf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = sensor_definitions.conf; path = "../config-files/sensor_definitions.conf"; sourceTree = "<group>"; };
-		AE9270B319D8C00A00169D81 /* yamsLogd */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = yamsLogd; sourceTree = BUILT_PRODUCTS_DIR; };
+		AE9270B319D8C00A00169D81 /* yamsLog */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = yamsLog; sourceTree = BUILT_PRODUCTS_DIR; };
 		AEB4F6AF19D8C0670099EC55 /* ClientCallbackImpl.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ClientCallbackImpl.cpp; sourceTree = "<group>"; };
 		AEB4F6B019D8C0670099EC55 /* ClientCallbackImpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClientCallbackImpl.h; sourceTree = "<group>"; };
 		AEB4F6B119D8C0670099EC55 /* ClientConnection.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ClientConnection.cpp; sourceTree = "<group>"; };
@@ -189,7 +189,7 @@
 				AEE2704E19DDB88800D0950A /* libprotobuf.8.dylib */,
 				AEB4F70B19D8C2CF0099EC55 /* protobuf */,
 				AEE2705819DDBA3600D0950A /* Resource files */,
-				AEB4F6AE19D8C0670099EC55 /* src */,
+				AEB4F6AE19D8C0670099EC55 /* yamsLogd */,
 				AE9270B419D8C00A00169D81 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -197,12 +197,12 @@
 		AE9270B419D8C00A00169D81 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				AE9270B319D8C00A00169D81 /* yamsLogd */,
+				AE9270B319D8C00A00169D81 /* yamsLog */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		AEB4F6AE19D8C0670099EC55 /* src */ = {
+		AEB4F6AE19D8C0670099EC55 /* yamsLogd */ = {
 			isa = PBXGroup;
 			children = (
 				AE41CE7D19E5341000C690DE /* SensorDefinitionReader.cpp */,
@@ -233,7 +233,7 @@
 				AEB4F6E919D8C0670099EC55 /* StatusObserver.h */,
 				AEB4F6EA19D8C0670099EC55 /* ThreadSafeFifo.h */,
 			);
-			name = src;
+			name = yamsLogd;
 			path = server/yamsLogd/src;
 			sourceTree = "<group>";
 		};
@@ -310,9 +310,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		AE9270B219D8C00A00169D81 /* yamsLogd */ = {
+		AE9270B219D8C00A00169D81 /* yamsLog */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = AE9270BA19D8C00A00169D81 /* Build configuration list for PBXNativeTarget "yamsLogd" */;
+			buildConfigurationList = AE9270BA19D8C00A00169D81 /* Build configuration list for PBXNativeTarget "yamsLog" */;
 			buildPhases = (
 				AE9270AF19D8C00A00169D81 /* Sources */,
 				AE9270B019D8C00A00169D81 /* Frameworks */,
@@ -322,9 +322,9 @@
 			);
 			dependencies = (
 			);
-			name = yamsLogd;
+			name = yamsLog;
 			productName = yamsLogd;
-			productReference = AE9270B319D8C00A00169D81 /* yamsLogd */;
+			productReference = AE9270B319D8C00A00169D81 /* yamsLog */;
 			productType = "com.apple.product-type.tool";
 		};
 /* End PBXNativeTarget section */
@@ -341,7 +341,7 @@
 					};
 				};
 			};
-			buildConfigurationList = AE9270AE19D8C00A00169D81 /* Build configuration list for PBXProject "yamsLogd" */;
+			buildConfigurationList = AE9270AE19D8C00A00169D81 /* Build configuration list for PBXProject "yamsLog" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -353,7 +353,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				AE9270B219D8C00A00169D81 /* yamsLogd */,
+				AE9270B219D8C00A00169D81 /* yamsLog */,
 			);
 		};
 /* End PBXProject section */
@@ -488,7 +488,7 @@
 					/Users/frisk/sw/boost/lib,
 					/Users/frisk/sw/protobuf/lib,
 				);
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = yamsLog;
 			};
 			name = Debug;
 		};
@@ -505,14 +505,14 @@
 					/Users/frisk/sw/boost/lib,
 					/Users/frisk/sw/protobuf/lib,
 				);
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = yamsLog;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		AE9270AE19D8C00A00169D81 /* Build configuration list for PBXProject "yamsLogd" */ = {
+		AE9270AE19D8C00A00169D81 /* Build configuration list for PBXProject "yamsLog" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				AE9270B819D8C00A00169D81 /* Debug */,
@@ -521,7 +521,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		AE9270BA19D8C00A00169D81 /* Build configuration list for PBXNativeTarget "yamsLogd" */ = {
+		AE9270BA19D8C00A00169D81 /* Build configuration list for PBXNativeTarget "yamsLog" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				AE9270BB19D8C00A00169D81 /* Debug */,
