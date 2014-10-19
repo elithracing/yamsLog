@@ -31,6 +31,35 @@
 		AEB4F70519D8C0670099EC55 /* TextFileOutputService.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AEB4F6E619D8C0670099EC55 /* TextFileOutputService.cpp */; };
 		AEB4F70619D8C0670099EC55 /* StatusObserver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AEB4F6E819D8C0670099EC55 /* StatusObserver.cpp */; };
 		AEB4F70A19D8C2C80099EC55 /* protocol.pb.cc in Sources */ = {isa = PBXBuildFile; fileRef = AEB4F70719D8C2C80099EC55 /* protocol.pb.cc */; };
+		AEBF000019F4535E00A1260F /* ChooseAttributesViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = AEBFFFD219F4535E00A1260F /* ChooseAttributesViewController.mm */; };
+		AEBF000119F4535E00A1260F /* CircularDataArray.m in Sources */ = {isa = PBXBuildFile; fileRef = AEBFFFD419F4535E00A1260F /* CircularDataArray.m */; };
+		AEBF000219F4535E00A1260F /* CommunicationCentral.mm in Sources */ = {isa = PBXBuildFile; fileRef = AEBFFFD619F4535E00A1260F /* CommunicationCentral.mm */; };
+		AEBF000319F4535E00A1260F /* ConnectionClient.mm in Sources */ = {isa = PBXBuildFile; fileRef = AEBFFFD919F4535E00A1260F /* ConnectionClient.mm */; };
+		AEBF000419F4535E00A1260F /* CreateProjectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AEBFFFDB19F4535E00A1260F /* CreateProjectViewController.m */; };
+		AEBF000519F4535E00A1260F /* DataPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = AEBFFFDD19F4535E00A1260F /* DataPoint.m */; };
+		AEBF000619F4535E00A1260F /* DynamicEventsViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = AEBFFFDF19F4535E00A1260F /* DynamicEventsViewController.mm */; };
+		AEBF000719F4535E00A1260F /* GCDAsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = AEBFFFE119F4535E00A1260F /* GCDAsyncSocket.m */; };
+		AEBF000819F4535E00A1260F /* GraphPlotterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AEBFFFE319F4535E00A1260F /* GraphPlotterViewController.m */; };
+		AEBF000919F4535E00A1260F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AEBFFFE419F4535E00A1260F /* Images.xcassets */; };
+		AEBF000A19F4535E00A1260F /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AEBFFFE519F4535E00A1260F /* Info.plist */; };
+		AEBF000B19F4535E00A1260F /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = AEBFFFE619F4535E00A1260F /* LaunchScreen.xib */; };
+		AEBF000C19F4535E00A1260F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AEBFFFE719F4535E00A1260F /* main.m */; };
+		AEBF000D19F4535E00A1260F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AEBFFFE819F4535E00A1260F /* Main.storyboard */; };
+		AEBF000E19F4535E00A1260F /* OldCircularDataArray.m in Sources */ = {isa = PBXBuildFile; fileRef = AEBFFFEA19F4535E00A1260F /* OldCircularDataArray.m */; };
+		AEBF000F19F4535E00A1260F /* PlotPageViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = AEBFFFEC19F4535E00A1260F /* PlotPageViewController.mm */; };
+		AEBF001019F4535E00A1260F /* PlotViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = AEBFFFEE19F4535E00A1260F /* PlotViewController.mm */; };
+		AEBF001119F4535E00A1260F /* ProjectTabViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = AEBFFFF019F4535E00A1260F /* ProjectTabViewController.mm */; };
+		AEBF001219F4535E00A1260F /* RealTimeGraphView.m in Sources */ = {isa = PBXBuildFile; fileRef = AEBFFFF219F4535E00A1260F /* RealTimeGraphView.m */; };
+		AEBF001319F4535E00A1260F /* SensorConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = AEBFFFF519F4535E00A1260F /* SensorConfiguration.m */; };
+		AEBF001419F4535E00A1260F /* SensorsViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = AEBFFFF719F4535E00A1260F /* SensorsViewController.mm */; };
+		AEBF001519F4535E00A1260F /* ShowProjectsTableViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = AEBFFFF919F4535E00A1260F /* ShowProjectsTableViewController.mm */; };
+		AEBF001619F4535E00A1260F /* ShowSensorInformationViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = AEBFFFFB19F4535E00A1260F /* ShowSensorInformationViewController.mm */; };
+		AEBF001819F4539600A1260F /* libprotobuf.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AEBF001719F4539600A1260F /* libprotobuf.a */; };
+		AEBF001919F453AD00A1260F /* protocol.pb.cc in Sources */ = {isa = PBXBuildFile; fileRef = AEB4F70719D8C2C80099EC55 /* protocol.pb.cc */; };
+		AEBFFFFC19F4535E00A1260F /* AddPlotViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = AEBFFFCA19F4535E00A1260F /* AddPlotViewController.mm */; };
+		AEBFFFFD19F4535E00A1260F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AEBFFFCC19F4535E00A1260F /* AppDelegate.m */; };
+		AEBFFFFE19F4535E00A1260F /* AxisLimits.m in Sources */ = {isa = PBXBuildFile; fileRef = AEBFFFCE19F4535E00A1260F /* AxisLimits.m */; };
+		AEBFFFFF19F4535E00A1260F /* CDMiniClientViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = AEBFFFD019F4535E00A1260F /* CDMiniClientViewController.mm */; };
 		AEE2704F19DDB88800D0950A /* libprotobuf.8.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = AEE2704E19DDB88800D0950A /* libprotobuf.8.dylib */; };
 		AEE2705319DDB90A00D0950A /* libboost_filesystem.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = AEE2705019DDB90A00D0950A /* libboost_filesystem.dylib */; };
 		AEE2705419DDB90A00D0950A /* libboost_system.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = AEE2705119DDB90A00D0950A /* libboost_system.dylib */; };
@@ -135,6 +164,59 @@
 		AEB4F70719D8C2C80099EC55 /* protocol.pb.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = protocol.pb.cc; path = protobuf/gen/cpp/protocol.pb.cc; sourceTree = "<group>"; };
 		AEB4F70819D8C2C80099EC55 /* protocol.pb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = protocol.pb.h; path = protobuf/gen/cpp/protocol.pb.h; sourceTree = "<group>"; };
 		AEB4F70919D8C2C80099EC55 /* protocol.proto */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = protocol.proto; path = protobuf/protocol.proto; sourceTree = "<group>"; };
+		AEBF001719F4539600A1260F /* libprotobuf.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libprotobuf.a; path = ../../sw/protobuf/lib/iOS/libprotobuf.a; sourceTree = "<group>"; };
+		AEBFFFA219F4514C00A1260F /* yamsClient.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = yamsClient.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AEBFFFC919F4535E00A1260F /* AddPlotViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddPlotViewController.h; sourceTree = "<group>"; };
+		AEBFFFCA19F4535E00A1260F /* AddPlotViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AddPlotViewController.mm; sourceTree = "<group>"; };
+		AEBFFFCB19F4535E00A1260F /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		AEBFFFCC19F4535E00A1260F /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		AEBFFFCD19F4535E00A1260F /* AxisLimits.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AxisLimits.h; sourceTree = "<group>"; };
+		AEBFFFCE19F4535E00A1260F /* AxisLimits.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AxisLimits.m; sourceTree = "<group>"; };
+		AEBFFFCF19F4535E00A1260F /* CDMiniClientViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDMiniClientViewController.h; sourceTree = "<group>"; };
+		AEBFFFD019F4535E00A1260F /* CDMiniClientViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CDMiniClientViewController.mm; sourceTree = "<group>"; };
+		AEBFFFD119F4535E00A1260F /* ChooseAttributesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseAttributesViewController.h; sourceTree = "<group>"; };
+		AEBFFFD219F4535E00A1260F /* ChooseAttributesViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ChooseAttributesViewController.mm; sourceTree = "<group>"; };
+		AEBFFFD319F4535E00A1260F /* CircularDataArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CircularDataArray.h; sourceTree = "<group>"; };
+		AEBFFFD419F4535E00A1260F /* CircularDataArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CircularDataArray.m; sourceTree = "<group>"; };
+		AEBFFFD519F4535E00A1260F /* CommunicationCentral.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommunicationCentral.h; sourceTree = "<group>"; };
+		AEBFFFD619F4535E00A1260F /* CommunicationCentral.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CommunicationCentral.mm; sourceTree = "<group>"; };
+		AEBFFFD719F4535E00A1260F /* CommunicationCentralDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommunicationCentralDelegate.h; sourceTree = "<group>"; };
+		AEBFFFD819F4535E00A1260F /* ConnectionClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConnectionClient.h; sourceTree = "<group>"; };
+		AEBFFFD919F4535E00A1260F /* ConnectionClient.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ConnectionClient.mm; sourceTree = "<group>"; };
+		AEBFFFDA19F4535E00A1260F /* CreateProjectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateProjectViewController.h; sourceTree = "<group>"; };
+		AEBFFFDB19F4535E00A1260F /* CreateProjectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateProjectViewController.m; sourceTree = "<group>"; };
+		AEBFFFDC19F4535E00A1260F /* DataPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataPoint.h; sourceTree = "<group>"; };
+		AEBFFFDD19F4535E00A1260F /* DataPoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataPoint.m; sourceTree = "<group>"; };
+		AEBFFFDE19F4535E00A1260F /* DynamicEventsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DynamicEventsViewController.h; sourceTree = "<group>"; };
+		AEBFFFDF19F4535E00A1260F /* DynamicEventsViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = DynamicEventsViewController.mm; sourceTree = "<group>"; };
+		AEBFFFE019F4535E00A1260F /* GCDAsyncSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDAsyncSocket.h; sourceTree = "<group>"; };
+		AEBFFFE119F4535E00A1260F /* GCDAsyncSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDAsyncSocket.m; sourceTree = "<group>"; };
+		AEBFFFE219F4535E00A1260F /* GraphPlotterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GraphPlotterViewController.h; sourceTree = "<group>"; };
+		AEBFFFE319F4535E00A1260F /* GraphPlotterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GraphPlotterViewController.m; sourceTree = "<group>"; };
+		AEBFFFE419F4535E00A1260F /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		AEBFFFE519F4535E00A1260F /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AEBFFFE619F4535E00A1260F /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
+		AEBFFFE719F4535E00A1260F /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		AEBFFFE819F4535E00A1260F /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		AEBFFFE919F4535E00A1260F /* OldCircularDataArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OldCircularDataArray.h; sourceTree = "<group>"; };
+		AEBFFFEA19F4535E00A1260F /* OldCircularDataArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OldCircularDataArray.m; sourceTree = "<group>"; };
+		AEBFFFEB19F4535E00A1260F /* PlotPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlotPageViewController.h; sourceTree = "<group>"; };
+		AEBFFFEC19F4535E00A1260F /* PlotPageViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = PlotPageViewController.mm; sourceTree = "<group>"; };
+		AEBFFFED19F4535E00A1260F /* PlotViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlotViewController.h; sourceTree = "<group>"; };
+		AEBFFFEE19F4535E00A1260F /* PlotViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = PlotViewController.mm; sourceTree = "<group>"; };
+		AEBFFFEF19F4535E00A1260F /* ProjectTabViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectTabViewController.h; sourceTree = "<group>"; };
+		AEBFFFF019F4535E00A1260F /* ProjectTabViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ProjectTabViewController.mm; sourceTree = "<group>"; };
+		AEBFFFF119F4535E00A1260F /* RealTimeGraphView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RealTimeGraphView.h; sourceTree = "<group>"; };
+		AEBFFFF219F4535E00A1260F /* RealTimeGraphView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RealTimeGraphView.m; sourceTree = "<group>"; };
+		AEBFFFF319F4535E00A1260F /* RealTimeGraphViewDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RealTimeGraphViewDataSource.h; sourceTree = "<group>"; };
+		AEBFFFF419F4535E00A1260F /* SensorConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SensorConfiguration.h; sourceTree = "<group>"; };
+		AEBFFFF519F4535E00A1260F /* SensorConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SensorConfiguration.m; sourceTree = "<group>"; };
+		AEBFFFF619F4535E00A1260F /* SensorsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SensorsViewController.h; sourceTree = "<group>"; };
+		AEBFFFF719F4535E00A1260F /* SensorsViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = SensorsViewController.mm; sourceTree = "<group>"; };
+		AEBFFFF819F4535E00A1260F /* ShowProjectsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShowProjectsTableViewController.h; sourceTree = "<group>"; };
+		AEBFFFF919F4535E00A1260F /* ShowProjectsTableViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ShowProjectsTableViewController.mm; sourceTree = "<group>"; };
+		AEBFFFFA19F4535E00A1260F /* ShowSensorInformationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShowSensorInformationViewController.h; sourceTree = "<group>"; };
+		AEBFFFFB19F4535E00A1260F /* ShowSensorInformationViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ShowSensorInformationViewController.mm; sourceTree = "<group>"; };
 		AEE2704E19DDB88800D0950A /* libprotobuf.8.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libprotobuf.8.dylib; path = ../../sw/protobuf/lib/libprotobuf.8.dylib; sourceTree = "<group>"; };
 		AEE2705019DDB90A00D0950A /* libboost_filesystem.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libboost_filesystem.dylib; path = ../../sw/boost/lib/libboost_filesystem.dylib; sourceTree = "<group>"; };
 		AEE2705119DDB90A00D0950A /* libboost_system.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libboost_system.dylib; path = ../../sw/boost/lib/libboost_system.dylib; sourceTree = "<group>"; };
@@ -150,6 +232,14 @@
 				AEE2705419DDB90A00D0950A /* libboost_system.dylib in Frameworks */,
 				AEE2705519DDB90A00D0950A /* libboost_thread.dylib in Frameworks */,
 				AEE2704F19DDB88800D0950A /* libprotobuf.8.dylib in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AEBFFF9F19F4514C00A1260F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AEBF001819F4539600A1260F /* libprotobuf.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -183,6 +273,7 @@
 		AE9270AA19D8C00A00169D81 = {
 			isa = PBXGroup;
 			children = (
+				AEBF001719F4539600A1260F /* libprotobuf.a */,
 				AEE2705019DDB90A00D0950A /* libboost_filesystem.dylib */,
 				AEE2705119DDB90A00D0950A /* libboost_system.dylib */,
 				AEE2705219DDB90A00D0950A /* libboost_thread.dylib */,
@@ -190,6 +281,7 @@
 				AEB4F70B19D8C2CF0099EC55 /* protobuf */,
 				AEE2705819DDBA3600D0950A /* Resource files */,
 				AEB4F6AE19D8C0670099EC55 /* yamsLogd */,
+				AEBFFFA319F4514C00A1260F /* yamsClient */,
 				AE9270B419D8C00A00169D81 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -198,6 +290,7 @@
 			isa = PBXGroup;
 			children = (
 				AE9270B319D8C00A00169D81 /* yamsLog */,
+				AEBFFFA219F4514C00A1260F /* yamsClient.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -297,6 +390,177 @@
 			name = protobuf;
 			sourceTree = "<group>";
 		};
+		AEBF001A19F4544D00A1260F /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				AEBFFFCB19F4535E00A1260F /* AppDelegate.h */,
+				AEBFFFCC19F4535E00A1260F /* AppDelegate.m */,
+				AEBFFFE519F4535E00A1260F /* Info.plist */,
+				AEBFFFE719F4535E00A1260F /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		AEBF001B19F4545E00A1260F /* TCP Async */ = {
+			isa = PBXGroup;
+			children = (
+				AEBFFFE019F4535E00A1260F /* GCDAsyncSocket.h */,
+				AEBFFFE119F4535E00A1260F /* GCDAsyncSocket.m */,
+			);
+			name = "TCP Async";
+			sourceTree = "<group>";
+		};
+		AEBF001C19F4546700A1260F /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				AEBF002119F454E400A1260F /* Graph Plotter */,
+				AEBF002019F454D800A1260F /* Connection Controller */,
+				AEBF001F19F454CF00A1260F /* Project Tab */,
+				AEBF001E19F454BA00A1260F /* Show Projects */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		AEBF001D19F4547400A1260F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				AEBFFFD319F4535E00A1260F /* CircularDataArray.h */,
+				AEBFFFD419F4535E00A1260F /* CircularDataArray.m */,
+				AEBFFFD519F4535E00A1260F /* CommunicationCentral.h */,
+				AEBFFFD619F4535E00A1260F /* CommunicationCentral.mm */,
+				AEBFFFD719F4535E00A1260F /* CommunicationCentralDelegate.h */,
+				AEBFFFD819F4535E00A1260F /* ConnectionClient.h */,
+				AEBFFFD919F4535E00A1260F /* ConnectionClient.mm */,
+				AEBFFFDC19F4535E00A1260F /* DataPoint.h */,
+				AEBFFFDD19F4535E00A1260F /* DataPoint.m */,
+				AEBFFFF419F4535E00A1260F /* SensorConfiguration.h */,
+				AEBFFFF519F4535E00A1260F /* SensorConfiguration.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		AEBF001E19F454BA00A1260F /* Show Projects */ = {
+			isa = PBXGroup;
+			children = (
+				AEBFFFDA19F4535E00A1260F /* CreateProjectViewController.h */,
+				AEBFFFDB19F4535E00A1260F /* CreateProjectViewController.m */,
+				AEBFFFF819F4535E00A1260F /* ShowProjectsTableViewController.h */,
+				AEBFFFF919F4535E00A1260F /* ShowProjectsTableViewController.mm */,
+			);
+			name = "Show Projects";
+			sourceTree = "<group>";
+		};
+		AEBF001F19F454CF00A1260F /* Project Tab */ = {
+			isa = PBXGroup;
+			children = (
+				AEBFFFEF19F4535E00A1260F /* ProjectTabViewController.h */,
+				AEBFFFF019F4535E00A1260F /* ProjectTabViewController.mm */,
+				AEBF002719F4558400A1260F /* Sensors */,
+				AEBF002619F4557F00A1260F /* Plot */,
+				AEBF002519F4557400A1260F /* Dynamic Events */,
+			);
+			name = "Project Tab";
+			sourceTree = "<group>";
+		};
+		AEBF002019F454D800A1260F /* Connection Controller */ = {
+			isa = PBXGroup;
+			children = (
+				AEBFFFCF19F4535E00A1260F /* CDMiniClientViewController.h */,
+				AEBFFFD019F4535E00A1260F /* CDMiniClientViewController.mm */,
+			);
+			name = "Connection Controller";
+			sourceTree = "<group>";
+		};
+		AEBF002119F454E400A1260F /* Graph Plotter */ = {
+			isa = PBXGroup;
+			children = (
+				AEBF002419F4550400A1260F /* Model */,
+				AEBF002319F454FE00A1260F /* View */,
+				AEBF002219F454F000A1260F /* Controller */,
+			);
+			name = "Graph Plotter";
+			sourceTree = "<group>";
+		};
+		AEBF002219F454F000A1260F /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				AEBFFFE219F4535E00A1260F /* GraphPlotterViewController.h */,
+				AEBFFFE319F4535E00A1260F /* GraphPlotterViewController.m */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		AEBF002319F454FE00A1260F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				AEBFFFCD19F4535E00A1260F /* AxisLimits.h */,
+				AEBFFFCE19F4535E00A1260F /* AxisLimits.m */,
+				AEBFFFF119F4535E00A1260F /* RealTimeGraphView.h */,
+				AEBFFFF219F4535E00A1260F /* RealTimeGraphView.m */,
+				AEBFFFF319F4535E00A1260F /* RealTimeGraphViewDataSource.h */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		AEBF002419F4550400A1260F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				AEBFFFE919F4535E00A1260F /* OldCircularDataArray.h */,
+				AEBFFFEA19F4535E00A1260F /* OldCircularDataArray.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		AEBF002519F4557400A1260F /* Dynamic Events */ = {
+			isa = PBXGroup;
+			children = (
+				AEBFFFDE19F4535E00A1260F /* DynamicEventsViewController.h */,
+				AEBFFFDF19F4535E00A1260F /* DynamicEventsViewController.mm */,
+			);
+			name = "Dynamic Events";
+			sourceTree = "<group>";
+		};
+		AEBF002619F4557F00A1260F /* Plot */ = {
+			isa = PBXGroup;
+			children = (
+				AEBFFFC919F4535E00A1260F /* AddPlotViewController.h */,
+				AEBFFFCA19F4535E00A1260F /* AddPlotViewController.mm */,
+				AEBFFFD119F4535E00A1260F /* ChooseAttributesViewController.h */,
+				AEBFFFD219F4535E00A1260F /* ChooseAttributesViewController.mm */,
+				AEBFFFEB19F4535E00A1260F /* PlotPageViewController.h */,
+				AEBFFFEC19F4535E00A1260F /* PlotPageViewController.mm */,
+				AEBFFFED19F4535E00A1260F /* PlotViewController.h */,
+				AEBFFFEE19F4535E00A1260F /* PlotViewController.mm */,
+			);
+			name = Plot;
+			sourceTree = "<group>";
+		};
+		AEBF002719F4558400A1260F /* Sensors */ = {
+			isa = PBXGroup;
+			children = (
+				AEBFFFFA19F4535E00A1260F /* ShowSensorInformationViewController.h */,
+				AEBFFFFB19F4535E00A1260F /* ShowSensorInformationViewController.mm */,
+				AEBFFFF619F4535E00A1260F /* SensorsViewController.h */,
+				AEBFFFF719F4535E00A1260F /* SensorsViewController.mm */,
+			);
+			name = Sensors;
+			sourceTree = "<group>";
+		};
+		AEBFFFA319F4514C00A1260F /* yamsClient */ = {
+			isa = PBXGroup;
+			children = (
+				AEBFFFE619F4535E00A1260F /* LaunchScreen.xib */,
+				AEBFFFE819F4535E00A1260F /* Main.storyboard */,
+				AEBF001D19F4547400A1260F /* Model */,
+				AEBF001C19F4546700A1260F /* Controllers */,
+				AEBF001B19F4545E00A1260F /* TCP Async */,
+				AEBF001A19F4544D00A1260F /* Supporting Files */,
+				AEBFFFE419F4535E00A1260F /* Images.xcassets */,
+			);
+			name = yamsClient;
+			path = clients/iOS;
+			sourceTree = "<group>";
+		};
 		AEE2705819DDBA3600D0950A /* Resource files */ = {
 			isa = PBXGroup;
 			children = (
@@ -327,6 +591,23 @@
 			productReference = AE9270B319D8C00A00169D81 /* yamsLog */;
 			productType = "com.apple.product-type.tool";
 		};
+		AEBFFFA119F4514C00A1260F /* yamsClient */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AEBFFFC619F4514D00A1260F /* Build configuration list for PBXNativeTarget "yamsClient" */;
+			buildPhases = (
+				AEBFFF9E19F4514C00A1260F /* Sources */,
+				AEBFFF9F19F4514C00A1260F /* Frameworks */,
+				AEBFFFA019F4514C00A1260F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = yamsClient;
+			productName = yamsClient;
+			productReference = AEBFFFA219F4514C00A1260F /* yamsClient.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -339,6 +620,9 @@
 					AE9270B219D8C00A00169D81 = {
 						CreatedOnToolsVersion = 6.0.1;
 					};
+					AEBFFFA119F4514C00A1260F = {
+						CreatedOnToolsVersion = 6.0.1;
+					};
 				};
 			};
 			buildConfigurationList = AE9270AE19D8C00A00169D81 /* Build configuration list for PBXProject "yamsLog" */;
@@ -347,6 +631,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
 			mainGroup = AE9270AA19D8C00A00169D81;
 			productRefGroup = AE9270B419D8C00A00169D81 /* Products */;
@@ -354,9 +639,24 @@
 			projectRoot = "";
 			targets = (
 				AE9270B219D8C00A00169D81 /* yamsLog */,
+				AEBFFFA119F4514C00A1260F /* yamsClient */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		AEBFFFA019F4514C00A1260F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AEBF000A19F4535E00A1260F /* Info.plist in Resources */,
+				AEBF000B19F4535E00A1260F /* LaunchScreen.xib in Resources */,
+				AEBF000919F4535E00A1260F /* Images.xcassets in Resources */,
+				AEBF000D19F4535E00A1260F /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		AE9270AF19D8C00A00169D81 /* Sources */ = {
@@ -385,6 +685,37 @@
 				AE41CE7F19E5341000C690DE /* SensorDefinitionReader.cpp in Sources */,
 				AEB4F6EB19D8C0670099EC55 /* ClientCallbackImpl.cpp in Sources */,
 				AEB4F70119D8C0670099EC55 /* CommunicationServerService.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AEBFFF9E19F4514C00A1260F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AEBF001619F4535E00A1260F /* ShowSensorInformationViewController.mm in Sources */,
+				AEBF001419F4535E00A1260F /* SensorsViewController.mm in Sources */,
+				AEBF000719F4535E00A1260F /* GCDAsyncSocket.m in Sources */,
+				AEBF000619F4535E00A1260F /* DynamicEventsViewController.mm in Sources */,
+				AEBF000519F4535E00A1260F /* DataPoint.m in Sources */,
+				AEBF000119F4535E00A1260F /* CircularDataArray.m in Sources */,
+				AEBF001119F4535E00A1260F /* ProjectTabViewController.mm in Sources */,
+				AEBF000419F4535E00A1260F /* CreateProjectViewController.m in Sources */,
+				AEBF001319F4535E00A1260F /* SensorConfiguration.m in Sources */,
+				AEBF001219F4535E00A1260F /* RealTimeGraphView.m in Sources */,
+				AEBF000019F4535E00A1260F /* ChooseAttributesViewController.mm in Sources */,
+				AEBF000E19F4535E00A1260F /* OldCircularDataArray.m in Sources */,
+				AEBF000319F4535E00A1260F /* ConnectionClient.mm in Sources */,
+				AEBF001519F4535E00A1260F /* ShowProjectsTableViewController.mm in Sources */,
+				AEBFFFFD19F4535E00A1260F /* AppDelegate.m in Sources */,
+				AEBF000219F4535E00A1260F /* CommunicationCentral.mm in Sources */,
+				AEBF000819F4535E00A1260F /* GraphPlotterViewController.m in Sources */,
+				AEBFFFFC19F4535E00A1260F /* AddPlotViewController.mm in Sources */,
+				AEBF000F19F4535E00A1260F /* PlotPageViewController.mm in Sources */,
+				AEBF001019F4535E00A1260F /* PlotViewController.mm in Sources */,
+				AEBF001919F453AD00A1260F /* protocol.pb.cc in Sources */,
+				AEBFFFFE19F4535E00A1260F /* AxisLimits.m in Sources */,
+				AEBF000C19F4535E00A1260F /* main.m in Sources */,
+				AEBFFFFF19F4535E00A1260F /* CDMiniClientViewController.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -509,6 +840,59 @@
 			};
 			name = Release;
 		};
+		AEBFFFC219F4514D00A1260F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"$(SOURCE_ROOT)/server/yamsLogd/src/",
+					/Users/frisk/sw/protobuf/include/,
+				);
+				INFOPLIST_FILE = clients/iOS/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/frisk/sw/protobuf/lib/iOS,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		AEBFFFC319F4514D00A1260F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"$(SOURCE_ROOT)/server/yamsLogd/src/",
+					/Users/frisk/sw/protobuf/include/,
+				);
+				INFOPLIST_FILE = clients/iOS/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/frisk/sw/protobuf/lib/iOS,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -529,6 +913,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		AEBFFFC619F4514D00A1260F /* Build configuration list for PBXNativeTarget "yamsClient" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AEBFFFC219F4514D00A1260F /* Debug */,
+				AEBFFFC319F4514D00A1260F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};
