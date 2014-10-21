@@ -1,1 +1,1 @@
-java -cp backend.jar:../protobuf/gen/Protocol.jar:../external/libs/ProtobufJava.jar  OutsideCode 
+java -cp backend.jar:../protobuf/gen/Protocol.jar:../external/extLibs/ProtobufJava.jar  OutsideCode 

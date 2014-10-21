@@ -1,7 +1,7 @@
 <project>
   <property name="ant.build.javac.source" value="1.6"/>
   <property name="ant.build.javac.target" value="1.6"/>
-    <property name="external-lib.dir"     value="../external/libs"/>
+    <property name="external-lib.dir"     value="../external/extLibs"/>
     <property name="protocol-lib.dir"     value="../protobuf/gen/"/>
 
     <path id="classpath">
