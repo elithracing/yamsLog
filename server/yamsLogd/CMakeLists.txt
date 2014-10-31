@@ -51,6 +51,7 @@ add_library(TextFileOutputService src/services/TextFileOutputService.cpp src/ser
 add_library(AbstractSensor src/sensors/AbstractSensor.cpp src/sensors/AbstractSensor.h)
 add_library(CanSensor src/sensors/CanSensor.cpp src/sensors/CanSensor.h)
 add_library(CorrsysSensor src/sensors/CorrsysSensor.cpp src/sensors/CorrsysSensor.h)
+add_library(ERDataLogger src/sensors/ERDataLogger.cpp src/sensors/ERDataLogger.h)
 add_library(GpsSensor src/sensors/GpsSensor.cpp src/sensors/GpsSensor.h)
 add_library(ImuSensor src/sensors/ImuSensor.cpp src/sensors/ImuSensor.h)
 add_library(VirtualSensor src/sensors/VirtualSensor.cpp src/sensors/VirtualSensor.h)
@@ -102,9 +103,10 @@ target_link_libraries(yamsLogd DataLogger ProjectHandler Project
   CommunicationServerService KeyboardInputService
   ProtobufFileOutputService ProtobufTcpOutputService
   TextFileOutputService AbstractSensor CanSensor CorrsysSensor
-  GpsSensor OBDIIElmSensor OBDIIElm VirtualSensor ImuSensor CAN MTComm
-  SerialLib XSensIMU SensorDefinitionReader ModificationCallbackImpl
-  boost_system boost_filesystem boost_thread pthread rt protobuf)
+  ERDataLogger GpsSensor OBDIIElmSensor OBDIIElm VirtualSensor 
+  ImuSensor CAN MTComm SerialLib XSensIMU SensorDefinitionReader 
+  ModificationCallbackImpl boost_system boost_filesystem 
+  boost_thread pthread rt protobuf)
 
 
 target_link_libraries(OBDtool OBDIIElm)

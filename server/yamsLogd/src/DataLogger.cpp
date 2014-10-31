@@ -47,6 +47,7 @@
 #include "sensors/GpsSensor.h"
 #include "sensors/ImuSensor.h"
 #include "sensors/OBDIIElmSensor.h"
+#include "sensors/ERDataLogger.h"
 #endif
 #include "sensors/VirtualSensor.h"
 
@@ -313,6 +314,10 @@ void DataLogger::create_sensors(std::unordered_map<int, sensor_config_struct> se
   if(sensor_config_map.find(30) != sensor_config_map.end()){
     sensors_.push_back(
                        boost::make_shared<CorrsysSensor>(30, comm_server));
+  }
+  if(sensor_config_map.find(1337) != sensor_config_map.end()){
+    sensors_.push_back(
+                       boost::make_shared<ERDataLogger>(1337, comm_server));
   }
 #else
   if(sensor_config_map.find(9) != sensor_config_map.end()){
