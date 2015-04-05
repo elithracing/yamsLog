@@ -30,20 +30,16 @@
 #define ER_DATALOGGER_DEBUG 0
 #endif
 
-// TODO Fix time diff (doesn't send one use the Hz instead)
-
 static const int SERIAL_TIMEOUT       = 6;
-static const int MAX_ATTRIBUTES       = 29; // TODO Set this to a nice(r?) value
+static const int MAX_ATTRIBUTES       = 29; 
 static const int SLEEP_TIME_MS        = 200;
 static const int MAX_MESSAGE_SIZE     = 128;
-static const int LOOP_TIMEOUT         = 2000; // Number of loops / bytes before we give up
+static const int LOOP_TIMEOUT         = 1000;
 
-// Special bytes
+// Special bytes for communication with logging unit
 static const uint8_t ER_START         = 0xAA;
 static const uint8_t ER_ESC           = 0xBB;
 static const uint8_t ER_STOP          = 0xCC;
-
-
 
 ERDataLogger::ERDataLogger(int id, CommunicationServer& comm_server)
   : AbstractSensor(id, MAX_ATTRIBUTES, comm_server),
@@ -52,6 +48,7 @@ ERDataLogger::ERDataLogger(int id, CommunicationServer& comm_server)
 
 bool ERDataLogger::initialize() {
   try {
+    time = 0;
     er_receiver_ = new TimeoutSerial(get_port_name(), 115200);
     er_receiver_->setTimeout(boost::posix_time::seconds(SERIAL_TIMEOUT));
     return er_receiver_->isOpen();
@@ -83,7 +80,6 @@ void ERDataLogger::idle() {
 void ERDataLogger::execute() {
   std::vector<float> values;
   if(read_one_data(&values)){
-    time = 0; // Default time to something
     add_to_fifos(create_data_message(time, &values,true), 
         create_data_message(time, &values,false), 
         create_text_data_message(time,&values));
