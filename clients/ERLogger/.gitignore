@@ -1,0 +1,11 @@
+# IDEA stuff
+.idea/
+*.iws
+workspace.xml
+tasks.xml
+
+# Java stuff
+*.class
+
+# Binaries
+out/
