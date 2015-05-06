@@ -31,7 +31,7 @@
 #endif
 
 static const int SERIAL_TIMEOUT       = 6;
-static const int MAX_ATTRIBUTES       = 29; 
+static const int MAX_ATTRIBUTES       = 33; 
 static const int SLEEP_TIME_MS        = 200;
 static const int MAX_MESSAGE_SIZE     = 128;
 static const int LOOP_TIMEOUT         = 1000;
@@ -88,13 +88,10 @@ void ERDataLogger::execute() {
 
 bool ERDataLogger::read_one_data(std::vector<float>* values){
   uint8_t byte, last_byte;
-  uint16_t value;
   float floatval;
   bool in_packet = false;
   bool escape = false;
   bool second_byte = false;
-  bool got_time_low = false;
-  bool got_time_high = false;
 
   try {
     if(er_receiver_ != nullptr) {
@@ -104,6 +101,7 @@ bool ERDataLogger::read_one_data(std::vector<float>* values){
 
         if(!in_packet) {
           in_packet = (byte == ER_START);
+          time = get_time_diff();
 #if (ER_DATALOGGER_DEBUG)
           if(in_packet) {
             printf("\nERDataLogger: byte #%d: START BYTE FOUND \n", i);
@@ -125,26 +123,12 @@ bool ERDataLogger::read_one_data(std::vector<float>* values){
             escape = false;
           }
           if(second_byte) {
-            if(!got_time_low) {
-              value = (last_byte << 8) + byte;
-              got_time_low = true;
-            }
-            else if(!got_time_high) {
-              // Received both time fields
-              time = (double) ((uint32_t)(last_byte << 8) + byte) + ((uint32_t) value);
-              got_time_high = true;
+            // Received one data field
+            floatval = (float) (last_byte << 8) + byte;
+            values->push_back(floatval);
 #if (ER_DATALOGGER_DEBUG)
-              printf("ERDataLogger: byte #%d: Got time: %f\n", i, time);
+            printf("ERDateLogger: byte #%d: Got value: %f \n", i, floatval);
 #endif
-            }
-            else {
-              // Received one data field
-              floatval = (float) (last_byte << 8) + byte;
-              values->push_back(floatval);
-#if (ER_DATALOGGER_DEBUG)
-              printf("ERDateLogger: byte #%d: Got value: %f \n", i, floatval);
-#endif
-            }
             second_byte = false;
           }
           else {
