@@ -31,7 +31,7 @@
 #endif
 
 static const int SERIAL_TIMEOUT       = 6;
-static const int MAX_ATTRIBUTES       = 33; 
+static const int MAX_ATTRIBUTES       = 40; 
 static const int SLEEP_TIME_MS        = 200;
 static const int MAX_MESSAGE_SIZE     = 128;
 static const int LOOP_TIMEOUT         = 1000;
@@ -123,11 +123,14 @@ bool ERDataLogger::read_one_data(std::vector<float>* values){
             escape = false;
           }
           if(second_byte) {
+            if (values->size() >= MAX_ATTRIBUTES) {
+              return false;
+            }
             // Received one data field
             floatval = (float) (last_byte << 8) + byte;
             values->push_back(floatval);
 #if (ER_DATALOGGER_DEBUG)
-            printf("ERDateLogger: byte #%d: Got value: %f \n", i, floatval);
+            printf("ERDataLogger: byte #%d: Got value: %f \n", i, floatval);
 #endif
             second_byte = false;
           }

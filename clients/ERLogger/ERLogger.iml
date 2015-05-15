@@ -7,7 +7,9 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="Libs" level="project" />
+    <orderEntry type="library" name="extLibs" level="project" />
+    <orderEntry type="library" name="ProtobufJava" level="project" />
+    <orderEntry type="library" name="backend" level="project" />
+    <orderEntry type="library" name="Protocol" level="project" />
   </component>
 </module>
-
