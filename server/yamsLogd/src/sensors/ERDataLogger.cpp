@@ -88,10 +88,12 @@ void ERDataLogger::execute() {
 
 bool ERDataLogger::read_one_data(std::vector<float>* values){
   uint8_t byte, last_byte;
+  uint8_t checksum = 0;
   float floatval;
   bool in_packet = false;
   bool escape = false;
   bool second_byte = false;
+  bool done = false;
 
   try {
     if(er_receiver_ != nullptr) {
@@ -108,6 +110,10 @@ bool ERDataLogger::read_one_data(std::vector<float>* values){
           }
 #endif
         } 
+        else if (done) {
+            // Check received checksum
+            return byte == checksum;
+        }
         else if (byte == ER_ESC) {
           escape = true;
         }
@@ -115,7 +121,7 @@ bool ERDataLogger::read_one_data(std::vector<float>* values){
 #if (ER_DATALOGGER_DEBUG)
           printf("\nERDataLogger: byte #%d: STOP BYTE FOUND\n", i);
 #endif
-          return true;
+          done = true;
         }
         else {
           if(escape) {
@@ -126,6 +132,8 @@ bool ERDataLogger::read_one_data(std::vector<float>* values){
             if (values->size() >= MAX_ATTRIBUTES) {
               return false;
             }
+            // Add to checksum
+            checksum += byte + last_byte;
             // Received one data field
             floatval = (float) (last_byte << 8) + byte;
             values->push_back(floatval);
