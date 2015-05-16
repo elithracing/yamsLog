@@ -135,7 +135,7 @@ bool ERDataLogger::read_one_data(std::vector<float>* values){
             // Add to checksum
             checksum += byte + last_byte;
             // Received one data field
-            floatval = (float) (last_byte << 8) + byte;
+            floatval = (float) (byte << 8) + last_byte;
             values->push_back(floatval);
 #if (ER_DATALOGGER_DEBUG)
             printf("ERDataLogger: byte #%d: Got value: %f \n", i, floatval);
