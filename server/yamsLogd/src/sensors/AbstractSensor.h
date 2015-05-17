@@ -160,6 +160,8 @@ class AbstractSensor : public AbstractService {
   std::string port_name_;
   std::string name_;
   int max_attributes_;
+  bool header_written;
+  std::string header;
 };
 
 #endif  // SENSORS_ABSTRACTSENSOR_H_

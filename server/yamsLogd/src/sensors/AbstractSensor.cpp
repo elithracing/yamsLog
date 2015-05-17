@@ -41,7 +41,8 @@ AbstractSensor::AbstractSensor(int id, int max_attributes, CommunicationServer& 
     : comm_server_(comm_server),
       id_(id),
       is_working_(true),
-      max_attributes_(max_attributes){
+      max_attributes_(max_attributes),
+      header("time, sensor_id"), header_written(false) {
   // Check that IDs are unique
   if (std::find(all_ids_.begin(), all_ids_.end(), id) != all_ids_.end()) {
     std::stringstream ss;
@@ -136,10 +137,12 @@ void AbstractSensor::insert_attributes(AbstractSensor::attr_struct attribute_str
   auto it = attr_properties_.find(attribute_struct.attr_index);
   if (it == attr_properties_.end()) {
     attr_properties_.insert(std::pair<int, AbstractSensor::attr_struct>(attribute_struct.attr_index, attribute_struct));
-  } else {
+  } 
+  else {
     attr_properties_.erase(attribute_struct.attr_index);
     attr_properties_.insert(std::pair<int, AbstractSensor::attr_struct>(attribute_struct.attr_index, attribute_struct));
   }
+  header.append(", " + attribute_struct.attr_name);
 }
 
 bool AbstractSensor::update_attribute_status(int attr, protobuf::SensorStatusMsg::AttributeStatusType status) {
@@ -155,6 +158,10 @@ bool AbstractSensor::update_attribute_status(int attr, protobuf::SensorStatusMsg
 
 void AbstractSensor::add_to_fifos(protobuf::DataMsg* tcp_msg, protobuf::DataMsg* file_msg,std::ostringstream* oss) {
   if (TEXT_FILE_OUTPUT_ACTIVATED) {
+    if (!header_written) {
+      text_file_fifo_.push(header);
+      header_written = true;
+    }
     text_file_fifo_.push((*oss).str());
   }
   delete(oss);
