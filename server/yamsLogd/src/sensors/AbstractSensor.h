@@ -29,6 +29,7 @@
 #include "services/AbstractService.h"
 #include "CommunicationServer.h"
 
+#include "muParser.h"
 #include "ThreadSafeFifo.h"
 #include "protocol.pb.h"
 
@@ -52,11 +53,13 @@ class AbstractSensor : public AbstractService {
   struct attr_struct {
     bool has_max_limit;
     bool has_min_limit;
+    bool has_conversion;
     protobuf::SensorStatusMsg::AttributeStatusType status;
     std::string attr_name;
     int attr_index;
     float min;
     float max;
+    mu::Parser converter;
   };
 
   static std::vector<std::string> get_all_names();
@@ -133,6 +136,7 @@ class AbstractSensor : public AbstractService {
   std::ostringstream* create_text_data_message(double time, std::vector<float>* values);
 
   bool outside_limits(const AbstractSensor::attr_struct& attribute_struct, float value);
+  float convert_value(AbstractSensor::attr_struct& attribute_struct, float value);
   std::pair<std::unordered_map<int, attr_struct>::iterator, std::unordered_map<int, attr_struct>::iterator> get_attribute_iterators();
   size_t tcp_fifo_lenght();
   CommunicationServer& comm_server_;

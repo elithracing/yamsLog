@@ -32,10 +32,10 @@ include_directories(${PROTOBUF_INCLUDE_DIRS})
 PROTOBUF_GENERATE_CPP(PROTO_SRCS PROTO_HDRS ${CMAKE_SOURCE_DIR}/../../protobuf/protocol.proto)
 add_library(ProtobufProto ${PROTO_SRCS} ${PROTO_HDRS})
 
+include_directories("${CMAKE_SOURCE_DIR}/external/muparser/include/")
 file(GLOB_RECURSE MUPARSER_SRCS "${CMAKE_SOURCE_DIR}/external/muparser/src/**")
 file(GLOB_RECURSE MUPARSER_HDRS "${CMAKE_SOURCE_DIR}/external/muparser/include/**")
 add_library(muParser ${MUPARSER_SRCS} ${MUPARSER_HDRS})
-target_include_directories(muParser PUBLIC "${CMAKE_SOURCE_DIR}/external/muparser/include/")
 
 add_library(DataLogger src/DataLogger.cpp src/DataLogger.h)
 add_library(CAN src/sensors/CAN.cpp src/sensors/CAN.h)

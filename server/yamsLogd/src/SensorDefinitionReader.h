@@ -41,11 +41,13 @@ class SensorDefinitionReader {
   bool initialize_sensor_attributes(const std::string& file_name, const std::vector<boost::shared_ptr<AbstractSensor>>& 
 sensors);
 
- private:
-  void delimit_string(const std::string& line, std::string lines[]);
-  void insert_sensor_attributes(const std::vector<boost::shared_ptr<AbstractSensor>>& sensors,
-                                        std::string lines[]);
-  bool is_number(const std::string& s);
+private:
+ void delimit_string(const std::string& line, std::string lines[]);
+ void insert_sensor_attributes(const std::vector<boost::shared_ptr<AbstractSensor>>& sensors,
+                               const std::string& sensor_name, const std::string& attr_name,
+                               const std::string& min, const std::string& max,
+                               const std::string& attr_index, const std::string& conversion);
+ bool is_number(const std::string& s);
 };
 
 #endif  // SENSORDEFINITIONREADER_H_

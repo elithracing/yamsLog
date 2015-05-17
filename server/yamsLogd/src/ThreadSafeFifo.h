@@ -74,7 +74,6 @@ template<class T> class ThreadSafeFifo {
     queue_mutex_.lock();
     size_t ret = queue_.size();
 
-//    size_t ret = queue_.max_size();
     queue_mutex_.unlock();
     return ret;
   }

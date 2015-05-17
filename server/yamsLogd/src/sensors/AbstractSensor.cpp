@@ -184,24 +184,29 @@ protobuf::DataMsg* AbstractSensor::create_data_message(double time,std::vector<f
   sub_msg->set_time(time);
   sub_msg->set_type_id(id_);
   for (int i = 0; i < static_cast<int>(values->size()); i++) {
-      sub_msg->add_data(values->at(i));
-      if(isTcp){
-        auto it = attr_properties_.find(i);
-        if (it != attr_properties_.end()) {
-          if (outside_limits(it->second, values->at(i))){
-            if(it->second.status == protobuf::SensorStatusMsg::INSIDE_LIMITS) {
-              it->second.status = protobuf::SensorStatusMsg::OUTSIDE_LIMITS;
-              protobuf_tcp_fifo_.push(create_status_attr_msg(protobuf::SensorStatusMsg::OUTSIDE_LIMITS, i));
-            }
-          } else {
-            if (it->second.status == protobuf::SensorStatusMsg::OUTSIDE_LIMITS) {
-              it->second.status = protobuf::SensorStatusMsg::INSIDE_LIMITS;
-              protobuf_tcp_fifo_.push(create_status_attr_msg(protobuf::SensorStatusMsg::INSIDE_LIMITS, i));
-            }
+      auto it = attr_properties_.find(i);
+      // Convert value with eventual conversion expression
+      if (it != attr_properties_.end() && it->second.has_conversion) {
+        sub_msg->add_data(convert_value(it->second, values->at(i)));
+      }
+      else {
+        sub_msg->add_data(values->at(i));
+      }
+      // Check if we should send an out of bounds message to client
+      if(it != attr_properties_.end() && isTcp) {
+        if (outside_limits(it->second, values->at(i))){
+          if (it->second.status == protobuf::SensorStatusMsg::INSIDE_LIMITS) {
+            it->second.status = protobuf::SensorStatusMsg::OUTSIDE_LIMITS;
+            protobuf_tcp_fifo_.push(create_status_attr_msg(protobuf::SensorStatusMsg::OUTSIDE_LIMITS, i));
+          }
+        } else {
+          if (it->second.status == protobuf::SensorStatusMsg::OUTSIDE_LIMITS) {
+            it->second.status = protobuf::SensorStatusMsg::INSIDE_LIMITS;
+            protobuf_tcp_fifo_.push(create_status_attr_msg(protobuf::SensorStatusMsg::INSIDE_LIMITS, i));
           }
         }
       }
-    }
+      }
     if (sub_msg->data().size() > max_attributes_) {
       std::stringstream ss;
       ss << "More attributes was sent (" << values->size() << ") than maximum for this sensor (" << max_attributes_ << "). Increase it?";
@@ -213,10 +218,29 @@ protobuf::DataMsg* AbstractSensor::create_data_message(double time,std::vector<f
 
 
 bool AbstractSensor::outside_limits(const AbstractSensor::attr_struct& attribute_struct, float value) {
-  if(attribute_struct.has_max_limit && attribute_struct.has_min_limit)return (value < attribute_struct.min || value > attribute_struct.max);
-  else if(attribute_struct.has_max_limit && !attribute_struct.has_min_limit)return (value < attribute_struct.max);
-  else if(!attribute_struct.has_max_limit && attribute_struct.has_min_limit)return (value < attribute_struct.min);
-  else return false;
+  if(attribute_struct.has_max_limit && attribute_struct.has_min_limit) {
+    return (value < attribute_struct.min || value > attribute_struct.max);
+  }
+  else if(attribute_struct.has_max_limit && !attribute_struct.has_min_limit) {
+    return (value < attribute_struct.max);
+  }
+  else if(!attribute_struct.has_max_limit && attribute_struct.has_min_limit) {
+    return (value < attribute_struct.min);
+  }
+  else {
+    return false;
+  }
+}
+
+float AbstractSensor::convert_value(attr_struct& attribute_s, float value) {
+  if (attribute_s.has_conversion) {
+    // Update variable
+    std::string varname = attribute_s.converter.GetVar().begin()->first;
+    attribute_s.converter.DefineVar(varname, &value);
+    // Calculate converted value
+    value = attribute_s.converter.Eval();
+  }
+  return value;
 }
 
 protobuf::GeneralMsg* AbstractSensor::create_gen_data_msg(protobuf::DataMsg* data_msg) {
