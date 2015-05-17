@@ -151,7 +151,7 @@ public class Data {
                 addERDataField(_mySelf.getCurrentTime(), dataField, getXySeriesCollection(dataField.getSensor()));
             }
             _mySelf.setNewDataFields(_latestData);
-            notifyListeners();
+            notifyListeners(false);
         }
     }
 
@@ -160,17 +160,20 @@ public class Data {
         xySeriesCollectionMap.clear();
     }
 
-    public void addListener(DataListener d){
+    public synchronized void addListener(DataListener d){
         _listeners.add(d);
     }
 
-    public void removeListener(DataListener d){
+    public synchronized void removeListener(DataListener d){
         _listeners.remove(d);
     }
 
-    private void notifyListeners(){
+    private synchronized void notifyListeners(boolean reset){
         for(DataListener d : _listeners)
-            d.dataUpdated(Data.getInstance());
+            if (reset)
+                d.dataReset(Data.getInstance());
+            else
+                d.dataUpdated(Data.getInstance());
     }
 
     private void addERDataField(double time, ERDataField dataField, XYSeriesCollection collection) {
@@ -184,6 +187,7 @@ public class Data {
                     if (dataField.getValue() < getCurrentTime()) {
                         /* Time has been reset, remove old data */
                         purgeData();
+                        notifyListeners(true);
                     }
                     setCurrentTime(dataField.getValue());
                     return;

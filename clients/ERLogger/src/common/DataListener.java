@@ -8,4 +8,5 @@ package common;
  */
 public interface DataListener {
     void dataUpdated(Data data);
+    void dataReset(Data data);
 }

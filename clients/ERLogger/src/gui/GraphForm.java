@@ -3,6 +3,7 @@ package gui;
 import common.Data;
 import common.ERSensorConfig;
 import common.SimpleDebug;
+import org.jfree.ui.RefineryUtilities;
 
 import javax.swing.*;
 import java.awt.*;
@@ -29,9 +30,7 @@ public class GraphForm extends JFrame implements ActionListener, ItemListener {
     public GraphForm() {
 
         setLayout(new BoxLayout(getContentPane(), BoxLayout.PAGE_AXIS));
-        /* Center in screen */
-        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
-        setLocation(dim.width/2 - PREF_X/2, dim.height/2 - PREF_Y/2);
+        RefineryUtilities.centerFrameOnScreen(this);
 
         /* Combobox setup */
         comboBoxChoicePane.setLayout(new CardLayout());

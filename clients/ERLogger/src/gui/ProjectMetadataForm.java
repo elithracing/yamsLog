@@ -2,6 +2,7 @@ package gui;
 
 import common.SimpleDebug;
 import dataSource.MetaLoader;
+import org.jfree.ui.RefineryUtilities;
 
 import javax.swing.*;
 import java.awt.*;
@@ -92,8 +93,7 @@ public class ProjectMetadataForm extends JDialog {
 
         /* Set main layout and add components */
         setLayout(new BoxLayout(getContentPane(), BoxLayout.PAGE_AXIS));
-        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
-        setLocation(dim.width / 2, dim.height / 2);
+        RefineryUtilities.centerFrameOnScreen(this);
         //add(dateLabelPane);
         add(descriptionPane);
         add(emailPane);
