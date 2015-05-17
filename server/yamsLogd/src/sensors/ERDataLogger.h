@@ -41,13 +41,13 @@ class ERDataLogger : public AbstractSensor {
   virtual bool initialize() override;
   virtual void execute() override;
 
-
  private:
   TimeoutSerial* er_receiver_;
   mutable std::mutex mutex_;
   double time;  // Needs to be accessible across member functions because of lack of
                 // distinction between sensor data and time. This ugliness is preferred
                 // over reading data two times.
+  bool dummy;
 };
 
 #endif  // SENSORS_GPSSENSOR_H_

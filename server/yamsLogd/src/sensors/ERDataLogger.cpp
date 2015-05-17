@@ -48,10 +48,16 @@ ERDataLogger::ERDataLogger(int id, CommunicationServer& comm_server)
 
 bool ERDataLogger::initialize() {
   try {
-    time = 0;
-    er_receiver_ = new TimeoutSerial(get_port_name(), BAUD_RATE);
-    er_receiver_->setTimeout(boost::posix_time::seconds(SERIAL_TIMEOUT));
-    return er_receiver_->isOpen();
+    dummy = get_port_name().compare("dummy") == 0;
+    if (!dummy) {
+      time = 0;
+      er_receiver_ = new TimeoutSerial(get_port_name(), BAUD_RATE);
+      er_receiver_->setTimeout(boost::posix_time::seconds(SERIAL_TIMEOUT));
+      return er_receiver_->isOpen();
+    }
+    else {
+      return true;
+    }
   } catch (...) {
     return false;
   }
@@ -59,14 +65,10 @@ bool ERDataLogger::initialize() {
 
 void ERDataLogger::idle() {
   try {
-    if(er_receiver_ != nullptr){
-      std::vector<float> values;
-      if(read_one_data(&values)){
-        set_working(true);
-        comm_server_.broadcast(*(create_gen_data_msg(create_data_message(get_time_diff(), &values ,true))));
-      }
-    }else{
-      throw "Nullpointer!";
+    std::vector<float> values;
+    if(read_one_data(&values)){
+      set_working(true);
+      comm_server_.broadcast(*(create_gen_data_msg(create_data_message(get_time_diff(), &values ,true))));
     }
   } catch (...) {
     if(er_receiver_ != nullptr){
@@ -94,6 +96,18 @@ bool ERDataLogger::read_one_data(std::vector<float>* values){
   bool escape = false;
   bool second_byte = false;
   bool done = false;
+
+  // Generate some values
+  if (dummy) {
+    static float gen_value = 0;
+    std::this_thread::sleep_for(std::chrono::milliseconds(SLEEP_TIME_MS));
+    time = get_time_diff();
+    for (int i=0; i<MAX_ATTRIBUTES; ++i) {
+      values->push_back(gen_value * sin(time));
+      gen_value += 0.001f;
+    }
+    return true;
+  }
 
   try {
     if(er_receiver_ != nullptr) {
