@@ -29,6 +29,9 @@ public class GraphForm extends JFrame implements ActionListener, ItemListener {
     public GraphForm() {
 
         setLayout(new BoxLayout(getContentPane(), BoxLayout.PAGE_AXIS));
+        /* Center in screen */
+        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+        setLocation(dim.width/2 - PREF_X/2, dim.height/2 - PREF_Y/2);
 
         /* Combobox setup */
         comboBoxChoicePane.setLayout(new CardLayout());

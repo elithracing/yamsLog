@@ -4,10 +4,10 @@ import common.SimpleDebug;
 import dataSource.MetaLoader;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
-import java.util.Date;
 
 /**
  * Created by max on 2015-03-23.
@@ -92,6 +92,8 @@ public class ProjectMetadataForm extends JDialog {
 
         /* Set main layout and add components */
         setLayout(new BoxLayout(getContentPane(), BoxLayout.PAGE_AXIS));
+        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+        setLocation(dim.width / 2, dim.height / 2);
         //add(dateLabelPane);
         add(descriptionPane);
         add(emailPane);

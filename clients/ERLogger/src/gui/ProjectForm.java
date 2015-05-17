@@ -108,6 +108,9 @@ public class ProjectForm extends JDialog {
 
         /* Set up frame, add components */
         setLayout(new BoxLayout(getContentPane(), BoxLayout.PAGE_AXIS));
+        /* Center in screen */
+        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+        setLocation(dim.width/2, dim.height/2);
         add(currentProjectPane);
         add(projectListPane);
         add(buttonPane);
