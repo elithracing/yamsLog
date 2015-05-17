@@ -27,13 +27,22 @@ include_directories (SYSTEM "${CMAKE_SOURCE_DIR}/../../protobuf/gen/cpp")
 
 include_directories("${CMAKE_SOURCE_DIR}/src")
 
+find_package(Protobuf REQUIRED)
+include_directories(${PROTOBUF_INCLUDE_DIRS})
+PROTOBUF_GENERATE_CPP(PROTO_SRCS PROTO_HDRS ${CMAKE_SOURCE_DIR}/../../protobuf/protocol.proto)
+add_library(ProtobufProto ${PROTO_SRCS} ${PROTO_HDRS})
+
+file(GLOB_RECURSE MUPARSER_SRCS "${CMAKE_SOURCE_DIR}/external/muparser/src/**")
+file(GLOB_RECURSE MUPARSER_HDRS "${CMAKE_SOURCE_DIR}/external/muparser/include/**")
+add_library(muParser ${MUPARSER_SRCS} ${MUPARSER_HDRS})
+target_include_directories(muParser PUBLIC "${CMAKE_SOURCE_DIR}/external/muparser/include/")
+
 add_library(DataLogger src/DataLogger.cpp src/DataLogger.h)
 add_library(CAN src/sensors/CAN.cpp src/sensors/CAN.h)
 add_library(MTComm src/sensors/MTComm.cpp src/sensors/MTComm.h)
 add_library(SerialLib src/sensors/SerialPortLib.cpp src/sensors/SerialPortLib.h)
 add_library(XSensIMU src/sensors/XSensIMU.cpp src/sensors/XSensIMU.h)
 
-add_library(Protobuf ../../protobuf/gen/cpp/protocol.pb.cc ../../protobuf/gen/cpp/protocol.pb.h)
 add_library(CommunicationServer src/CommunicationServer.cpp src/CommunicationServer.h)
 add_library(ClientConnection src/ClientConnection.cpp src/ClientConnection.h)
 add_library(StatusObserver src/StatusObserver.cpp src/StatusObserver.h)
@@ -79,18 +88,16 @@ if("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
       src/sensors/OBDII-ELM327/obdrevconvertfunctions.cpp
       src/sensors/OBDII-ELM327/obdconfigfile.cpp
       src/sensors/OBDII-ELM327/obdserial.cpp
-      ../../protobuf/gen/cpp/protocol.pb.cc ../../protobuf/gen/cpp/protocol.pb.h
       PROPERTIES COMPILE_FLAGS "-Wno-unused-parameter -Wno-maybe-uninitialized -Wno-cast-qual -Wno-type-limits -Wno-shadow -Wno-switch -Wno-format-contains-nul") 
 # If using Clang
 elseif("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang")
   # Add compiler flags for all files
-  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -pedantic -Wshadow -Wpointer-arith -Wcast-qual -Wimplicit-fallthrough")
+  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -pedantic -Wshadow -Wpointer-arith -Wcast-qual")
   # But ignore warnings for the following
   set_source_files_properties(
       src/sensors/MTComm.cpp src/sensors/MTComm.h
       src/sensors/SerialPortLib.cpp src/sensors/SerialPortLib.h
       src/sensors/XSensIMU.cpp src/sensors/XSensIMU.h
-      ../../protobuf/gen/cpp/protocol.pb.cc ../../protobuf/gen/cpp/protocol.pb.h
       PROPERTIES COMPILE_FLAGS "-Wno-unused-parameter -Wno-maybe-uninitialized -Wno-type-limits -Wno-shadow -Wno-cast-qual -Wno-switch")
 endif()
 
@@ -98,15 +105,16 @@ add_executable(yamsLogd src/Main.cpp)
 add_executable(OBDtool src/sensors/OBDII-ELM327/OBDtool.cpp)
 
 target_link_libraries(yamsLogd DataLogger ProjectHandler Project
-  Experiment Protobuf CommunicationServer ClientConnection
+  Experiment ProtobufProto CommunicationServer ClientConnection
   StatusObserver ClientCallbackImpl AbstractService
   CommunicationServerService KeyboardInputService
   ProtobufFileOutputService ProtobufTcpOutputService
   TextFileOutputService AbstractSensor CanSensor CorrsysSensor
   ERDataLogger GpsSensor OBDIIElmSensor OBDIIElm VirtualSensor 
   ImuSensor CAN MTComm SerialLib XSensIMU SensorDefinitionReader 
-  ModificationCallbackImpl boost_system boost_filesystem 
-  boost_thread pthread rt protobuf)
+  ModificationCallbackImpl 
+  ${PROTOBUF_LIBRARIES} muParser
+  boost_system boost_filesystem boost_thread pthread rt)
 
 
 target_link_libraries(OBDtool OBDIIElm)

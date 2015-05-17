@@ -33,8 +33,8 @@
 static const int SERIAL_TIMEOUT       = 6;
 static const int MAX_ATTRIBUTES       = 40; 
 static const int SLEEP_TIME_MS        = 200;
-static const int MAX_MESSAGE_SIZE     = 128;
 static const int LOOP_TIMEOUT         = 1000;
+static const int BAUD_RATE            = 115200;
 
 // Special bytes for communication with logging unit
 static const uint8_t ER_START         = 0xAA;
@@ -49,7 +49,7 @@ ERDataLogger::ERDataLogger(int id, CommunicationServer& comm_server)
 bool ERDataLogger::initialize() {
   try {
     time = 0;
-    er_receiver_ = new TimeoutSerial(get_port_name(), 115200);
+    er_receiver_ = new TimeoutSerial(get_port_name(), BAUD_RATE);
     er_receiver_->setTimeout(boost::posix_time::seconds(SERIAL_TIMEOUT));
     return er_receiver_->isOpen();
   } catch (...) {
@@ -63,7 +63,7 @@ void ERDataLogger::idle() {
       std::vector<float> values;
       if(read_one_data(&values)){
         set_working(true);
-        comm_server_.broadcast(*(create_gen_data_msg(create_data_message(get_time_diff(),&values ,true))));
+        comm_server_.broadcast(*(create_gen_data_msg(create_data_message(get_time_diff(), &values ,true))));
       }
     }else{
       throw "Nullpointer!";
@@ -80,9 +80,9 @@ void ERDataLogger::idle() {
 void ERDataLogger::execute() {
   std::vector<float> values;
   if(read_one_data(&values)){
-    add_to_fifos(create_data_message(time, &values,true), 
-        create_data_message(time, &values,false), 
-        create_text_data_message(time,&values));
+    add_to_fifos(create_data_message(time, &values, true),
+        create_data_message(time, &values, false),
+        create_text_data_message(time, &values));
   }
 }
 
