@@ -22,7 +22,7 @@ import java.util.Map;
 public class Data {
 
     private static Data _mySelf = null;
-    private float _currentTime;
+    private double _currentTime;
     private List<DataListener> _listeners;
     private ERDataField[] _cur = new ERDataField[0]; // used for the serialization of the data.
     private Map<String, XYSeriesCollection> xySeriesCollectionMap = new HashMap<>();
@@ -132,12 +132,12 @@ public class Data {
         return xySeriesCollectionMap.get(sensor);
     }
 
-    public void setCurrentTime(float time){
+    public void setCurrentTime(double time){
         _currentTime = time;
     }
 
     // TODO Get from data instead ( should be first ? )
-    public float getCurrentTime(){
+    public double getCurrentTime(){
         return _currentTime;
     }
 
@@ -183,20 +183,20 @@ public class Data {
             try {
                 series = collection.getSeries(dataField.getAttribute());
             } catch (UnknownKeyException e) {
-                if (dataField.getAttribute().equals("time")) {
-                    /* FIXME: This only works since it's the first value */
-                    if (dataField.getValue() < getCurrentTime()) {
-                        /* Time has been reset, remove old data */
-                        purgeData();
-                    }
-                    setCurrentTime(dataField.getValue());
-                    return;
-                }
                 series = new XYSeries(dataField.getAttribute());
                 collection.addSeries(series);
             }
             if (series != null) {
                 series.add(time, dataField.getValue());
+            }
+            /* Check if data has been reset */
+            /* TODO: Make this check more stable */
+            if (dataField.getAttribute().equals("time")) {
+                if (dataField.getValue() < getCurrentTime()) {
+                    /* Time has been reset, remove old data */
+                    purgeData();
+                }
+                setCurrentTime(dataField.getValue());
             }
         }
     }
