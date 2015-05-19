@@ -97,75 +97,87 @@ bool ERDataLogger::read_one_data(std::vector<float>* values){
   bool second_byte = false;
   bool done = false;
 
-  // Generate some values
-  if (dummy) {
-    static float gen_value = 0;
-    std::this_thread::sleep_for(std::chrono::milliseconds(SLEEP_TIME_MS));
-    time = get_time_diff();
-    for (int i=0; i<MAX_ATTRIBUTES; ++i) {
-      values->push_back(gen_value * sin(time));
-      gen_value += 0.001f;
-    }
-    return true;
+  if (er_receiver_ == nullptr && !dummy) {
+    return false;
   }
 
   try {
-    if(er_receiver_ != nullptr) {
-      for(int i=0; i<LOOP_TIMEOUT ; ++i) {
-        er_receiver_->read((char*)&byte, 1);
-        set_working(true);
-
-        if(!in_packet) {
-          in_packet = (byte == ER_START);
-          time = get_time_diff();
-#if (ER_DATALOGGER_DEBUG)
-          if(in_packet) {
-            printf("\nERDataLogger: byte #%d: START BYTE FOUND \n", i);
-          }
-#endif
-        } 
-        else if (done) {
-            // Check received checksum
-            return byte == checksum;
+    for(int i=0; i<LOOP_TIMEOUT ; ++i) {
+      if (dummy) {
+        std::this_thread::sleep_for(std::chrono::milliseconds(1));
+        if (i == 0) {
+          byte = ER_START;
         }
-        else if (byte == ER_ESC) {
-          escape = true;
-        }
-        else if (byte == ER_STOP) {
-#if (ER_DATALOGGER_DEBUG)
-          printf("\nERDataLogger: byte #%d: STOP BYTE FOUND\n", i);
-#endif
-          done = true;
+        else if (values->size() == MAX_ATTRIBUTES) {
+          // We'll fail checksum if just setting ER_STOP here
+          return true;
         }
         else {
-          if(escape) {
-            byte = byte ^ ER_ESC;
-            escape = false;
-          }
-          if(second_byte) {
-            if (values->size() >= MAX_ATTRIBUTES) {
-              return false;
-            }
-            // Add to checksum
-            checksum += byte + last_byte;
-            // Received one data field
-            floatval = (float) (byte << 8) + last_byte;
-            values->push_back(floatval);
-#if (ER_DATALOGGER_DEBUG)
-            printf("ERDataLogger: byte #%d: Got value: %f \n", i, floatval);
-#endif
-            second_byte = false;
-          }
-          else {
-            last_byte = byte;
-            second_byte = true;
-          }
+          // Sensor set to dummy mode
+          byte = second_byte ? 0 : (uint8_t) rand();
         }
       }
+      else {
+        er_receiver_->read((char*)&byte, 1);
+      }
+      // We got a value
+      set_working(true);
+
+      if(!in_packet) {
+        in_packet = (byte == ER_START);
+        time = get_time_diff();
 #if (ER_DATALOGGER_DEBUG)
-      std::cout << "ERDataLogger: Too large packet or no stop byte" << std::endl;
+        if(in_packet) {
+          printf("\nERDataLogger: byte #%d: START BYTE FOUND \n", i);
+        }
 #endif
+      } 
+      else if (done) {
+        // Check received checksum
+#if (ER_DATALOGGER_DEBUG)
+        if (byte != checksum) {
+          printf("\nERDataLogger: Checksum fail: got: %hhu, should be: %hhu", byte, checksum);
+        }
+#endif
+        return byte == checksum;
+      }
+      else if (byte == ER_ESC) {
+        escape = true;
+      }
+      else if (byte == ER_STOP) {
+#if (ER_DATALOGGER_DEBUG)
+        printf("\nERDataLogger: byte #%d: STOP BYTE FOUND\n", i);
+#endif
+        done = true;
+      }
+      else {
+        if(escape) {
+          byte = byte ^ ER_ESC;
+          escape = false;
+        }
+        if(second_byte) {
+          if (values->size() >= MAX_ATTRIBUTES) {
+            return false;
+          }
+          // Add to checksum
+          checksum += byte + last_byte;
+          // Received one data field
+          floatval = (float) (byte << 8) + last_byte;
+          values->push_back(floatval);
+#if (ER_DATALOGGER_DEBUG)
+          printf("ERDataLogger: byte #%d: Got value: %f \n", i, floatval);
+#endif
+          second_byte = false;
+        }
+        else {
+          last_byte = byte;
+          second_byte = true;
+        }
+      }
     }
+#if (ER_DATALOGGER_DEBUG)
+    std::cout << "ERDataLogger: Too large packet or no stop byte" << std::endl;
+#endif
   } catch (...) {
 #if (ER_DATALOGGER_DEBUG)
     std::cout << "ERDataLogger: I/O error" << std::endl;
