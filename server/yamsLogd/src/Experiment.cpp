@@ -362,6 +362,8 @@ ProjectHandlerErrorCode Experiment::write_sensor_configuration_metadata(const st
       }
     }
 
+    std::string text_file_header("");
+    text_file_header.append("time, ID");
     for (auto& sensor : sensors) {
       protobuf::SensorConfiguration* sensor_configuration =
           new_msg.add_sensor_configurations();
@@ -375,6 +377,7 @@ ProjectHandlerErrorCode Experiment::write_sensor_configuration_metadata(const st
             sensor_configuration->add_attribute_configurations();
         attribute_configuration->set_index(itr->first);
         attribute_configuration->set_name(itr->second.attr_name);
+        text_file_header.append(", " + itr->second.attr_name);
       }
     }
     if (::ftruncate(::fileno(meta_file_handler_), 0)) {  // empty file
@@ -391,13 +394,12 @@ ProjectHandlerErrorCode Experiment::write_sensor_configuration_metadata(const st
       return ProjectHandlerErrorCode::IO_ERROR;
     }
     if (write_result) {
-      return ProjectHandlerErrorCode::SUCCESS;
+      return write_text_data(text_file_header);
     } 
     else {
       return ProjectHandlerErrorCode::IO_ERROR;
     }
   }
-  return ProjectHandlerErrorCode::SUCCESS;
 }
 
 /*
