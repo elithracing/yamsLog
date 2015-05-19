@@ -28,6 +28,7 @@
 #ifndef __OBDREADER_H
 #define __OBDREADER_H
 
+#include <sys/time.h>
 #include <getopt.h>
 #include <stdlib.h>
 #include <list>

@@ -18,6 +18,8 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
+#if !defined(__CYGWIN__)
+
 #include "CorrsysSensor.h"
 #include <iostream>
 
@@ -219,4 +221,6 @@ bool CorrsysSensor::read_one_data(std::vector<float>* values){
   }
     return data_read;
 }
+
+#endif /* !_CYGWIN__ */
 

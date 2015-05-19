@@ -18,6 +18,7 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
+#if !defined(__CYGWIN__)
 
 #include "CAN.h"
 #include <iostream>
@@ -73,5 +74,7 @@ bool init_can(char* deviceName, int& CANsock, std::string& returnstring) {
 void deinit_can(int&) {
 
 }
+
+#endif /* !_CYGWIN__ */
 
 

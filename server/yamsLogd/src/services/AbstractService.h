@@ -23,6 +23,8 @@
 
 #include <boost/utility.hpp>
 
+#include <sys/time.h>
+
 /**
  * Parent class of all services. Services are responsible for services running parallell to Sensor::execute.
 **/

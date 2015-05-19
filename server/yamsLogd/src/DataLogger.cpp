@@ -42,8 +42,10 @@
 #include "services/TextFileOutputService.h"
 
 #ifndef __APPLE__
+#ifndef __CYGWIN__
 #include "sensors/CanSensor.h"
 #include "sensors/CorrsysSensor.h"
+#endif
 #include "sensors/GpsSensor.h"
 #include "sensors/ImuSensor.h"
 #include "sensors/OBDIIElmSensor.h"
@@ -105,7 +107,7 @@ int DataLogger::run(int argc, const char** argv) {
       if ((lines[0][0] != 0) && (lines[0][0]!= '%')) { // Checks for sensors in port_config
         sensor_config.port_path = lines[1];
         sensor_config.sensor_name = lines[2];
-        sensor_config_map.insert(std::pair<int, sensor_config_struct>(stoi(lines[0]), sensor_config));
+        sensor_config_map.insert(std::pair<int, sensor_config_struct>((int) strtol(lines[0].c_str(),0,10), sensor_config));
       }
     }
   } else {
@@ -278,6 +280,32 @@ void DataLogger::create_sensors(std::unordered_map<int, sensor_config_struct> se
   //TODO: make more general with ID
 
 #ifndef __APPLE__
+#ifndef __CYGWIN__
+  if(sensor_config_map.find(2) != sensor_config_map.end()){
+    sensors_.push_back(
+                       boost::make_shared<CanSensor>(2, comm_server));
+  }
+  if(sensor_config_map.find(3) != sensor_config_map.end()){
+    sensors_.push_back(
+                       boost::make_shared<CanSensor>(3, comm_server));
+  }
+  if(sensor_config_map.find(6) != sensor_config_map.end()){
+    sensors_.push_back(
+                       boost::make_shared<CanSensor>(6, comm_server));
+  }
+  if(sensor_config_map.find(30) != sensor_config_map.end()){
+    sensors_.push_back(
+                       boost::make_shared<CorrsysSensor>(30, comm_server));
+  }
+#endif
+  if(sensor_config_map.find(4) != sensor_config_map.end()){
+    sensors_.push_back(
+                       boost::make_shared<GpsSensor>(4, comm_server));
+  }
+  if(sensor_config_map.find(10) != sensor_config_map.end()){
+    sensors_.push_back(
+                       boost::make_shared<OBDIIElmSensor>(10, comm_server));
+  }
   if(sensor_config_map.find(0) != sensor_config_map.end()){
     sensors_.push_back(
                        boost::make_shared<ImuSensor>(0,
@@ -287,44 +315,15 @@ void DataLogger::create_sensors(std::unordered_map<int, sensor_config_struct> se
     sensors_.push_back(
                        boost::make_shared<ImuSensor>(1, ImuSensor::Mode::NO_ABSTIME, comm_server));
   }
-  if(sensor_config_map.find(2) != sensor_config_map.end()){
-    sensors_.push_back(
-                       boost::make_shared<CanSensor>(2, comm_server));
-  }
-  if(sensor_config_map.find(3) != sensor_config_map.end()){
-    sensors_.push_back(
-                       boost::make_shared<CanSensor>(3, comm_server));
-  }
-  if(sensor_config_map.find(4) != sensor_config_map.end()){
-    sensors_.push_back(
-                       boost::make_shared<GpsSensor>(4, comm_server));
-  }
-  if(sensor_config_map.find(6) != sensor_config_map.end()){
-    sensors_.push_back(
-                       boost::make_shared<CanSensor>(6, comm_server));
-  }
-  if(sensor_config_map.find(9) != sensor_config_map.end()){
-    sensors_.push_back(
-                       boost::make_shared<VirtualSensor>(9,  VirtualSensor::Mode::ABSTIME, comm_server));
-  }
-  if(sensor_config_map.find(10) != sensor_config_map.end()){
-    sensors_.push_back(
-                       boost::make_shared<OBDIIElmSensor>(10, comm_server));
-  }
-  if(sensor_config_map.find(30) != sensor_config_map.end()){
-    sensors_.push_back(
-                       boost::make_shared<CorrsysSensor>(30, comm_server));
-  }
   if(sensor_config_map.find(1337) != sensor_config_map.end()){
     sensors_.push_back(
                        boost::make_shared<ERDataLogger>(1337, comm_server));
   }
-#else
+#endif
   if(sensor_config_map.find(9) != sensor_config_map.end()){
     sensors_.push_back(
                        boost::make_shared<VirtualSensor>(9,  VirtualSensor::Mode::ABSTIME, comm_server));
   }
-#endif
 }
 
 bool DataLogger::initialize(boost::thread_group& service_threads, boost::thread_group& sensor_threads) {

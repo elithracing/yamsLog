@@ -23,14 +23,14 @@
 
 #include <iostream>
 
-#ifdef __GNUC__
+#if defined(__GNUC__) && !defined(__CYGWIN__)
 #include <signal.h>
 #include <unistd.h>
 #include <cstdlib>
 #include <execinfo.h>
 #endif
 
-#ifdef __GNUC__
+#if defined(__GNUC__) && !defined(__CYGWIN__)
 void print_stack_trace() {
   void* array[10];
   size_t size;
@@ -49,7 +49,7 @@ void signal_handler(int sig) {
 #endif
 
 int main(int argc, const char** argv) {
-#ifdef __GNUC__
+#if defined(__GNUC__) && !defined(__CYGWIN__)
   // Install segfault handler. This will print the stack trace at seg fault.
   std::signal(SIGSEGV, signal_handler);
 #endif
@@ -58,7 +58,7 @@ int main(int argc, const char** argv) {
     return mylogger.run(argc, argv);
   } catch (std::exception& exc) {
     std::cerr << "Exception: " << exc.what() << std::endl;
-#ifdef __GNUC__
+#if defined(__GNUC__) && !defined(__CYGWIN__)
     print_stack_trace();
 #endif
   }

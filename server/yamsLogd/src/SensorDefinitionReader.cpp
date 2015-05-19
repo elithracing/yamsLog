@@ -20,6 +20,7 @@
 
 #include "SensorDefinitionReader.h"
 
+#include <string>
 #include <fstream>
 #include <boost/algorithm/string.hpp>
 
@@ -95,16 +96,16 @@ void SensorDefinitionReader::insert_sensor_attributes(const std::vector<boost::s
   for (auto& sensor : sensors) {
     if (sensor_name.compare(sensor->get_name()) == 0) {
       attr_struct.attr_name = attr_name;
-      attr_struct.attr_index = stoi(attr_index);
+      attr_struct.attr_index = (int) strtol(attr_index.c_str(),0,10);
 
       if(attr_struct.has_max_limit){
-        attr_struct.max = stof(attr_max);
+        attr_struct.max = strtof(attr_index.c_str(),0);
       }else{
         attr_struct.max = 0;
       }
 
       if(attr_struct.has_min_limit){
-        attr_struct.min = stof(attr_min);
+        attr_struct.min = strtof(attr_index.c_str(),0);
       }else{
         attr_struct.min = 0;
       }

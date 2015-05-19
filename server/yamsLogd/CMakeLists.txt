@@ -6,10 +6,16 @@ set(CMAKE_VERBOSE_MAKEFILE off)
 
 project(yamsLogd)
 
+# Use c++11
+set(CMAKE_CXX_STANDARD 11)
+# Static linking
 set(BUILD_SHARED_LIBS OFF)
 set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake-modules")
-# Static linking
 set(BOOST_MIN_VERSION "1.54")
+
+if (CYGWIN)
+    add_definitions(-D_WIN32_WINNT=0x0601) # Target win7
+endif ()
 
 # Eclipse hack
 find_path(STDIO_INCLUDE_PATH stdio.h)
@@ -63,16 +69,14 @@ set(OBDIIELM_FILES src/sensors/OBDII-ELM327/OBDReader.cpp src/sensors/OBDII-ELM3
 source_group(OBDIIElm FILES ${OBDIIELM_FILES})
 add_library(OBDIIElm ${OBDIIELM_FILES})
 
-set(SENSORS_FILES src/sensors/AbstractSensor.cpp src/sensors/AbstractSensor.h src/sensors/CanSensor.cpp 
-    src/sensors/CanSensor.h src/sensors/CorrsysSensor.cpp src/sensors/CorrsysSensor.h src/sensors/ERDataLogger.cpp 
+set(SENSORS_FILES src/sensors/AbstractSensor.cpp src/sensors/AbstractSensor.h src/sensors/ERDataLogger.cpp
     src/sensors/ERDataLogger.h src/sensors/GpsSensor.cpp src/sensors/GpsSensor.h src/sensors/ImuSensor.cpp 
     src/sensors/ImuSensor.h src/sensors/VirtualSensor.cpp src/sensors/VirtualSensor.h src/sensors/OBDIIElmSensor.cpp 
-    src/sensors/OBDIIElmSensor.h)
+    src/sensors/OBDIIElmSensor.h src/sensors/CorrsysSensor.cpp src/sensors/CorrsysSensor.h src/sensors/CanSensor.cpp
+    src/sensors/CanSensor.h)
 source_group(sensors FILES ${SENSORS_FILES})
 add_library(sensors ${SENSORS_FILES})
 
-# Use c++11
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++0x")
 # If using GCC
 if("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
   # Add compiler flags for all files

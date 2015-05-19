@@ -18,6 +18,8 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
+#if !defined(__CYGWIN__)
+
 #include "CanSensor.h"
 #include <iostream>
 
@@ -124,3 +126,5 @@ void CanSensor::finalize() {
   //Shutdown socket to not read or write anymore
   //shutdown(can_sock_, 2);
 }
+
+#endif /* !__CYGWIN__ */
