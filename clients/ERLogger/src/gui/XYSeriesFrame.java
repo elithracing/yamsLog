@@ -13,18 +13,23 @@ import org.jfree.ui.RefineryUtilities;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 
 /**
  * Created by max on 2014-12-06.
  */
-public class XYSeriesFrame extends JFrame implements DataListener, WindowListener {
+public class XYSeriesFrame extends JFrame implements DataListener, WindowListener, KeyListener {
 
     private static final int PREF_X = 800;
     private static final int PREF_Y = 600;
-    private static final double DOMAIN_AXIS_SIZE = 100.0;
+    private static final double DOMAIN_AXIS_SIZE = 60.0;
+    private static final float SCROLL_STEP = 10f;
+
     private ERSensorConfig sensorConfig;
+    private ValueAxis axis;
 
     public XYSeriesFrame(ERSensorConfig sensorConfig) {
         this(sensorConfig, PREF_X, PREF_Y);
@@ -47,7 +52,7 @@ public class XYSeriesFrame extends JFrame implements DataListener, WindowListene
                 true, true, false);
 
         final XYPlot plot = chart.getXYPlot();
-        ValueAxis axis = plot.getDomainAxis();
+        axis = plot.getDomainAxis();
         axis.setAutoRange(true);
         axis.setFixedAutoRange(DOMAIN_AXIS_SIZE);
 
@@ -60,10 +65,12 @@ public class XYSeriesFrame extends JFrame implements DataListener, WindowListene
 
         setContentPane(chartPanel);
         RefineryUtilities.centerFrameOnScreen(this);
+        this.setFocusable(true);
         this.setVisible(true);
         this.pack();
 
         Data.getInstance().addListener(this);
+        this.addKeyListener(this);
         this.addWindowListener(this);
     }
 
@@ -110,6 +117,32 @@ public class XYSeriesFrame extends JFrame implements DataListener, WindowListene
 
     @Override
     public void windowDeactivated(WindowEvent windowEvent) {
+
+    }
+
+    @Override
+    public void keyTyped(KeyEvent keyEvent) {
+        if (keyEvent.getKeyChar() == 'a') {
+            axis.setLowerBound(axis.getLowerBound() - SCROLL_STEP);
+            axis.setUpperBound(axis.getUpperBound() - SCROLL_STEP);
+        }
+        else if (keyEvent.getKeyChar() == 'd') {
+            axis.setUpperBound(axis.getUpperBound() + SCROLL_STEP);
+            axis.setLowerBound(axis.getLowerBound() + SCROLL_STEP);
+        }
+        else if (keyEvent.getKeyChar() == 's') {
+            axis.setAutoRange(true);
+            axis.setFixedAutoRange(DOMAIN_AXIS_SIZE);
+        }
+    }
+
+    @Override
+    public void keyPressed(KeyEvent keyEvent) {
+
+    }
+
+    @Override
+    public void keyReleased(KeyEvent keyEvent) {
 
     }
 }
