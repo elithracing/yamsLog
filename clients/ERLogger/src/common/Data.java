@@ -158,6 +158,7 @@ public class Data {
     public void purgeData() {
         _cur = null;
         xySeriesCollectionMap.clear();
+        notifyListeners(true);
     }
 
     public synchronized void addListener(DataListener d){
@@ -187,7 +188,6 @@ public class Data {
                     if (dataField.getValue() < getCurrentTime()) {
                         /* Time has been reset, remove old data */
                         purgeData();
-                        notifyListeners(true);
                     }
                     setCurrentTime(dataField.getValue());
                     return;

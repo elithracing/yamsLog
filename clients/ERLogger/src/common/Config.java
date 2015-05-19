@@ -12,5 +12,4 @@ public class Config {
     public static int SERVER_PORT = 2001;
     public static final Loader DATA_LOADER = new ProtobufLoader();
     public static final MetaLoader META_LOADER = (MetaLoader) DATA_LOADER;
-    public static final String UNKNOWN_SENSOR_NAME = "Unknown";
 }
