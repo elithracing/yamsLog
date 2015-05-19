@@ -27,6 +27,16 @@ public class ProjectForm extends JDialog {
     private final MetaLoader _metaLoader;
 
     protected final JList<String> projectList;
+        JScrollPane projectListScroller;
+
+    private void UpdateProjectList(List<String> projects) {
+        String[] projectArray = new String[projects.size()];
+        projectArray = projects.toArray(projectArray);
+        projectList.setListData(projectArray);
+        projectList.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
+        projectList.setLayoutOrientation(JList.HORIZONTAL_WRAP);
+        projectList.setVisibleRowCount(-1);
+    }
 
     public ProjectForm(final JFrame owner, String title, MetaLoader metaLoader) {
         super(owner, title, true);
@@ -40,14 +50,12 @@ public class ProjectForm extends JDialog {
         currentProjectPane.add(currentProjectLabel);
 
         /* All projects list */
-        List<String> projects = _metaLoader.getProjectNames();
-        String[] projectArray = new String[projects.size()];
-        projectArray = projects.toArray(projectArray);
-        projectList = new JList<>(projectArray);
+        projectList = new JList<>();
         projectList.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
         projectList.setLayoutOrientation(JList.HORIZONTAL_WRAP);
         projectList.setVisibleRowCount(-1);
-        JScrollPane projectListScroller = new JScrollPane(projectList);
+        UpdateProjectList(_metaLoader.getProjectNames());
+        projectListScroller = new JScrollPane(projectList);
         projectListScroller.setPreferredSize(new Dimension(250, 150));
         JPanel projectListPane = new JPanel();
         projectListPane.add(projectListScroller);
@@ -89,8 +97,12 @@ public class ProjectForm extends JDialog {
                         "New project name");
                 if (newProjectName != null) {
                     _metaLoader.changeProject(newProjectName);
-                    new ProjectMetadataForm(owner, "Project settings", Config.META_LOADER);
-                    _this.dispatchEvent(new WindowEvent(_this, WindowEvent.WINDOW_CLOSING));
+                    List<String> projects = _metaLoader.getProjectNames();
+                    // XXX Hack since list isn't updated immediately
+                    if (!projects.contains(newProjectName)) { projects.add(newProjectName); }
+                    UpdateProjectList(projects);
+                    // TODO Add this again when better supported
+                    //new ProjectMetadataForm(owner, "Project settings", Config.META_LOADER);
                 }
             }
         });

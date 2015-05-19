@@ -1,5 +1,7 @@
 package gui;
 
+import org.jfree.ui.RefineryUtilities;
+
 import javax.swing.*;
 import javax.swing.border.LineBorder;
 import java.awt.*;
@@ -49,10 +51,7 @@ public class ToastMessage extends JDialog {
         setAlwaysOnTop(true);
 
         // Set pos at about center of screen
-        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
-        int y = dim.height/2-MAX_ROW_WIDTH/2;
-        int half = y/2;
-        setLocation(dim.width/2-VERTICAL_PADDING, y+half);
+        RefineryUtilities.positionFrameOnScreen(this, 0.45, 0.2);
         panel.add(lblToastString);
         setVisible(true);
 
