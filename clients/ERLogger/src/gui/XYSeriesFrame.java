@@ -57,7 +57,7 @@ public class XYSeriesFrame extends JFrame implements DataListener, WindowListene
         axis.setFixedAutoRange(DOMAIN_AXIS_SIZE);
 
         final ChartPanel chartPanel = new ChartPanel(chart);
-        chartPanel.setPreferredSize(new Dimension(width, height));
+        setPreferredSize(new Dimension(width, height));
         // TODO: Put chartPanel in scrollPane if we want scrollz
         //ScrollPane scrollPane = new ScrollPane();
         //scrollPane.add(chartPanel);

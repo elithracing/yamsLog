@@ -9,6 +9,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.ConcurrentLinkedQueue;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 /**
  * Created with IntelliJ IDEA.
@@ -41,7 +43,7 @@ public class Data {
     private Data() {
         _currentTime = 0;
 
-        _listeners = new ArrayList<>();
+        _listeners = new CopyOnWriteArrayList<>();
     }
 
     /**
@@ -161,15 +163,15 @@ public class Data {
         notifyListeners(true);
     }
 
-    public synchronized void addListener(DataListener d){
+    public void addListener(DataListener d){
         _listeners.add(d);
     }
 
-    public synchronized void removeListener(DataListener d){
+    public void removeListener(DataListener d){
         _listeners.remove(d);
     }
 
-    private synchronized void notifyListeners(boolean reset){
+    private void notifyListeners(boolean reset){
         for(DataListener d : _listeners)
             if (reset)
                 d.dataReset(Data.getInstance());
