@@ -16,6 +16,9 @@ set(BOOST_MIN_VERSION "1.54")
 if (CYGWIN)
     add_definitions(-D_WIN32_WINNT=0x0601) # Target win7
 endif ()
+if (UNIX)
+    set(CMAKE_CXX_FLAGS ${CMAKE_CXX_FLAGS} "-std=c++11")
+endif ()
 
 # Eclipse hack
 find_path(STDIO_INCLUDE_PATH stdio.h)
