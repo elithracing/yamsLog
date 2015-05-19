@@ -31,7 +31,7 @@
 
 const std::string DATA_FILE_ENDING  = ".data";
 const std::string META_FILE_ENDING  = ".meta";
-const std::string TEXT_FILE_ENDING   = ".txt";
+const std::string TEXT_FILE_ENDIG   = ".txt";
 
 namespace io = google::protobuf::io;
 namespace fs = boost::filesystem;
@@ -46,7 +46,7 @@ Experiment::Experiment(const std::string& project_dir_path, const std::string& n
   name_ = name;
   meta_file_name_ = name_ + META_FILE_ENDING;
   data_file_name_ = name_ + DATA_FILE_ENDING;
-  text_file_name_ = name_ + TEXT_FILE_ENDING;
+  text_file_name_ = name_ + TEXT_FILE_ENDIG;
   boost::system::error_code boost_err;
   fs::create_directory(experiment_dir_path_, boost_err);
   if (boost_err == boost::system::errc::success || boost_err == boost::system::errc::file_exists) {
@@ -181,8 +181,8 @@ ProjectHandlerErrorCode Experiment::write_protobuf_data(const protobuf::GeneralM
     }
 
     return ProjectHandlerErrorCode::SUCCESS;
-  } 
-  else {
+  } else {
+
     return ProjectHandlerErrorCode::IO_ERROR;
   }
 }
@@ -194,12 +194,10 @@ ProjectHandlerErrorCode Experiment::write_text_data(const std::string& data) {
         return ProjectHandlerErrorCode::IO_ERROR;
       }
       return ProjectHandlerErrorCode::SUCCESS;
-    } 
-    else {
+    } else {
       return ProjectHandlerErrorCode::IO_ERROR;
     }
-  } 
-  else {
+  } else {
     return ProjectHandlerErrorCode::IO_ERROR;
   }
 }
@@ -337,8 +335,7 @@ ProjectHandlerErrorCode Experiment::write_metadata(const std::vector<std::string
 ProjectHandlerErrorCode Experiment::write_sensor_configuration_metadata(const std::vector<boost::shared_ptr<AbstractSensor>>& sensors) {
   if (fseek(meta_file_handler_, 0, SEEK_SET) != 0) {
     return ProjectHandlerErrorCode::IO_ERROR;
-  } 
-  else {
+  } else {
     if (!meta_file_handler_) {
       return ProjectHandlerErrorCode::IO_ERROR;
     }
@@ -627,7 +624,7 @@ ProjectHandlerErrorCode Experiment::rename_experiment(const std::string& project
     std::string old_text_file_name = text_file_name_;
     meta_file_name_ = name_ + META_FILE_ENDING;
     data_file_name_ = name_ + DATA_FILE_ENDING;
-    text_file_name_ = name_ + TEXT_FILE_ENDING;
+    text_file_name_ = name_ + TEXT_FILE_ENDIG;
     fclose(meta_file_handler_);
     fclose(data_file_handler_);
     text_file_->close();
