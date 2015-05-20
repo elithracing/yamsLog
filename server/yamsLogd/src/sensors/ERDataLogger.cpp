@@ -144,34 +144,34 @@ bool ERDataLogger::read_one_data(std::vector<float>* values){
 #if (ER_DATALOGGER_DEBUG)
         printf("\nERDataLogger: byte #%d: STOP BYTE FOUND\n", i);
 #endif
-        if (escape) {
-          last_byte ^= 0xff;
-        }
+        // Subtract checksum
+        checksum -= last_byte;
+
 #if (ER_DATALOGGER_DEBUG) || !defined(NDEBUG)
         // Check received checksum
         if (last_byte != checksum) {
-          printf("\nERDataLogger: Checksum fail #%d: got: %hhu, should be: %hhu", 
+          printf("ERDataLogger: Checksum fail #%d: got: %hhu, should be: %hhu\n", 
                   chk_fails++, last_byte, checksum);
         }
-        else if (values->size() != packet_length) {
-          printf("\nERDataLogger: Length fail: Advertised length: %d, got length %d", 
+        if (values->size() != packet_length) {
+          printf("ERDataLogger: Length fail: Advertised length: %d, got length %d\n", 
                   packet_length, values->size());
         }
 #endif
 
-        return packet_length == values->size() && last_byte == checksum;
+        return last_byte == checksum && packet_length == values->size();
       }
       else {
         if(escape) {
-          byte = byte ^ ER_ESC;
+          byte = byte ^ 0xFF;
           escape = false;
         }
+        // Add to checksum
+        checksum += byte;
         if(second_byte) {
           if (values->size() >= MAX_ATTRIBUTES) {
             return false;
           }
-          // Add to checksum
-          checksum += byte + last_byte;
           // Received one data field
           floatval = static_cast<float>((static_cast<uint16_t>(last_byte) << 8) + 
                                         static_cast<uint16_t>(byte));
