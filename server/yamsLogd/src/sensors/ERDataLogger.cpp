@@ -40,6 +40,7 @@ static const int BAUD_RATE            = 115200;
 static const uint8_t ER_START         = 0xAA;
 static const uint8_t ER_ESC           = 0xBB;
 static const uint8_t ER_STOP          = 0xCC;
+static int chk_fails = 0;
 
 ERDataLogger::ERDataLogger(int id, CommunicationServer& comm_server)
   : AbstractSensor(id, MAX_ATTRIBUTES, comm_server),
@@ -90,12 +91,12 @@ void ERDataLogger::execute() {
 
 bool ERDataLogger::read_one_data(std::vector<float>* values){
   uint8_t byte, last_byte;
+  int packet_length = -1;
   uint8_t checksum = 0;
   float floatval;
   bool in_packet = false;
   bool escape = false;
   bool second_byte = false;
-  bool done = false;
 
   if (er_receiver_ == nullptr && !dummy) {
     return false;
@@ -132,14 +133,9 @@ bool ERDataLogger::read_one_data(std::vector<float>* values){
         }
 #endif
       } 
-      else if (done) {
-        // Check received checksum
-#if (ER_DATALOGGER_DEBUG)
-        if (byte != checksum) {
-          printf("\nERDataLogger: Checksum fail: got: %hhu, should be: %hhu", byte, checksum);
-        }
-#endif
-        return byte == checksum;
+      else if (packet_length == -1) {
+          checksum += byte;
+          packet_length = byte / 2;
       }
       else if (byte == ER_ESC) {
         escape = true;
@@ -148,7 +144,22 @@ bool ERDataLogger::read_one_data(std::vector<float>* values){
 #if (ER_DATALOGGER_DEBUG)
         printf("\nERDataLogger: byte #%d: STOP BYTE FOUND\n", i);
 #endif
-        done = true;
+        if (escape) {
+          last_byte ^= 0xff;
+        }
+#if (ER_DATALOGGER_DEBUG) || !defined(NDEBUG)
+        // Check received checksum
+        if (last_byte != checksum) {
+          printf("\nERDataLogger: Checksum fail #%d: got: %hhu, should be: %hhu", 
+                  chk_fails++, last_byte, checksum);
+        }
+        else if (values->size() != packet_length) {
+          printf("\nERDataLogger: Length fail: Advertised length: %d, got length %d", 
+                  packet_length, values->size());
+        }
+#endif
+
+        return packet_length == values->size() && last_byte == checksum;
       }
       else {
         if(escape) {
@@ -162,7 +173,8 @@ bool ERDataLogger::read_one_data(std::vector<float>* values){
           // Add to checksum
           checksum += byte + last_byte;
           // Received one data field
-          floatval = (float) (byte << 8) + last_byte;
+          floatval = static_cast<float>((static_cast<uint16_t>(last_byte) << 8) + 
+                                        static_cast<uint16_t>(byte));
           values->push_back(floatval);
 #if (ER_DATALOGGER_DEBUG)
           printf("ERDataLogger: byte #%d: Got value: %f \n", i, floatval);
@@ -170,10 +182,10 @@ bool ERDataLogger::read_one_data(std::vector<float>* values){
           second_byte = false;
         }
         else {
-          last_byte = byte;
           second_byte = true;
         }
       }
+      last_byte = byte;
     }
 #if (ER_DATALOGGER_DEBUG)
     std::cout << "ERDataLogger: Too large packet or no stop byte" << std::endl;
