@@ -184,8 +184,8 @@ bool ERDataLogger::read_one_data(std::vector<float>* values){
         else {
           second_byte = true;
         }
+        last_byte = byte;
       }
-      last_byte = byte;
     }
 #if (ER_DATALOGGER_DEBUG)
     std::cout << "ERDataLogger: Too large packet or no stop byte" << std::endl;
